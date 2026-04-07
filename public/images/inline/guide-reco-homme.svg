@@ -1,0 +1,25 @@
+<svg width="800" height="268" viewBox="0 0 800 268" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="268" rx="16" fill="#fff" stroke="#e8f5e9" stroke-width="2"/>
+  <rect x="0" y="0" width="800" height="60" rx="16" fill="#11998e"/>
+  <rect x="0" y="44" width="800" height="16" fill="#11998e"/>
+  <text x="400" y="38" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-size="20" font-weight="700" fill="#fff" letter-spacing="1">Meilleures box pour homme 2026</text>
+  
+  <rect x="20" y="80" width="760" height="52" rx="8" fill="#f0f9f4"/>
+  <circle cx="56" cy="106" r="18" fill="#1a1a2e"/>
+  <text x="56" y="112" text-anchor="middle" font-family="system-ui" font-size="16" fill="#fff" font-weight="700">1</text>
+  <text x="90" y="108" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#1a1a2e">Lookfantastic</text>
+  <text x="90" y="128" font-family="system-ui,sans-serif" font-size="13" fill="#666">Soins masculins premium, marques pro</text>
+  <text x="755" y="108" text-anchor="end" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#1a1a2e">16.50€</text>
+  <rect x="20" y="136" width="760" height="52" rx="8" fill="#ffffff"/>
+  <circle cx="56" cy="162" r="18" fill="#2d6a4f"/>
+  <text x="56" y="168" text-anchor="middle" font-family="system-ui" font-size="16" fill="#fff" font-weight="700">2</text>
+  <text x="90" y="164" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#1a1a2e">Biotyfull Box</text>
+  <text x="90" y="184" font-family="system-ui,sans-serif" font-size="13" fill="#666">Pour homme peau sensible, 100% naturel</text>
+  <text x="755" y="164" text-anchor="end" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#2d6a4f">23.90€</text>
+  <rect x="20" y="192" width="760" height="52" rx="8" fill="#f0f9f4"/>
+  <circle cx="56" cy="218" r="18" fill="#7b2d8b"/>
+  <text x="56" y="224" text-anchor="middle" font-family="system-ui" font-size="16" fill="#fff" font-weight="700">3</text>
+  <text x="90" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="700" fill="#1a1a2e">Prescription Lab</text>
+  <text x="90" y="240" font-family="system-ui,sans-serif" font-size="13" fill="#666">Personnalisation profil masculin sur-mesure</text>
+  <text x="755" y="220" text-anchor="end" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#7b2d8b">25.90€</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <radialGradient id="bg-pl" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#E8EAF6"/>
+      <stop offset="100%" stop-color="#C5CAE9"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="200" fill="url(#bg-pl)" rx="12"/>
+
+  <circle cx="150" cy="88" r="52" fill="#ffffff" opacity="0.55"/>
+  <circle cx="150" cy="88" r="44" fill="#ffffff" opacity="0.45"/>
+
+  <!-- Fiole de labo stylisée -->
+  <g transform="translate(112, 38)">
+    <!-- Grande fiole -->
+    <path d="M28 25 L28 48 L10 80 Q8 92, 20 92 L56 92 Q68 92, 66 80 L48 48 L48 25Z" fill="#5C6BC0" opacity="0.15" stroke="#3949AB" stroke-width="2"/>
+    <path d="M28 25 L28 48 L10 80 Q8 92, 20 92 L56 92 Q68 92, 66 80 L48 48 L48 25Z" fill="none" stroke="#3949AB" stroke-width="2"/>
+    <!-- Liquide à l'intérieur -->
+    <path d="M18 76 L22 65 L54 65 L58 76 Q58 88, 48 88 L28 88 Q18 88, 18 76Z" fill="#7986CB" opacity="0.6"/>
+    <!-- Bulles dans le liquide -->
+    <circle cx="32" cy="78" r="3" fill="#ffffff" opacity="0.5"/>
+    <circle cx="44" cy="74" r="2" fill="#ffffff" opacity="0.4"/>
+    <circle cx="38" cy="82" r="2.5" fill="#ffffff" opacity="0.45"/>
+    <!-- Goulot -->
+    <rect x="26" y="16" width="24" height="12" rx="3" fill="#3949AB" opacity="0.3"/>
+    <rect x="26" y="16" width="24" height="12" rx="3" fill="none" stroke="#3949AB" stroke-width="1.5"/>
+    <!-- Bouchon -->
+    <rect x="28" y="10" width="20" height="8" rx="3" fill="#3949AB"/>
+
+    <!-- Petite fiole à côté -->
+    <path d="M66 40 L66 52 L56 68 Q55 75, 62 75 L78 75 Q85 75, 84 68 L74 52 L74 40Z" fill="none" stroke="#7986CB" stroke-width="1.5"/>
+    <path d="M60 65 L62 60 L80 60 L82 65 Q82 72, 76 72 L64 72 Q58 72, 60 65Z" fill="#9FA8DA" opacity="0.5"/>
+    <rect x="65" y="33" width="10" height="9" rx="2" fill="#5C6BC0" opacity="0.5"/>
+    <rect x="65" y="33" width="10" height="9" rx="2" fill="none" stroke="#5C6BC0" stroke-width="1"/>
+
+    <!-- Étoile / croix médicale -->
+    <rect x="-5" y="17" width="10" height="4" rx="2" fill="#3949AB" opacity="0.7"/>
+    <rect x="-1" y="13" width="4" height="12" rx="2" fill="#3949AB" opacity="0.7"/>
+
+    <!-- Bulles volantes -->
+    <circle cx="4" cy="55" r="5" fill="#7986CB" opacity="0.3"/>
+    <circle cx="5" cy="55" r="2" fill="none" stroke="#7986CB" stroke-width="1"/>
+    <circle cx="85" cy="48" r="4" fill="#9FA8DA" opacity="0.35"/>
+    <circle cx="5" cy="80" r="3" fill="#7986CB" opacity="0.25"/>
+  </g>
+
+  <!-- Nom -->
+  <text x="150" y="153" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" fill="#1A237E" letter-spacing="0.5">Prescription Lab</text>
+
+  <!-- Tagline -->
+  <text x="150" y="173" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#3949AB" letter-spacing="2" font-weight="600">SOINS PERSONNALISÉS</text>
+</svg>

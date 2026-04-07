@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <radialGradient id="bg-nuoo" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#E0F2F1"/>
+      <stop offset="100%" stop-color="#B2DFDB"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="200" fill="url(#bg-nuoo)" rx="12"/>
+
+  <circle cx="150" cy="88" r="52" fill="#ffffff" opacity="0.55"/>
+  <circle cx="150" cy="88" r="44" fill="#ffffff" opacity="0.45"/>
+
+  <!-- Plante/herbe stylisée Nuoo (bio naturel) -->
+  <g transform="translate(112, 42)">
+    <!-- Tige centrale -->
+    <path d="M38 85 Q38 50 38 20" stroke="#00796B" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Grande feuille gauche -->
+    <path d="M38 50 C38 50, 5 35, 2 10 C15 15, 38 30, 38 50Z" fill="#26A69A" opacity="0.9"/>
+    <path d="M38 50 C20 40, 8 22, 2 10" stroke="#00695C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Grande feuille droite -->
+    <path d="M38 38 C38 38, 70 22, 74 5 C60 10, 38 22, 38 38Z" fill="#4DB6AC" opacity="0.9"/>
+    <path d="M38 38 C56 28, 68 14, 74 5" stroke="#00796B" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <!-- Petite feuille gauche basse -->
+    <path d="M38 65 C38 65, 18 58, 12 42 C24 46, 38 55, 38 65Z" fill="#80CBC4" opacity="0.8"/>
+    <!-- Sol / base -->
+    <ellipse cx="38" cy="87" rx="18" ry="5" fill="#00796B" opacity="0.3"/>
+    <!-- Gouttes d'eau -->
+    <ellipse cx="14" cy="15" rx="4" ry="5.5" fill="#80DEEA" opacity="0.7"/>
+    <ellipse cx="70" cy="28" rx="3" ry="4" fill="#80DEEA" opacity="0.6"/>
+    <!-- Petites feuilles déco -->
+    <circle cx="6" cy="78" r="4" fill="#26A69A" opacity="0.5"/>
+    <circle cx="74" cy="72" r="3" fill="#4DB6AC" opacity="0.5"/>
+  </g>
+
+  <!-- Nom -->
+  <text x="150" y="155" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-weight="bold" fill="#00514B" letter-spacing="2">Nuoo</text>
+
+  <!-- Tagline -->
+  <text x="150" y="175" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#00796B" letter-spacing="2.5" font-weight="600">BIO &amp; BIMESTRIEL</text>
+</svg>

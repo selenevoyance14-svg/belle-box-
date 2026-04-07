@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <defs>
+    <radialGradient id="bg-ban" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#F1F8E9"/>
+      <stop offset="100%" stop-color="#DCEDC8"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="200" fill="url(#bg-ban)" rx="12"/>
+
+  <circle cx="150" cy="88" r="52" fill="#ffffff" opacity="0.55"/>
+  <circle cx="150" cy="88" r="44" fill="#ffffff" opacity="0.45"/>
+
+  <!-- Fleur naturelle stylisée -->
+  <g transform="translate(112, 40)">
+    <!-- Tige et feuilles -->
+    <path d="M38 88 Q38 70 38 52" stroke="#558B2F" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Feuilles -->
+    <path d="M38 72 C38 72, 18 68, 12 54 C24 56, 38 65, 38 72Z" fill="#8BC34A" opacity="0.9"/>
+    <path d="M38 64 C38 64, 58 59, 64 46 C52 48, 38 56, 38 64Z" fill="#7CB342" opacity="0.9"/>
+
+    <!-- Pétales de fleur -->
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F8BBD9" transform="rotate(0 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F48FB1" transform="rotate(45 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F8BBD9" transform="rotate(90 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F48FB1" transform="rotate(135 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F8BBD9" transform="rotate(180 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F48FB1" transform="rotate(225 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F8BBD9" transform="rotate(270 38 43)"/>
+    <ellipse cx="38" cy="30" rx="8" ry="13" fill="#F48FB1" transform="rotate(315 38 43)"/>
+    <!-- Centre de la fleur -->
+    <circle cx="38" cy="43" r="10" fill="#FFC947"/>
+    <circle cx="38" cy="43" r="6" fill="#FBBF24"/>
+    <circle cx="38" cy="43" r="3" fill="#F59E0B"/>
+
+    <!-- Petites fleurs déco -->
+    <circle cx="8" cy="20" r="5" fill="#F8BBD9" opacity="0.7"/>
+    <circle cx="8" cy="20" r="2.5" fill="#FFC947"/>
+    <circle cx="72" cy="28" r="4" fill="#CE93D8" opacity="0.7"/>
+    <circle cx="72" cy="28" r="2" fill="#FFC947"/>
+    <!-- Gouttes de rosée -->
+    <ellipse cx="15" cy="78" rx="3" ry="4" fill="#81D4FA" opacity="0.6"/>
+    <ellipse cx="68" cy="75" rx="2.5" ry="3.5" fill="#81D4FA" opacity="0.5"/>
+  </g>
+
+  <!-- Nom -->
+  <text x="150" y="153" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="13" font-weight="bold" fill="#33691E" letter-spacing="0.3">Belle au Naturel</text>
+
+  <!-- Tagline -->
+  <text x="150" y="173" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="9" fill="#558B2F" letter-spacing="2.5" font-weight="600">BIO &amp; CRUELTY-FREE</text>
+</svg>
