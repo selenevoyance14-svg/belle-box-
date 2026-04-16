@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff5f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff5f7"/>
+  <circle cx="200" cy="150" r="130" fill="url(#bg-glow)"/>
+  
+        <!-- Deodorant stick -->
+        <rect x="178" y="100" width="44" height="85" rx="8" fill="#d1fae5" opacity="0.5" stroke="#be185d" stroke-width="1"/>
+        <!-- Label -->
+        <rect x="182" y="125" width="36" height="30" rx="3" fill="#fce7f3" opacity="0.5"/>
+        <!-- Leaf -->
+        <path d="M200 80 Q215 60 230 70 Q220 85 200 80Z" fill="#6ee7b7" opacity="0.5"/>
+        <line x1="200" y1="80" x2="218" y2="68" stroke="#6ee7b7" stroke-width="0.8" opacity="0.4"/>
+        
+  <!-- Decorative dots -->
+  <circle cx="80" cy="50" r="3" fill="#f9a8d4" opacity="0.4"/>
+  <circle cx="320" cy="60" r="2" fill="#d4af37" opacity="0.3"/>
+  <circle cx="75" cy="240" r="2" fill="#be185d" opacity="0.2"/>
+  <circle cx="330" cy="230" r="3" fill="#f9a8d4" opacity="0.3"/>
+  <circle cx="60" cy="150" r="1.5" fill="#d4af37" opacity="0.25"/>
+  <circle cx="340" cy="140" r="2" fill="#be185d" opacity="0.2"/>
+</svg>

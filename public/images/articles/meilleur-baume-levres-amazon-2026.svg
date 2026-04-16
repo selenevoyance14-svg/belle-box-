@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff5f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff5f7"/>
+  <circle cx="200" cy="150" r="130" fill="url(#bg-glow)"/>
+  
+        <!-- Lip balm tube -->
+        <rect x="180" y="100" width="40" height="80" rx="15" fill="#f9a8d4" opacity="0.7"/>
+        <rect x="180" y="100" width="40" height="80" rx="15" fill="none" stroke="#be185d" stroke-width="1.5"/>
+        <!-- Balm top -->
+        <ellipse cx="200" cy="100" rx="20" ry="8" fill="#be185d" opacity="0.6"/>
+        <!-- Lips shape -->
+        <path d="M175 200 Q185 185 200 190 Q215 185 225 200 Q210 215 200 210 Q190 215 175 200Z" fill="#be185d" opacity="0.4"/>
+        
+  <!-- Decorative dots -->
+  <circle cx="80" cy="50" r="3" fill="#f9a8d4" opacity="0.4"/>
+  <circle cx="320" cy="60" r="2" fill="#d4af37" opacity="0.3"/>
+  <circle cx="75" cy="240" r="2" fill="#be185d" opacity="0.2"/>
+  <circle cx="330" cy="230" r="3" fill="#f9a8d4" opacity="0.3"/>
+  <circle cx="60" cy="150" r="1.5" fill="#d4af37" opacity="0.25"/>
+  <circle cx="340" cy="140" r="2" fill="#be185d" opacity="0.2"/>
+</svg>

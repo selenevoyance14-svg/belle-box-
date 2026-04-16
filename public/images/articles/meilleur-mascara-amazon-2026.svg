@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff5f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff5f7"/>
+  <circle cx="200" cy="150" r="130" fill="url(#bg-glow)"/>
+  
+        <!-- Mascara tube -->
+        <rect x="175" y="80" width="50" height="140" rx="8" fill="#be185d" opacity="0.8"/>
+        <rect x="180" y="85" width="40" height="20" rx="4" fill="#9d174d"/>
+        <!-- Wand -->
+        <line x1="200" y1="70" x2="200" y2="30" stroke="#1a1a1a" stroke-width="3"/>
+        <ellipse cx="200" cy="25" rx="6" ry="15" fill="#1a1a1a" transform="rotate(-10 200 25)"/>
+        <!-- Lash strokes -->
+        <path d="M160 140 Q140 120 135 100" fill="none" stroke="#be185d" stroke-width="2" opacity="0.4"/>
+        <path d="M240 140 Q260 120 265 100" fill="none" stroke="#be185d" stroke-width="2" opacity="0.4"/>
+        
+  <!-- Decorative dots -->
+  <circle cx="80" cy="50" r="3" fill="#f9a8d4" opacity="0.4"/>
+  <circle cx="320" cy="60" r="2" fill="#d4af37" opacity="0.3"/>
+  <circle cx="75" cy="240" r="2" fill="#be185d" opacity="0.2"/>
+  <circle cx="330" cy="230" r="3" fill="#f9a8d4" opacity="0.3"/>
+  <circle cx="60" cy="150" r="1.5" fill="#d4af37" opacity="0.25"/>
+  <circle cx="340" cy="140" r="2" fill="#be185d" opacity="0.2"/>
+</svg>

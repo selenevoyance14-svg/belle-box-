@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#fff5f7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="300" fill="#fff5f7"/>
+  <circle cx="200" cy="150" r="130" fill="url(#bg-glow)"/>
+  
+        <!-- Beard oil bottle -->
+        <rect x="175" y="110" width="30" height="70" rx="4" fill="#8b6914" opacity="0.5"/>
+        <rect x="185" y="100" width="10" height="14" fill="#d4af37" opacity="0.6"/>
+        <!-- Comb -->
+        <rect x="220" y="115" width="25" height="55" rx="3" fill="#5a3e1b" opacity="0.5"/>
+        <line x1="225" y1="170" x2="225" y2="190" stroke="#5a3e1b" stroke-width="2" opacity="0.4"/>
+        <line x1="232" y1="170" x2="232" y2="190" stroke="#5a3e1b" stroke-width="2" opacity="0.4"/>
+        <line x1="239" y1="170" x2="239" y2="190" stroke="#5a3e1b" stroke-width="2" opacity="0.4"/>
+        <!-- Scissors -->
+        <circle cx="155" cy="145" r="12" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="155" cy="175" r="12" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.5"/>
+        
+  <!-- Decorative dots -->
+  <circle cx="80" cy="50" r="3" fill="#f9a8d4" opacity="0.4"/>
+  <circle cx="320" cy="60" r="2" fill="#d4af37" opacity="0.3"/>
+  <circle cx="75" cy="240" r="2" fill="#be185d" opacity="0.2"/>
+  <circle cx="330" cy="230" r="3" fill="#f9a8d4" opacity="0.3"/>
+  <circle cx="60" cy="150" r="1.5" fill="#d4af37" opacity="0.25"/>
+  <circle cx="340" cy="140" r="2" fill="#be185d" opacity="0.2"/>
+</svg>
