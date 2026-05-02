@@ -4,6 +4,7 @@ import {
 } from "lucide-react";
 import Header from "@/app/components/Header";
 import BoxGrid from "@/app/components/BoxGrid";
+import CurrentMonth from "@/app/components/CurrentMonth";
 
 export default async function Home() {
   const boxes = getAllBoxes();
@@ -11,11 +12,7 @@ export default async function Home() {
 
   const sortedBoxes = [...boxes].sort((a, b) => (b.rating || 0) - (a.rating || 0));
 
-  const now = new Date();
-  const monthFormatter = new Intl.DateTimeFormat("fr-FR", { month: "long" });
-  const currentMonthRaw = monthFormatter.format(now);
-  const monthDisplay = currentMonthRaw.charAt(0).toUpperCase() + currentMonthRaw.slice(1);
-  const currentYear = now.getFullYear();
+  const currentYear = new Date().getFullYear();
 
   const categoryConfig: Record<string, { label: string }> = {
     bio: { label: "Bio & Naturel" },
@@ -69,7 +66,7 @@ export default async function Home() {
         <div className="container">
           <div className="hero-inner">
             <div className="hero-badge">
-              🎁 {monthDisplay} {currentYear} — {boxes.length} box beauté comparées
+              🎁 <CurrentMonth /> {currentYear} — {boxes.length} box beauté comparées
             </div>
             <h1>
               Trouvez la box beauté{" "}
@@ -124,7 +121,7 @@ export default async function Home() {
           <div className="section-title">
             <h2>
               <Gift size={26} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
-              Les {boxes.length} box beauté — {monthDisplay} {currentYear}
+              Les {boxes.length} box beauté — <CurrentMonth /> {currentYear}
             </h2>
             <p>
               Classées par note. Chaque box est évaluée sur ses produits, son
