@@ -7,6 +7,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kado-box.fr"),
   title: "Kado — Comparatif box beauté 2026 : Biotyfull, Blissim, LookFantastic…",
   description:
     "Comparatif complet et honnête des 10 meilleures box beauté en France : Biotyfull, Blissim, LookFantastic, Prescription Lab, Glowria, My Little Box, Belle au Naturel, Nuoo, Mademoiselle Confettis, L'Aroma Box.",
