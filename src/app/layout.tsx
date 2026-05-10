@@ -8,27 +8,24 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kado-box.fr"),
-  title: "Kado — Comparatif box beauté 2026 : Biotyfull, Blissim, LookFantastic…",
+  title: "Kado-Box — Idées cadeaux Amazon par occasion (2026)",
   description:
-    "Comparatif complet et honnête des 10 meilleures box beauté en France : Biotyfull, Blissim, LookFantastic, Prescription Lab, Glowria, My Little Box, Belle au Naturel, Nuoo, Mademoiselle Confettis, L'Aroma Box.",
+    "Trouvez le cadeau parfait : Fête des mères, Noël, anniversaire, Saint-Valentin, Pâques. Sélection des meilleurs cadeaux Amazon avec prix et avis vérifiés.",
   alternates: {
     canonical: "https://kado-box.fr",
   },
   keywords: [
-    "comparatif box beauté",
-    "meilleure box beauté 2026",
-    "box beauté avis",
-    "Biotyfull Box",
-    "Blissim",
-    "Lookfantastic box",
-    "Prescription Lab box",
-    "Glowria box",
-    "My Little Box",
-    "Belle au Naturel box",
-    "Nuoo box",
-    "Mademoiselle Confettis",
-    "Aroma Box",
-    "Kado",
+    "idées cadeaux",
+    "cadeau Amazon",
+    "fête des mères",
+    "fête des pères",
+    "cadeau Noël",
+    "cadeau Saint-Valentin",
+    "cadeau Pâques",
+    "cadeau anniversaire",
+    "cadeau femme",
+    "cadeau homme",
+    "cadeau enfant",
   ],
   icons: {
     icon: [
@@ -41,18 +38,10 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Kado — Comparatif box beauté 2026",
-    description:
-      "Comparatif honnête des 10 meilleures box beauté françaises : prix, produits, notes et avis détaillés.",
+    title: "Kado-Box — Idées cadeaux Amazon",
+    description: "Trouvez le cadeau parfait pour chaque occasion : sélection des meilleurs produits Amazon.",
     type: "website",
     locale: "fr_FR",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-      },
-    ],
   },
 };
 

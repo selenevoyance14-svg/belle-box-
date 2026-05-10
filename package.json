@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npx tsx scripts/generate-sitemap.ts",
-    "build": "next build",
+    "build": "node scripts/build-amazon-catalog.mjs || true && next build",
     "start": "next start",
     "lint": "eslint",
-    "new-month": "node scripts/new-month.mjs"
+    "sync-amazon": "node scripts/build-amazon-catalog.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

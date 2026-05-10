@@ -1,0 +1,57 @@
+# ==================================
+# KADO BOX — Sources Produits Amazon
+# ==================================
+# Pour ajouter un produit : ASIN + occasion + destinataire
+# Lance ensuite : npm run sync-amazon
+#
+# Occasions : fete-des-meres, fete-des-peres, noel, paques, saint-valentin, anniversaire
+# Destinataires : femme, homme, enfant, ado, couple, bebe
+# ==================================
+
+# Le crawler partira de ces ASIN seeds et explorera les produits voisins
+# pour étoffer le catalogue automatiquement.
+
+seeds:
+  # --- Tech / High-tech (cadeaux ado, homme, geek) ---
+  - asin: "B09WX6QD7W"   # Echo Pop
+  - asin: "B08KTZ8249"   # Kindle Paperwhite
+  - asin: "B0BMSFXH7Z"   # Funko Pop
+  - asin: "B0DT4SQPDX"   # Polaroid Now+
+  - asin: "B0BFNHV9YX"   # Apple AirPods
+  - asin: "B09ZHCJDP1"   # Apple AirTag
+
+  # --- Beauté / Soin (femme, fête des mères) ---
+  - asin: "B00WRYZW3Y"   # Coffret L'Occitane
+  - asin: "B07Z4N3MLF"   # Coffret L'Oréal
+  - asin: "B003ZQNDE2"   # Hugo Boss parfum
+  - asin: "B0049DB85S"   # Lancôme La Vie est Belle
+  - asin: "B005DNI4FE"   # Chanel N°5
+
+  # --- Bijoux ---
+  - asin: "B07PQXM2TN"   # Pandora
+  - asin: "B07W2PR2YS"   # Montre Festina
+
+  # --- Maison / Déco / Bougies (femme, déco) ---
+  - asin: "B00KBQHHSY"   # Yankee Candle
+  - asin: "B0CK4M5YVZ"   # Bougie parfumée Diptyque-style
+  - asin: "B07GBNXW86"   # Coffret thé Kusmi
+
+  # --- Enfants / Jouets (Noël, anniversaire) ---
+  - asin: "B0CFW2J35Z"   # LEGO Friends
+  - asin: "B0CFXXYZK7"   # LEGO Star Wars
+  - asin: "B07YJTJW1Q"   # Casque audio enfant
+  - asin: "B07PFBL2C2"   # LEGO Friends Maison
+
+  # --- Chocolats / Pâques ---
+  - asin: "B07HCBDDFD"   # Lindt Lindor
+  - asin: "B07FN3Y29P"   # Ferrero Rocher coffret
+  - asin: "B07PRQLJB1"   # Œuf de Pâques chocolat
+
+  # --- Saint-Valentin ---
+  - asin: "B07Q6Z2PYL"   # Coffret rose éternelle
+  - asin: "B0832HTNQR"   # Bracelets couple
+
+  # --- Homme / Fête des pères ---
+  - asin: "B07PJV9XQF"   # Set rasage Gillette
+  - asin: "B08H1YT7SX"   # Coffret outils
+  - asin: "B0F7VVBJHR"   # Casquette

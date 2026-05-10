@@ -1,303 +1,316 @@
-import { getAllBoxes, getAffiliateUrl, getActivePromoCodes } from "@/lib/affiliate";
+import { getCatalog, getProductsByOccasion, OCCASIONS, RECIPIENTS, type CatalogProduct } from "@/lib/catalog";
 import {
-  Star, X, Check, Tag, Percent, Gift,
+  Star, ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
+  Gift, Heart, Sparkles, Menu
 } from "lucide-react";
-import Header from "@/app/components/Header";
-import BoxGrid from "@/app/components/BoxGrid";
-import CurrentMonth from "@/app/components/CurrentMonth";
+import Image from "next/image";
+import type { Metadata } from "next";
 
-export default async function Home() {
-  const boxes = getAllBoxes();
-  const promoCodes = getActivePromoCodes();
+export const metadata: Metadata = {
+  title: "Kado-Box — Idées cadeaux Amazon par occasion (2026)",
+  description: "Trouvez le cadeau parfait : Fête des mères, Noël, anniversaire, Saint-Valentin… Sélection des meilleurs cadeaux Amazon avec prix et avis vérifiés.",
+  alternates: { canonical: "https://kado-box.fr" },
+};
 
-  const sortedBoxes = [...boxes].sort((a, b) => (b.rating || 0) - (a.rating || 0));
+function formatPrice(p: number) {
+  return `${p.toFixed(2).replace('.', ',')} €`;
+}
 
-  const currentYear = new Date().getFullYear();
+function decodeTitle(t: string) {
+  return t.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
+}
 
-  const categoryConfig: Record<string, { label: string }> = {
-    bio: { label: "Bio & Naturel" },
-    premium: { label: "Premium" },
-    mixte: { label: "Mixte" },
-    lifestyle: { label: "Lifestyle" },
-    enfant: { label: "Enfant" },
-    aromatherapie: { label: "Aromathérapie" },
-    "bien-être": { label: "Bien-être" },
-  };
+function StarRow({ rating }: { rating: number }) {
+  return (
+    <div style={{ display: "inline-flex", gap: "1px", color: "var(--star)" }}>
+      {Array.from({ length: 5 }, (_, i) => (
+        <Star key={i} size={13} fill={i < Math.round(rating) ? "currentColor" : "none"} stroke="currentColor" />
+      ))}
+    </div>
+  );
+}
 
-  // Schema.org — ItemList pour Google rich snippets
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `Meilleures Box Beauté ${currentYear} — Comparatif complet`,
-    description: `Comparatif des ${sortedBoxes.length} meilleures box beauté françaises : prix, produits, notes et avis.`,
-    url: "https://kado-box.fr",
-    numberOfItems: sortedBoxes.length,
-    itemListElement: sortedBoxes.map((box, i) => ({
-      "@type": "ListItem",
-      position: i + 1,
-      item: {
-        "@type": "Product",
-        name: box.name,
-        url: box.website,
-        description: box.description,
-        offers: {
-          "@type": "Offer",
-          price: box.price.toFixed(2),
-          priceCurrency: "EUR",
-          availability: "https://schema.org/InStock",
-        },
-      },
-    })),
-  };
+function ProductCard({ product, badge }: { product: CatalogProduct; badge?: string }) {
+  return (
+    <a
+      href={product.affiliate_url}
+      target="_blank"
+      rel="nofollow noopener noreferrer"
+      className="product-card"
+    >
+      {badge && <span className="product-badge"><Sparkles size={11} /> {badge}</span>}
+      <div className="product-image">
+        {product.image && (
+          <Image
+            src={product.image}
+            alt={decodeTitle(product.title)}
+            fill
+            style={{ objectFit: "contain", padding: "14px" }}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
+        )}
+      </div>
+      <div className="product-body">
+        <h3 className="product-title">{decodeTitle(product.title)}</h3>
+        {product.rating && (
+          <div className="product-rating">
+            <StarRow rating={product.rating} />
+            <span className="rating-num">{product.rating}/5</span>
+            {product.reviews_count && (
+              <span className="muted">· {product.reviews_count.toLocaleString('fr-FR')} avis</span>
+            )}
+          </div>
+        )}
+        <div className="product-price">
+          <span className="price-now">{formatPrice(product.price)}</span>
+        </div>
+        <span className="btn btn-primary btn-sm product-cta">
+          Voir sur Amazon <ChevronRight size={14} />
+        </span>
+        <span className="product-prime"><Truck size={12} /> Livraison Prime</span>
+      </div>
+    </a>
+  );
+}
+
+export default function Home() {
+  const catalog = getCatalog();
+
+  const featured = [...catalog]
+    .filter((p) => (p.rating || 0) >= 4.5 && (p.reviews_count || 0) >= 200)
+    .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))[0];
+
+  const occasionsBlocks = OCCASIONS.map((occ) => ({
+    ...occ,
+    products: getProductsByOccasion(occ.slug)
+      .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))
+      .slice(0, 6),
+  })).filter((o) => o.products.length >= 3);
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      <Header />
-
-      {/* ═══════════════════════════════════════
-          HERO
-      ═══════════════════════════════════════ */}
-      <section className="hero hero-centered">
+      <header className="header">
         <div className="container">
-          <div className="hero-inner">
+          <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+            Kado<span style={{ color: 'var(--primary)' }}>-Box</span>
+          </a>
+          <nav className="nav">
+            {OCCASIONS.slice(0, 4).map((o) => (
+              <a key={o.slug} href={`/occasion/${o.slug}`}>{o.name}</a>
+            ))}
+          </nav>
+          <button className="mobile-menu-btn" aria-label="Menu">
+            <Menu size={20} />
+          </button>
+        </div>
+      </header>
+
+      <section className="hero">
+        <div className="container">
+          <div className="hero-content">
             <div className="hero-badge">
-              🎁 <CurrentMonth /> {currentYear} — {boxes.length} box beauté comparées
+              <Gift size={14} /> Idées cadeaux 2026
             </div>
             <h1>
-              Trouvez la box beauté{" "}
-              <span className="squiggle">faite pour vous</span>
+              Trouvez le cadeau <span className="squiggle">parfait</span>
             </h1>
             <p className="hero-subtitle">
-              Biotyfull, Blissim, LookFantastic, Prescription Lab, Glowria…
-              On a tout comparé : prix, produits, qualité, bio ou pas.
-              Plus besoin de tâtonner.
+              Fête des mères, Noël, anniversaire, Saint-Valentin… Notre sélection des meilleurs cadeaux Amazon, avec prix et avis vérifiés.
             </p>
-            <div className="hero-cta hero-cta-centered">
-              <a href="#comparatif" className="btn btn-primary">
-                Voir le comparatif →
+            <ul className="hero-trust-list">
+              <li><Award size={16} /> {catalog.length} idées sélectionnées</li>
+              <li><ThumbsUp size={16} /> Triées par avis vérifiés Amazon</li>
+              <li><Truck size={16} /> Livraison Prime offerte</li>
+            </ul>
+            <div className="hero-cta">
+              <a href="#occasions" className="btn btn-primary">
+                Choisir une occasion <ChevronRight size={16} />
               </a>
-              <a href="/quiz" className="btn btn-secondary">
-                Quiz — quelle box pour moi ?
+            </div>
+          </div>
+          {featured && (
+            <div className="hero-visual">
+              <a
+                href={featured.affiliate_url}
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="hero-product-card"
+              >
+                <div className="hero-product-image">
+                  <Image
+                    src={featured.image}
+                    alt={decodeTitle(featured.title)}
+                    fill
+                    style={{ objectFit: "contain", padding: "20px" }}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+                <div className="hero-product-body">
+                  <span className="hero-product-tag"><Award size={12} /> Le coup de cœur</span>
+                  <h3>{decodeTitle(featured.title).slice(0, 75)}{decodeTitle(featured.title).length > 75 ? "…" : ""}</h3>
+                  {featured.rating && (
+                    <div className="hero-product-rating">
+                      <StarRow rating={featured.rating} />
+                      <span>{featured.rating}/5</span>
+                      {featured.reviews_count && (
+                        <span className="muted">({featured.reviews_count.toLocaleString('fr-FR')} avis)</span>
+                      )}
+                    </div>
+                  )}
+                  <div className="hero-product-price">
+                    <span className="price-now">{formatPrice(featured.price)}</span>
+                  </div>
+                  <span className="btn btn-primary btn-sm" style={{ width: "100%", justifyContent: "center" }}>
+                    Voir sur Amazon <ChevronRight size={14} />
+                  </span>
+                </div>
               </a>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <section className="section" id="occasions">
+        <div className="container">
+          <div className="section-title">
+            <h2>Choisir par occasion</h2>
+            <p>Cliquez sur une occasion pour voir notre sélection complète.</p>
+          </div>
+          <div className="occasion-grid">
+            {OCCASIONS.map((o) => {
+              const count = getProductsByOccasion(o.slug).length;
+              return (
+                <a key={o.slug} href={`/occasion/${o.slug}`} className="occasion-card">
+                  <div className="occasion-emoji">{o.emoji}</div>
+                  <div>
+                    <h3>{o.name}</h3>
+                    <p>{o.description}</p>
+                    <span className="occasion-count">{count} idées</span>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: "var(--muted)" }}>
+        <div className="container">
+          <div className="section-title">
+            <h2><Heart size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Pour qui ?</h2>
+            <p>Sélection ciblée par destinataire.</p>
+          </div>
+          <div className="recipient-grid">
+            {RECIPIENTS.map((r) => (
+              <a key={r.slug} href={`/destinataire/${r.slug}`} className="recipient-card">
+                <span className="recipient-emoji">{r.emoji}</span>
+                <span>{r.name}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="container">
+        <div className="reassurance-bar">
+          <div className="reassurance-item">
+            <Truck size={22} />
+            <div>
+              <strong>Livraison rapide</strong>
+              <span>Prime offerte 24h</span>
+            </div>
+          </div>
+          <div className="reassurance-item">
+            <ShieldCheck size={22} />
+            <div>
+              <strong>Achat sécurisé</strong>
+              <span>Paiement & retour Amazon</span>
+            </div>
+          </div>
+          <div className="reassurance-item">
+            <Award size={22} />
+            <div>
+              <strong>Sélection vérifiée</strong>
+              <span>Triée par avis clients</span>
+            </div>
+          </div>
+          <div className="reassurance-item">
+            <ThumbsUp size={22} />
+            <div>
+              <strong>{catalog.length} idées</strong>
+              <span>Tous prix confondus</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          STATS
-      ═══════════════════════════════════════ */}
-      <section className="container">
-        <div className="stats-bar">
-          <div className="stat-item">
-            <span className="stat-number">{boxes.length}</span>
-            <span className="stat-label">Box comparées</span>
+      {occasionsBlocks.map((block, idx) => (
+        <section
+          key={block.slug}
+          className="section"
+          style={idx % 2 === 0 ? {} : { background: "var(--muted)" }}
+        >
+          <div className="container">
+            <div className="section-title">
+              <h2><span style={{ marginRight: "8px" }}>{block.emoji}</span> {block.name}</h2>
+              <p>{block.description}</p>
+            </div>
+            <div className="product-grid">
+              {block.products.map((p, i) => (
+                <ProductCard
+                  key={p.asin}
+                  product={p}
+                  badge={i === 0 ? "Top vente" : i === 1 ? "Coup de cœur" : undefined}
+                />
+              ))}
+            </div>
+            <div style={{ textAlign: "center", marginTop: "32px" }}>
+              <a href={`/occasion/${block.slug}`} className="btn btn-secondary">
+                Voir tous les cadeaux <ChevronRight size={16} />
+              </a>
+            </div>
           </div>
-          <div className="stat-item">
-            <span className="stat-number">4.4/5</span>
-            <span className="stat-label">Note moyenne</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">17,90€</span>
-            <span className="stat-label">Prix le plus bas</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-number">100%</span>
-            <span className="stat-label">Avis honnêtes</span>
-          </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      {/* ═══════════════════════════════════════
-          BOX CARDS — grille comparatif
-      ═══════════════════════════════════════ */}
-      <section className="section" id="comparatif">
-        <div className="container">
-          <div className="section-title">
-            <h2>
-              <Gift size={26} style={{ display: "inline", verticalAlign: "middle", marginRight: "8px" }} />
-              Les {boxes.length} box beauté — <CurrentMonth /> {currentYear}
-            </h2>
-            <p>
-              Classées par note. Chaque box est évaluée sur ses produits, son
-              rapport qualité/prix et sa régularité mois après mois.
-            </p>
-          </div>
-
-          <BoxGrid
-            boxes={sortedBoxes}
-            affiliateUrls={Object.fromEntries(
-              sortedBoxes.map((b) => [b.slug, getAffiliateUrl(b.slug)])
-            )}
-          />
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          TABLEAU COMPARATIF
-      ═══════════════════════════════════════ */}
-      <section className="section" id="tableau" style={{ background: "var(--muted)" }}>
-        <div className="container">
-          <div className="section-title">
-            <h2>Tableau comparatif complet</h2>
-            <p>Toutes les box côte à côte — prix, produits, certifications et notre note.</p>
-          </div>
-
-          <div className="table-scroll-wrapper">
-            <table className="cmp-table">
-              <thead>
-                <tr>
-                  <th className="cmp-th-name">Box</th>
-                  <th>Prix/mois</th>
-                  <th>Produits</th>
-                  <th>Note</th>
-                  <th>Catégorie</th>
-                  <th title="Certifié bio">Bio</th>
-                  <th title="Cruelty-free">CF</th>
-                  <th title="Vegan">Vegan</th>
-                  <th>Lien</th>
-                </tr>
-              </thead>
-              <tbody>
-                {sortedBoxes.map((box, i) => {
-                  const isBio = box.certifications?.includes("bio");
-                  const isCF = box.certifications?.includes("cruelty-free");
-                  const isVegan = box.certifications?.includes("vegan");
-                  const affiliateUrl = getAffiliateUrl(box.slug);
-                  const hasCta = affiliateUrl && affiliateUrl !== "#";
-                  const ctaUrl = hasCta ? affiliateUrl : box.website;
-                  const cat = categoryConfig[box.category] || { label: box.category };
-
-                  return (
-                    <tr key={box.slug} className={i === 0 ? "cmp-row-top" : ""}>
-                      <td className="cmp-td-name">
-                        {i === 0 && <span className="cmp-star">⭐</span>}
-                        {box.name}
-                      </td>
-                      <td>
-                        <span className="cmp-price">
-                          {box.price.toFixed(2).replace(".", ",")}€
-                        </span>
-                        {box.billing !== "mois" && (
-                          <small style={{ color: "var(--muted-foreground)", marginLeft: "2px" }}>
-                            /{box.billing}
-                          </small>
-                        )}
-                      </td>
-                      <td style={{ textAlign: "center" }}>{box.nb_products}</td>
-                      <td>
-                        <span className="cmp-rating">
-                          <Star size={12} fill="var(--accent)" color="var(--accent)" />
-                          <strong>{box.rating?.toFixed(1)}</strong>
-                        </span>
-                      </td>
-                      <td>
-                        <span className="pill pill-soin" style={{ fontSize: "0.68rem", padding: "2px 8px" }}>
-                          {cat.label}
-                        </span>
-                      </td>
-                      <td className="cmp-icon-cell">
-                        {isBio ? <Check size={15} color="var(--success)" /> : <X size={15} color="var(--muted-foreground)" />}
-                      </td>
-                      <td className="cmp-icon-cell">
-                        {isCF ? <Check size={15} color="var(--success)" /> : <X size={15} color="var(--muted-foreground)" />}
-                      </td>
-                      <td className="cmp-icon-cell">
-                        {isVegan ? <Check size={15} color="var(--success)" /> : <X size={15} color="var(--muted-foreground)" />}
-                      </td>
-                      <td>
-                        <a
-                          href={ctaUrl}
-                          target="_blank"
-                          rel={hasCta ? "nofollow noopener sponsored" : "noopener noreferrer"}
-                          className="btn btn-primary btn-sm"
-                          style={{ padding: "6px 14px", fontSize: "0.78rem" }}
-                        >
-                          Voir →
-                        </a>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-          <p className="table-disclaimer">
-            * Certains liens sont des liens affiliés — ça ne change pas notre avis, ça nous aide à rester indépendantes.
-          </p>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          CODES PROMO
-      ═══════════════════════════════════════ */}
-
-      {/* ═══════════════════════════════════════
-          FOOTER
-      ═══════════════════════════════════════ */}
       <footer className="footer">
         <div className="container">
           <div className="footer-grid">
             <div className="footer-brand">
-              <a href="/" className="logo">
-                <img src="/kado-logo.svg" alt="Kado" className="logo-img logo-img-footer" />
+              <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white', textDecoration: 'none' }}>
+                Kado<span style={{ color: 'var(--primary-light)' }}>-Box</span>
               </a>
-              <p>
-                Comparatifs honnêtes de box beauté : Biotyfull, Blissim, LookFantastic,
-                Prescription Lab, Glowria, My Little Box, Belle au Naturel, Nuoo,
-                Mademoiselle Confettis et L&apos;Aroma Box.
-              </p>
+              <p>Le guide des meilleures idées cadeaux Amazon, mis à jour en continu.</p>
             </div>
-
             <div>
-              <h4>Box beauté</h4>
+              <h4>Occasions</h4>
               <ul className="footer-links">
-                {sortedBoxes.slice(0, 5).map((box) => (
-                  <li key={box.slug}>
-                    <a href={getAffiliateUrl(box.slug) !== "#" ? getAffiliateUrl(box.slug) : box.website} target="_blank" rel="noopener noreferrer">
-                      {box.name}
-                    </a>
-                  </li>
+                {OCCASIONS.slice(0, 6).map((o) => (
+                  <li key={o.slug}><a href={`/occasion/${o.slug}`}>{o.name}</a></li>
                 ))}
               </ul>
             </div>
-
             <div>
-              <h4>Suite</h4>
+              <h4>Pour qui</h4>
               <ul className="footer-links">
-                {sortedBoxes.slice(5).map((box) => (
-                  <li key={box.slug}>
-                    <a href={getAffiliateUrl(box.slug) !== "#" ? getAffiliateUrl(box.slug) : box.website} target="_blank" rel="noopener noreferrer">
-                      {box.name}
-                    </a>
-                  </li>
+                {RECIPIENTS.map((r) => (
+                  <li key={r.slug}><a href={`/destinataire/${r.slug}`}>{r.name}</a></li>
                 ))}
               </ul>
             </div>
-
             <div>
               <h4>Infos</h4>
               <ul className="footer-links">
-                <li><a href="#comparatif">Comparatif</a></li>
-                <li><a href="#tableau">Tableau</a></li>
-                <li><a href="/blog">Blog</a></li>
-                <li><a href="/quiz">Quiz</a></li>
                 <li><a href="/a-propos">À propos</a></li>
                 <li><a href="/contact">Contact</a></li>
+                <li><a href="/mentions-legales">Mentions légales</a></li>
+                <li><a href="/politique-de-confidentialite">Confidentialité</a></li>
               </ul>
             </div>
           </div>
-
           <div className="footer-bottom">
-            <p>
-              © {currentYear} Kado — Fait avec ❤️ pour vous aider à choisir.
-              Certains liens sont affiliés.
-            </p>
+            <p>© 2026 Kado-Box. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>
           </div>
         </div>
       </footer>
