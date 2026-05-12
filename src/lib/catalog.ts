@@ -55,11 +55,11 @@ export function getProductBySlug(slug: string): CatalogProduct | undefined {
 }
 
 export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string }> = [
-    { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman le 25 mai 2026" },
-    { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa le 21 juin 2026" },
-    { slug: "noel", name: "Noël", emoji: "🎄", description: "Le grand classique : faites des heureux le 25 décembre" },
-    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Chocolats et idées gourmandes pour les fêtes" },
-    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Le 14 février — pour lui dire 'je t'aime'" },
+    { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman" },
+    { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa" },
+    { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël" },
+    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Chocolats et idées gourmandes" },
+    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'" },
     { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge" },
     { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit" },
 ];

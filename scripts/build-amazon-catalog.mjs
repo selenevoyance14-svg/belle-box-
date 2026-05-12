@@ -40,40 +40,63 @@ const SOURCE_PAGES = [
   "https://www.amazon.fr/gp/bestsellers/videogames",
 ];
 
-// Blacklist : exclure les produits clairement pas-cadeau
+// Blacklist : exclure les produits clairement pas-cadeau (ménager, consommable)
 const BLACKLIST = [
-  "papier toilette", "lessive", "shampooing dosette",
-  "batterie auto", "huile moteur", "pneu",
-  "cartouche imprimante", "câble usb",
-  "papier alu", "sac poubelle", "javel", "détergent",
-  "vis", "boulon", "rallonge électrique",
-  "ration militaire", "destop", "couches pampers",
-  "ampoule led", "anti-puce",
+  // Hygiène / consommables maison
+  "papier toilette", "essuie-tout", "lessive", "détergent", "javel",
+  "shampooing dosette", "vaisselle main", "vaisselle mains", "liquide vaisselle",
+  "lave-vaisselle", "tablettes lave", "lave-linge", "parfum de linge",
+  "perles parfum", "perles de linge", "adoucissant",
+  "papier alu", "sac poubelle", "destop", "anti-mousse", "wc gel", "désodorisant",
+  // Compléments / nutrition (pas cadeau)
+  "whey protein", "protéine en poudre", "protéine whey", "scitec nutrition",
+  "complément alimentaire", "vitamines",
+  // Ustensiles ménagers basiques (pas vraiment cadeau émouvant)
+  "plaque pâtisserie", "plaque a pâtisserie", "plaque à pâtisserie", "plaque cuisson",
+  // Bébé consommable
+  "couche bébé", "couches bébé", "couches pampers", "lingettes bébé",
+  "lait infantile", "biberon stérilisateur",
+  // Tech consommable
+  "cartouche d'encre", "cartouche d'Encre", "cartouche encre", "cartouche imprimante",
+  "câble usb", "câble hdmi", "rallonge électrique",
+  "ampoule led", "ampoule e27", "ampoule gu10", "ampoule e14",
+  "piles aa", "piles aaa", "piles boutons",
+  // Auto / bricolage utilitaire
+  "batterie auto", "huile moteur", "pneu", "vis", "boulon", "filtre à air",
+  "cartouche filtre", "filtre brita", "filtre maxtra",
+  // Animaux usage
+  "anti-puce", "vermifuge", "litière",
+  // Hygiène personnelle pas cadeau
+  "lames de remplacement", "lames de rasoir", "déodorant stick",
+  // Militaire / niche
+  "ration militaire",
 ];
 
 function categorize(title) {
   const t = title.toLowerCase();
-  if (/parfum|eau de toilette|eau de parfum|cologne|lancôme|chanel|dior|guerlain|hugo boss|paco rabanne|yves saint laurent/.test(t)) return "parfum";
-  if (/bijou|collier|bracelet|bague|boucle d'oreille|pandora|swarovski|argent 925|or 18k/.test(t)) return "bijou";
-  if (/montre|festina|casio|garmin|fossil|seiko/.test(t)) return "montre";
-  if (/lego|playmobil|barbie|poupée|jouet|peluche|funko|nerf|jeu de société|puzzle/.test(t)) return "jouet";
-  if (/chocolat|lindt|ferrero|kinder|milka|bonbon|confiserie|praliné|truffe|nutella|tic-tac/.test(t)) return "chocolat";
-  if (/bougie|yankee|diptyque|durance|maison parfumée|rituals/.test(t)) return "bougie";
-  if (/coffret|kit cadeau|set cadeau|panier garni|box cadeau/.test(t)) return "coffret";
-  if (/livre|roman|bd|manga|encyclopédie|guide|recettes/.test(t)) return "livre";
-  if (/echo|kindle|airpod|airtag|tablette|fire|bluetooth|enceinte|casque audio|smartwatch|apple watch/.test(t)) return "tech";
-  if (/maquillage|rouge à lèvres|palette|fard|mascara|fond de teint/.test(t)) return "maquillage";
-  if (/crème|sérum|soin|masque visage|hydratant|lotion|gommage|gel douche|spa/.test(t)) return "beaute";
-  if (/thé|café|infusion|rooibos|kusmi|nespresso|tassimo/.test(t)) return "the_cafe";
-  if (/vin|champagne|whisky|rhum|cognac|gin|vodka|bière artisanale|spiritueux/.test(t)) return "alcool";
-  if (/déco|décoration|cadre photo|vase|coussin|plaid|lampe/.test(t)) return "deco";
-  if (/cuisine|robot culinaire|machine à café|mug|tasse|verre|moule à gâteau/.test(t)) return "cuisine";
-  if (/sac|portefeuille|maroquinerie|étui|trousse à maquillage/.test(t)) return "maroquinerie";
-  if (/foulard|écharpe|chaussette|bonnet|gants|pull|chemise/.test(t)) return "mode";
-  if (/jeu vidéo|playstation|nintendo|xbox|switch|console/.test(t)) return "jeu_video";
-  if (/sport|yoga|fitness|haltère|tapis de yoga|raquette|ballon/.test(t)) return "sport";
-  if (/papeterie|stylo|carnet|agenda|journal intime/.test(t)) return "papeterie";
-  if (/bébé|naissance|biberon|doudou|hochet/.test(t)) return "bebe";
+  // Bébé d'abord (pour exclure des autres catégories)
+  // En JS, \b ne marche pas avec accents → on utilise [^a-z] comme délimiteur
+  if (/(^|[^a-z])(bébé|bebe|biberon|tétine|doudou|hochet|allaitement|naissance|nouveau-né|nourrisson|pédiatrie|crème change|siège bébé|dentition|baby|newborn|infant)([^a-z]|$)/.test(t)) return "bebe";
+  if (/\b(parfum|eau de toilette|eau de parfum|cologne|lancôme|chanel|dior|guerlain|hugo boss|paco rabanne|yves saint laurent)\b/.test(t)) return "parfum";
+  if (/\b(bijou|bijoux|collier|bracelet|bague|pandora|swarovski|argent 925|or 18k)\b/.test(t) || /boucles? d'oreille/.test(t)) return "bijou";
+  if (/\b(montre|festina|casio|garmin|fossil|seiko|smartwatch|apple watch)\b/.test(t)) return "montre";
+  if (/\b(lego|playmobil|barbie|poupée|peluche|funko|nerf|puzzle|play-doh|pâte à modeler|magnet|magneti)\b/.test(t) || /jeu (de société|éducatif|enfant|pour enfant|de mime)/.test(t)) return "jouet";
+  if (/\b(chocolat|lindt|ferrero|kinder|milka|bonbon|confiserie|praliné|truffe|nutella)\b/.test(t)) return "chocolat";
+  if (/\b(bougie|yankee|diptyque|durance|rituals)\b/.test(t)) return "bougie";
+  if (/\b(coffret cadeau|kit cadeau|set cadeau|panier garni|box cadeau)\b/.test(t)) return "coffret";
+  if (/\b(livre|roman|bd|manga|encyclopédie|annale|annales|bescherelle)\b/.test(t)) return "livre";
+  if (/\b(echo|kindle|airpod|airpods|airtag|tablette|fire tablet|bluetooth|enceinte|casque audio)\b/.test(t)) return "tech";
+  if (/\b(maquillage|rouge à lèvres|palette|fard|mascara|fond de teint)\b/.test(t)) return "maquillage";
+  if (/\b(crème|sérum|soin visage|masque visage|hydratant|gommage)\b/.test(t)) return "beaute";
+  if (/\b(thé|infusion|rooibos|kusmi|nespresso|tassimo|capsules café)\b/.test(t)) return "the_cafe";
+  if (/\b(vin|champagne|whisky|rhum|cognac|gin tonic|vodka|spiritueux)\b/.test(t) || /bière (artisanale|craft)/.test(t)) return "alcool";
+  if (/\b(décoration|vase|coussin|plaid|lampe d'ambiance|cadre photo)\b/.test(t)) return "deco";
+  if (/\b(machine à café|mug|tasse|verre à vin|moule à gâteau|robot pâtissier)\b/.test(t)) return "cuisine";
+  if (/\b(sac à main|portefeuille|maroquinerie|trousse à maquillage)\b/.test(t)) return "maroquinerie";
+  if (/\b(foulard|écharpe|bonnet|gants|pull|chemise)\b/.test(t)) return "mode";
+  if (/\b(playstation|nintendo|xbox|switch|console|jeu vidéo)\b/.test(t)) return "jeu_video";
+  if (/\b(yoga|fitness|haltère|tapis de yoga|raquette|ballon de sport|musculation)\b/.test(t)) return "sport";
+  if (/\b(stylo|carnet|agenda|journal intime|papeterie)\b/.test(t)) return "papeterie";
   return "autre";
 }
 
@@ -199,29 +222,35 @@ function slugify(s) {
 
 function suggestOccasions(category) {
   const map = {
-    parfum: ["fete-des-meres", "fete-des-peres", "saint-valentin", "noel", "anniversaire"],
-    bijou: ["fete-des-meres", "saint-valentin", "noel", "anniversaire"],
-    montre: ["fete-des-peres", "noel", "anniversaire"],
-    jouet: ["noel", "anniversaire", "paques"],
-    chocolat: ["paques", "noel", "saint-valentin", "fete-des-meres"],
-    bougie: ["fete-des-meres", "noel", "anniversaire"],
-    coffret: ["fete-des-meres", "fete-des-peres", "noel", "saint-valentin", "anniversaire"],
-    livre: ["noel", "anniversaire", "fete-des-meres", "fete-des-peres"],
-    tech: ["noel", "anniversaire", "fete-des-peres"],
-    maquillage: ["fete-des-meres", "noel", "anniversaire"],
-    beaute: ["fete-des-meres", "noel", "anniversaire"],
-    the_cafe: ["fete-des-meres", "noel", "anniversaire"],
-    alcool: ["fete-des-peres", "noel", "anniversaire"],
-    deco: ["fete-des-meres", "noel", "anniversaire"],
-    cuisine: ["fete-des-meres", "noel", "anniversaire"],
-    maroquinerie: ["fete-des-meres", "fete-des-peres", "noel", "anniversaire"],
-    mode: ["noel", "anniversaire"],
-    jeu_video: ["noel", "anniversaire"],
-    sport: ["fete-des-peres", "noel", "anniversaire"],
-    papeterie: ["noel", "anniversaire"],
-    bebe: ["naissance", "noel", "anniversaire"],
+    // Catégories vraiment "femme"
+    bijou:       ["fete-des-meres", "saint-valentin", "noel", "anniversaire"],
+    maquillage:  ["fete-des-meres", "noel", "anniversaire"],
+    beaute:      ["fete-des-meres", "noel", "anniversaire"],
+    bougie:      ["fete-des-meres", "noel", "anniversaire"],
+    // Catégories vraiment "homme"
+    montre:      ["fete-des-peres", "noel", "anniversaire"],
+    alcool:      ["fete-des-peres", "noel", "anniversaire"],
+    // Mixtes & cadeaux universels
+    parfum:      ["fete-des-meres", "fete-des-peres", "saint-valentin", "noel", "anniversaire"],
+    coffret:     ["fete-des-meres", "fete-des-peres", "noel", "saint-valentin", "anniversaire"],
+    maroquinerie:["fete-des-meres", "fete-des-peres", "noel", "anniversaire"],
+    // Catégories pour enfants
+    jouet:       ["noel", "anniversaire", "paques"],
+    bebe:        ["naissance"],
+    // Saisonnier / spécifique
+    chocolat:    ["paques", "noel", "saint-valentin"],
+    // Loisir / culture (un peu fete-des-peres car typés "homme/cadeau pratique")
+    livre:       ["noel", "anniversaire", "fete-des-peres"],
+    tech:        ["noel", "anniversaire", "fete-des-peres"],
+    jeu_video:   ["noel", "anniversaire"],
+    sport:       ["noel", "anniversaire", "fete-des-peres"],
+    deco:        ["fete-des-meres", "noel", "anniversaire"],
+    cuisine:     ["fete-des-meres", "noel", "anniversaire"],
+    the_cafe:    ["fete-des-meres", "noel", "anniversaire"],
+    mode:        ["noel", "anniversaire"],
+    papeterie:   ["noel", "anniversaire"],
   };
-  return map[category] || ["noel", "anniversaire"];
+  return map[category] || []; // "autre" = pas d'occasion suggérée (n'apparaîtra nulle part)
 }
 
 function suggestRecipients(category, title) {
