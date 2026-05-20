@@ -54,6 +54,17 @@ export function getProductBySlug(slug: string): CatalogProduct | undefined {
     return getCatalog().find((p) => p.slug === slug);
 }
 
+export function getProductsByBudget(min: number, max: number): CatalogProduct[] {
+    return getCatalog().filter((p) => p.price >= min && p.price <= max);
+}
+
+export const BUDGETS: Array<{ slug: string; name: string; emoji: string; min: number; max: number; description: string }> = [
+    { slug: "moins-de-20-euros", name: "Moins de 20 €", emoji: "💶", min: 0, max: 20, description: "Petits prix, grands plaisirs : les meilleures idées cadeau à moins de 20 €." },
+    { slug: "20-50-euros", name: "Entre 20 et 50 €", emoji: "💰", min: 20.01, max: 50, description: "Le bon compromis : des cadeaux qualitatifs sans se ruiner." },
+    { slug: "50-100-euros", name: "Entre 50 et 100 €", emoji: "🎁", min: 50.01, max: 100, description: "Pour marquer le coup : nos cadeaux entre 50 et 100 €." },
+    { slug: "plus-de-100-euros", name: "Plus de 100 €", emoji: "💎", min: 100.01, max: 99999, description: "Les cadeaux d'exception, pour les grandes occasions." },
+];
+
 export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string }> = [
     { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman" },
     { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa" },

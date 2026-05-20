@@ -1,7 +1,8 @@
-import { getCatalog, getProductsByOccasion, OCCASIONS, RECIPIENTS, type CatalogProduct } from "@/lib/catalog";
+import { getCatalog, getProductsByOccasion, OCCASIONS, RECIPIENTS, BUDGETS, type CatalogProduct } from "@/lib/catalog";
+import { GUIDES } from "@/lib/guides";
 import {
   Star, ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
-  Gift, Heart, Sparkles, Menu
+  Gift, Heart, Sparkles, Menu, Wallet, BookOpen, Clock
 } from "lucide-react";
 import Image from "next/image";
 import type { Metadata } from "next";
@@ -77,7 +78,14 @@ export default function Home() {
   const catalog = getCatalog();
 
   const featured = [...catalog]
-    .filter((p) => (p.rating || 0) >= 4.5 && (p.reviews_count || 0) >= 200)
+    .filter(
+      (p) =>
+        (p.rating || 0) >= 4.5 &&
+        (p.reviews_count || 0) >= 200 &&
+        p.category !== "autre" &&
+        p.price >= 15 &&
+        p.price <= 150
+    )
     .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))[0];
 
   const occasionsBlocks = OCCASIONS.map((occ) => ({
@@ -212,6 +220,55 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container">
+          <div className="section-title">
+            <h2><Wallet size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Choisir par budget</h2>
+            <p>Du petit prix au cadeau d'exception, trouvez l'idée selon votre enveloppe.</p>
+          </div>
+          <div className="occasion-grid">
+            {BUDGETS.map((b) => (
+              <a key={b.slug} href={`/budget/${b.slug}`} className="occasion-card">
+                <div className="occasion-emoji">{b.emoji}</div>
+                <div>
+                  <h3>{b.name}</h3>
+                  <p>{b.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section" style={{ background: "var(--muted)" }}>
+        <div className="container">
+          <div className="section-title">
+            <h2><BookOpen size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Nos guides cadeaux</h2>
+            <p>Des conseils concrets pour bien choisir : par occasion, par âge, par personnalité.</p>
+          </div>
+          <div className="occasion-grid">
+            {GUIDES.map((g) => (
+              <a key={g.slug} href={`/guide/${g.slug}`} className="occasion-card">
+                <div>
+                  <h3>{g.title}</h3>
+                  <p>{g.metaDescription}</p>
+                  <span className="occasion-count">
+                    <Clock size={12} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
+                    {g.readingMinutes} min de lecture
+                  </span>
+                </div>
+                <ChevronRight size={20} style={{ alignSelf: "center" }} />
+              </a>
+            ))}
+          </div>
+          <div style={{ textAlign: "center", marginTop: "32px" }}>
+            <a href="/guide" className="btn btn-secondary">
+              Voir tous les guides <ChevronRight size={16} />
+            </a>
+          </div>
+        </div>
+      </section>
+
       <section className="container">
         <div className="reassurance-bar">
           <div className="reassurance-item">
@@ -297,6 +354,15 @@ export default function Home() {
                 {RECIPIENTS.map((r) => (
                   <li key={r.slug}><a href={`/destinataire/${r.slug}`}>{r.name}</a></li>
                 ))}
+              </ul>
+            </div>
+            <div>
+              <h4>Budget</h4>
+              <ul className="footer-links">
+                {BUDGETS.map((b) => (
+                  <li key={b.slug}><a href={`/budget/${b.slug}`}>{b.name}</a></li>
+                ))}
+                <li><a href="/guide">Tous nos guides</a></li>
               </ul>
             </div>
             <div>
