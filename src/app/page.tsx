@@ -77,16 +77,21 @@ function ProductCard({ product, badge }: { product: CatalogProduct; badge?: stri
 export default function Home() {
   const catalog = getCatalog();
 
-  const featured = [...catalog]
-    .filter(
-      (p) =>
-        (p.rating || 0) >= 4.5 &&
-        (p.reviews_count || 0) >= 200 &&
-        p.category !== "autre" &&
-        p.price >= 15 &&
-        p.price <= 150
-    )
-    .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))[0];
+  // Coup de cœur mis en avant manuellement (un vrai cadeau, pas un accessoire tech).
+  const FEATURED_SLUG = "lego-10696-classic-la-boite-de-briques-creatives-jouet-et-en-vdp3zu";
+  const featured =
+    catalog.find((p) => p.slug === FEATURED_SLUG) ||
+    [...catalog]
+      .filter(
+        (p) =>
+          (p.rating || 0) >= 4.5 &&
+          (p.reviews_count || 0) >= 200 &&
+          p.category !== "autre" &&
+          p.category !== "tech" &&
+          p.price >= 15 &&
+          p.price <= 150
+      )
+      .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))[0];
 
   const occasionsBlocks = OCCASIONS.map((occ) => ({
     ...occ,
