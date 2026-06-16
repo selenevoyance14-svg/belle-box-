@@ -76,7 +76,9 @@ const BLACKLIST = [
   // Renforts cadeau : utilitaire qui passait en "autre"
   "drap housse", "drap-housse", "protège matelas", "protege matelas",
   "barre de son", "détartrant", "detartrant", "mémoire ram", "ddr4", "ddr5",
-  "tapis de souris", "coque pour", "coque magnétique", "housse de rangement",
+  "tapis de souris", "coque pour", "coque magnétique", "coque iphone", "coque samsung",
+  "cordon de coque", "cave à vin", "cave a vin", "housse de rangement",
+  "extension cheveux", "extension a clip", "extension à clip", "cheveux humains", "extension de cheveux",
   "rideau occultant", "moustiquaire", "carte sd", "carte micro sd", "carte microsd",
   "carte sdxc", "carte microsdxc", "disque dur", "clé usb", "clef usb",
 ];

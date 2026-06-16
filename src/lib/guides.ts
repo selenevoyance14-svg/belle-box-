@@ -1274,6 +1274,492 @@ export const GUIDES: Guide[] = [
             },
         ],
     },
+    {
+        slug: "cadeau-noel-femme",
+        title: "Cadeau de Noël pour une femme : 18 idées qui font mouche",
+        metaTitle: "Cadeau de Noël femme : 18 idées qui plaisent | Kado-Box",
+        metaDescription: "Que offrir à une femme à Noël ? Notre sélection d'idées cadeaux par budget et par personnalité, du petit prix au cadeau d'exception.",
+        intro: "Trouver le cadeau de Noël parfait pour une femme — sa compagne, sa mère, sa sœur, une amie — peut vite tourner au casse-tête. Pour vous épargner les heures de recherche, on a réuni les idées qui plaisent vraiment, classées par budget et par profil. Toutes sont disponibles sur Amazon avec livraison avant les fêtes.",
+        publishedAt: "2026-06-10",
+        readingMinutes: 6,
+        occasionSlug: "noel",
+        recipientSlug: "femme",
+        sections: [
+            {
+                heading: "La valeur sûre : un coffret beauté ou un parfum",
+                paragraphs: [
+                    "C'est le cadeau de Noël n°1 pour une femme, et pour une bonne raison : il fait toujours plaisir. Un coffret soin, maquillage ou un parfum qu'elle aime déjà combine plusieurs produits dans une présentation soignée qui fait son effet au pied du sapin.",
+                    "L'astuce qui ne trompe pas : regardez ce qu'elle utilise déjà dans sa salle de bain et restez dans la même gamme ou la même marque. On offre rarement le bon parfum « au hasard » — mais on ne se trompe jamais en complétant ce qu'elle aime.",
+                ],
+            },
+            {
+                heading: "Pour la touche émotion : un bijou délicat",
+                paragraphs: [
+                    "Un bracelet fin, un collier discret ou une paire de boucles d'oreilles restent des cadeaux qui marquent. Inutile de viser le diamant : un bijou en argent 925 ou plaqué or, choisi avec goût, a bien plus de valeur sentimentale que de prix.",
+                    "Privilégiez les pièces sobres qu'elle pourra porter au quotidien plutôt qu'une pièce voyante réservée aux grandes occasions. Et gardez le ticket : pour les bijoux, mieux vaut prévoir l'échange de taille.",
+                ],
+            },
+            {
+                heading: "Petits budgets (moins de 25 €) : la bougie ou le thé d'exception",
+                paragraphs: [
+                    "À petit prix, une belle bougie parfumée en cire végétale (soja ou colza) reste imbattable. Choisissez un parfum doux et consensuel — vanille, fleur d'oranger, bois de santal — plutôt qu'une senteur trop marquée.",
+                    "Autre piste : un coffret de thés rares ou une sélection d'infusions. C'est un cadeau qui se déguste dans le temps, parfait pour les longues soirées d'hiver.",
+                ],
+            },
+            {
+                heading: "Pour la cocooning : confort et bien-être",
+                paragraphs: [
+                    "Plaid en maille épaisse, chaussons douillets, coffret de soins relaxants ou diffuseur d'huiles essentielles : tout ce qui évoque le réconfort fonctionne particulièrement bien à Noël.",
+                    "Ce type de cadeau dit « prends soin de toi » sans en faire trop — un message qui touche, surtout après une année chargée.",
+                ],
+            },
+            {
+                heading: "Pour marquer le coup (plus de 100 €)",
+                paragraphs: [
+                    "Si vous voulez frapper fort : une montre élégante, un sac en cuir, un bijou de marque ou un appareil tech qu'elle convoite depuis longtemps. Le secret d'un gros cadeau réussi, c'est qu'il réponde à un désir qu'elle a déjà exprimé — pas à ce que vous imaginez qu'elle aimerait.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Quel budget prévoir pour un cadeau de Noël femme ?",
+                a: "Tout dépend du lien : 15 à 30 € pour une collègue ou une amie, 40 à 80 € pour une sœur ou une mère, et au-delà de 100 € pour une compagne si vous le souhaitez. L'attention compte plus que le montant.",
+            },
+            {
+                q: "Comment éviter de me tromper ?",
+                a: "Restez dans ce qu'elle aime déjà (sa marque de parfum, son style de bijou) plutôt que de tenter une surprise risquée, et gardez toujours le ticket de caisse pour permettre un échange discret.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-noel-homme",
+        title: "Cadeau de Noël pour un homme : 18 idées sans cliché",
+        metaTitle: "Cadeau de Noël homme : 18 idées qui plaisent | Kado-Box",
+        metaDescription: "Idées cadeaux de Noël pour un homme : tech, montre, gastronomie, loisirs. Notre sélection par budget pour ne plus offrir la énième paire de chaussettes.",
+        intro: "Chaussettes, cravate, eau de toilette achetée en panique le 24 décembre… On peut faire beaucoup mieux pour le Noël des hommes de votre vie. Voici nos idées testées et classées par budget, pour offrir un cadeau qui sera vraiment utilisé.",
+        publishedAt: "2026-06-10",
+        readingMinutes: 6,
+        occasionSlug: "noel",
+        recipientSlug: "homme",
+        sections: [
+            {
+                heading: "La tech utile : le cadeau qui ne déçoit jamais",
+                paragraphs: [
+                    "Casque audio, enceinte connectée, traceur d'objets, liseuse : la tech reste une valeur sûre pour un homme à Noël, à condition de viser l'usage réel plutôt que le gadget. Un objet qu'il utilisera tous les jours bat toujours le dernier accessoire à la mode.",
+                    "Repérez ce qu'il possède déjà pour rester dans son écosystème (Apple, Amazon, Android) et éviter le doublon ou l'incompatibilité.",
+                ],
+            },
+            {
+                heading: "Pour l'élégant : montre ou maroquinerie",
+                paragraphs: [
+                    "Une montre sobre transforme une tenue et accompagne un homme des années durant. Pas besoin du modèle de luxe : une montre au design soigné, dans un budget raisonnable, fait largement l'affaire.",
+                    "Côté maroquinerie, un portefeuille en cuir, une ceinture ou une trousse de voyage sont des cadeaux qui durent et qui se remarquent.",
+                ],
+            },
+            {
+                heading: "Pour le gourmand : coffret gastronomie",
+                paragraphs: [
+                    "Coffret de chocolats fins, sélection de cafés d'exception, panier d'épicerie fine : la gourmandise est une valeur sûre à Noël. C'est un cadeau qui se partage et se savoure, idéal quand on connaît mal les goûts de la personne.",
+                    "Pour les amateurs de café, une cafetière à piston ou un moulin manuel transforme le rituel du matin en petit plaisir.",
+                ],
+            },
+            {
+                heading: "Petits budgets (moins de 25 €)",
+                paragraphs: [
+                    "Un beau carnet en cuir, un jeu de société pour les soirées, un livre choisi selon ses passions ou un accessoire pour son hobby (cuisine, jardin, musique, sport) : on peut faire un cadeau qui a du sens sans se ruiner.",
+                ],
+            },
+            {
+                heading: "Pour le passionné : jouez la carte de son hobby",
+                paragraphs: [
+                    "Le meilleur cadeau pour un homme, c'est souvent celui qui parle directement de ce qu'il aime : matériel pour le bricoleur, accessoire de cuisine pour le cuisinier du dimanche, équipement pour le sportif. Vous montrez ainsi que vous l'avez vraiment écouté.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Que offrir à un homme « qui a déjà tout » ?",
+                a: "Misez sur le consommable haut de gamme (café, chocolat, épicerie fine) ou sur une expérience plutôt qu'un objet. Ce sont des cadeaux qui ne créent pas de doublon.",
+            },
+            {
+                q: "La tech, n'est-ce pas un cadeau impersonnel ?",
+                a: "Pas si vous choisissez en fonction de son usage réel. Une liseuse pour un grand lecteur ou un casque pour un mélomane est tout sauf impersonnel : c'est la preuve que vous connaissez ses habitudes.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-meilleure-amie",
+        title: "Cadeau pour sa meilleure amie : 20 idées qui touchent",
+        metaTitle: "Cadeau meilleure amie : 20 idées qui touchent | Kado-Box",
+        metaDescription: "Idées cadeaux pour votre meilleure amie : bijou, beauté, cocooning, cadeau personnalisé. Notre sélection pour lui montrer qu'elle compte.",
+        intro: "Pour sa meilleure amie, on veut un cadeau qui dit « je te connais par cœur » — pas le énième bon d'achat impersonnel. Voici nos idées préférées, du clin d'œil complice au cadeau qui marque, selon votre budget et sa personnalité.",
+        publishedAt: "2026-06-11",
+        readingMinutes: 5,
+        recipientSlug: "femme",
+        sections: [
+            {
+                heading: "Le cadeau complice : personnalisé ou plein de sens",
+                paragraphs: [
+                    "Rien ne touche plus une amie qu'un cadeau qui rappelle votre histoire commune : un bijou gravé, un objet personnalisé, un album de vos souvenirs. La valeur sentimentale prime largement sur le prix.",
+                    "Si vous manquez d'idées personnalisées, un bijou délicat reste une valeur sûre : il se porte au quotidien et lui rappellera votre amitié à chaque fois.",
+                ],
+            },
+            {
+                heading: "Pour la cocooning : bien-être et détente",
+                paragraphs: [
+                    "Coffret de soins, bougie parfumée, plaid douillet, thé d'exception : tout ce qui évoque le réconfort fait mouche. C'est le cadeau « prends du temps pour toi » qui touche toujours, surtout pour une amie qui en fait beaucoup pour les autres.",
+                ],
+            },
+            {
+                heading: "Pour la coquette : beauté et parfum",
+                paragraphs: [
+                    "Vous connaissez ses goûts mieux que personne : un coffret maquillage de sa marque préférée, un soin qu'elle adore mais ne s'offre jamais, ou son parfum signature. L'avantage d'être proche, c'est de viser juste.",
+                ],
+            },
+            {
+                heading: "Petits budgets : l'attention qui compte",
+                paragraphs: [
+                    "Une jolie bougie, un mug original, un carnet pour ses listes et ses idées, ou un livre qui lui ressemble : à moins de 20 €, on peut faire un cadeau qui a du cœur. Ajoutez un petit mot manuscrit, c'est ce qu'elle gardera.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Cadeau personnalisé ou cadeau « utile » ?",
+                a: "Pour une meilleure amie, le personnalisé l'emporte presque toujours : c'est la preuve de l'attention. Mais un cadeau utile qu'elle adore (sa marque de soin, son parfum) fonctionne aussi très bien si vous connaissez ses goûts.",
+            },
+            {
+                q: "Combien dépenser pour sa meilleure amie ?",
+                a: "Entre 20 et 50 € convient dans la plupart des cas. Au-delà, le geste peut mettre mal à l'aise si elle ne peut pas rendre la pareille : misez plutôt sur l'originalité que sur le montant.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-anniversaire-femme-40-ans",
+        title: "Cadeau d'anniversaire 40 ans femme : 18 idées d'exception",
+        metaTitle: "Cadeau 40 ans femme : 18 idées d'exception | Kado-Box",
+        metaDescription: "Les 40 ans d'une femme, ça se fête. Nos idées cadeaux pour marquer le coup : bijou, beauté, expérience, cadeau d'exception.",
+        intro: "Les 40 ans, c'est un cap qui se célèbre comme il se doit. Pour cette femme — votre compagne, sœur, mère ou amie — il faut un cadeau à la hauteur de l'occasion. Voici nos idées pour marquer durablement cet anniversaire, du cadeau symbolique à la belle pièce.",
+        publishedAt: "2026-06-11",
+        readingMinutes: 5,
+        recipientSlug: "femme",
+        sections: [
+            {
+                heading: "Le cadeau qui marque : un beau bijou",
+                paragraphs: [
+                    "Un anniversaire rond appelle un cadeau qui dure. Un bijou — bracelet, collier, bague — traverse les années et se charge de souvenir. C'est l'occasion idéale pour offrir une pièce un peu plus belle que d'habitude.",
+                    "Si le budget le permet, une montre élégante coche les mêmes cases : objet précieux, intemporel, porté au quotidien.",
+                ],
+            },
+            {
+                heading: "L'expérience plutôt que l'objet",
+                paragraphs: [
+                    "À 40 ans, beaucoup de femmes ont déjà l'essentiel. Un coffret expérience — soin en institut, week-end, dégustation, activité qu'elle rêve d'essayer — crée un souvenir plutôt qu'un objet de plus. C'est souvent le cadeau dont on se souvient le plus longtemps.",
+                ],
+            },
+            {
+                heading: "Beauté et bien-être premium",
+                paragraphs: [
+                    "Un coffret de soins haut de gamme, un parfum d'exception ou un rituel beauté complet : on monte en gamme par rapport au cadeau habituel. Restez dans ses goûts connus pour ne pas vous tromper sur un produit aussi personnel.",
+                ],
+            },
+            {
+                heading: "La touche personnalisée et émotion",
+                paragraphs: [
+                    "Un bijou gravé d'une date, un objet personnalisé, un album retraçant 40 ans de souvenirs : l'émotion fait toute la différence sur un anniversaire rond. À combiner avec un cadeau plus « matériel » pour un effet complet.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Faut-il un gros cadeau pour les 40 ans ?",
+                a: "Pas forcément un cadeau cher, mais un cadeau qui marque. Un bijou symbolique, une expérience mémorable ou un cadeau très personnel valent mieux qu'un objet onéreux mais sans signification particulière.",
+            },
+            {
+                q: "Quelle idée pour une femme « qui a tout » ?",
+                a: "Misez sur l'expérience (week-end, soin, activité) ou sur le personnalisé : ce sont les seuls cadeaux qui échappent au doublon et créent un vrai souvenir.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-anniversaire-homme-50-ans",
+        title: "Cadeau d'anniversaire 50 ans homme : 18 idées marquantes",
+        metaTitle: "Cadeau 50 ans homme : 18 idées qui marquent | Kado-Box",
+        metaDescription: "Un homme fête ses 50 ans ? Nos idées cadeaux pour célébrer ce demi-siècle : montre, tech, gastronomie, expérience et cadeaux d'exception.",
+        intro: "Cinquante ans, c'est un anniversaire qu'on ne fête qu'une fois — autant viser juste. Pour cet homme qui compte, on a réuni des idées qui marquent le coup sans tomber dans le cliché de la « crise de la cinquantaine ». À chaque budget, son cadeau mémorable.",
+        publishedAt: "2026-06-12",
+        readingMinutes: 5,
+        recipientSlug: "homme",
+        sections: [
+            {
+                heading: "L'intemporel : une belle montre",
+                paragraphs: [
+                    "Pour un cap aussi symbolique, la montre reste le cadeau de référence. Elle accompagne au quotidien, se transmet, et marque le passage du temps avec élégance. Choisissez un modèle sobre qui colle à son style plutôt qu'une pièce tape-à-l'œil.",
+                ],
+            },
+            {
+                heading: "La gastronomie haut de gamme",
+                paragraphs: [
+                    "Coffret de spécialités fines, sélection de cafés rares, accessoires de cuisine pour le gastronome : à 50 ans, on apprécie le bon plus que le clinquant. Un beau coffret gourmand est une valeur sûre, surtout pour un homme difficile à surprendre.",
+                ],
+            },
+            {
+                heading: "La tech qu'il n'oserait pas s'offrir",
+                paragraphs: [
+                    "Casque audio premium, liseuse, enceinte de qualité, accessoire connecté : la tech fonctionne bien si vous visez un objet qu'il convoite sans se l'autoriser. L'effet « je n'aurais jamais osé l'acheter » fait toute la valeur du cadeau.",
+                ],
+            },
+            {
+                heading: "L'expérience pour créer un souvenir",
+                paragraphs: [
+                    "Plutôt qu'un objet de plus, offrez-lui un moment : une activité qui le sort de son quotidien, un week-end, une dégustation. À cet âge, les souvenirs valent souvent plus que les objets — surtout pour un homme qui a déjà l'essentiel.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Comment éviter le cadeau « cliché des 50 ans » ?",
+                a: "Fuyez tout ce qui blague sur l'âge ou la vieillesse. Misez sur un cadeau valorisant — belle montre, expérience, objet lié à sa passion — qui célèbre l'homme plutôt que de souligner les années.",
+            },
+            {
+                q: "Quel budget pour les 50 ans ?",
+                a: "Pour un anniversaire rond, on monte généralement en gamme : 80 à 150 € pour un proche, davantage si plusieurs personnes participent à un cadeau commun comme une montre ou une expérience.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-collegue-depart",
+        title: "Cadeau de départ d'un collègue : 16 idées qui font plaisir",
+        metaTitle: "Cadeau départ collègue : 16 idées sûres | Kado-Box",
+        metaDescription: "Pot de départ, retraite, mutation : nos idées cadeaux pour un collègue, faciles à offrir en groupe et qui font toujours plaisir.",
+        intro: "Départ à la retraite, changement de poste, fin de contrat : le cadeau de départ d'un collègue est un grand classique de la vie de bureau. L'enjeu : trouver une idée qui plaît sans être trop personnelle, facile à financer en groupe. Voici nos valeurs sûres.",
+        publishedAt: "2026-06-12",
+        readingMinutes: 5,
+        recipientSlug: "femme",
+        sections: [
+            {
+                heading: "La valeur sûre : un coffret gourmand",
+                paragraphs: [
+                    "Coffret de chocolats, sélection de cafés ou thés, panier d'épicerie fine : le cadeau gourmand est parfait pour un collègue dont on connaît mal les goûts personnels. Il se partage, se savoure, et ne risque pas de tomber à côté.",
+                    "Avantage pratique : c'est facile à financer à plusieurs et à présenter joliment lors du pot de départ.",
+                ],
+            },
+            {
+                heading: "Pour un départ à la retraite : le cadeau « temps libre »",
+                paragraphs: [
+                    "C'est le moment d'offrir ce qui accompagnera ses nouveaux loisirs : matériel de jardinage, accessoire de cuisine, beau livre, équipement pour son futur hobby. Le cadeau qui dit « profite enfin » a toujours du succès.",
+                    "Une expérience (week-end, activité, dégustation) marque aussi joliment cette nouvelle étape de vie.",
+                ],
+            },
+            {
+                heading: "Le cadeau collectif qui marque",
+                paragraphs: [
+                    "Quand toute l'équipe participe, on peut viser plus haut : une belle montre, un bagage de qualité, un objet déco ou tech. Désignez une personne pour centraliser la cagnotte et choisir, afin d'éviter le cadeau « comité » sans cohérence.",
+                ],
+            },
+            {
+                heading: "À éviter pour un collègue",
+                paragraphs: [
+                    "Restez sur du neutre : pas de parfum (trop personnel), pas de vêtement (question de taille et de goût), pas d'humour qui pourrait mal passer. Un cadeau consensuel et soigné vaut mieux qu'une idée originale risquée dans un cadre professionnel.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Combien donner pour un cadeau de départ collectif ?",
+                a: "En général 5 à 15 € par personne selon la proximité et la taille de l'équipe. L'organisateur fixe une fourchette pour que chacun participe à l'aise, sans pression.",
+            },
+            {
+                q: "Faut-il une carte avec le cadeau ?",
+                a: "Oui, c'est même souvent ce qui touche le plus : une carte signée par toute l'équipe, avec quelques mots de chacun, accompagne idéalement le cadeau et devient un souvenir à part entière.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-femme-qui-a-tout",
+        title: "Quoi offrir à une femme qui a déjà tout : 16 idées malignes",
+        metaTitle: "Cadeau femme qui a tout : 16 idées malignes | Kado-Box",
+        metaDescription: "Elle a déjà tout ? Nos idées cadeaux pour surprendre une femme difficile : expérience, personnalisé, consommable premium, plaisir rare.",
+        intro: "Il y a les cadeaux faciles, et il y a la femme « qui a déjà tout ». Pas de panique : quand l'objet ne suffit plus, on change d'angle. Voici nos idées pour surprendre celle qui semble n'avoir besoin de rien — l'émotion, l'expérience et le plaisir rare prennent le relais.",
+        publishedAt: "2026-06-13",
+        readingMinutes: 5,
+        recipientSlug: "femme",
+        sections: [
+            {
+                heading: "Misez sur l'expérience, pas l'objet",
+                paragraphs: [
+                    "Quand on a déjà tout, ce qui manque, c'est du temps et des moments. Un soin en institut, un atelier, une dégustation, un week-end : l'expérience crée un souvenir au lieu d'ajouter un objet à une étagère déjà pleine.",
+                ],
+            },
+            {
+                heading: "Le consommable premium qu'elle ne s'offre jamais",
+                paragraphs: [
+                    "Une femme qui a tout possède l'essentiel, mais s'offre rarement le superflu de qualité : un thé rare, un soin haut de gamme, une bougie de créateur, un chocolat d'exception. Ces petits luxes qu'on n'achète pas pour soi font des cadeaux parfaits.",
+                ],
+            },
+            {
+                heading: "Le personnalisé : impossible à avoir en double",
+                paragraphs: [
+                    "Un bijou gravé, un objet à son prénom, un cadeau qui rappelle un souvenir commun : par définition, le personnalisé est unique. C'est l'arme imparable contre le « elle l'a déjà ».",
+                ],
+            },
+            {
+                heading: "Surprenez avec un domaine inexploré",
+                paragraphs: [
+                    "Et si vous l'emmeniez vers quelque chose qu'elle n'a jamais essayé ? Un loisir créatif, un accessoire pour une activité qu'elle évoque sans jamais franchir le pas. Vous offrez une porte d'entrée vers une nouvelle passion — le plus beau des cadeaux.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Quel est le cadeau le plus sûr pour quelqu'un de difficile ?",
+                a: "L'expérience et le consommable premium. Impossible de faire doublon avec un week-end ou un thé rare, contrairement à un objet du quotidien qu'elle possède probablement déjà.",
+            },
+            {
+                q: "Comment trouver une idée si elle ne demande rien ?",
+                a: "Écoutez ses « j'aimerais bien un jour… » lâchés en passant, observez ses petits plaisirs, ou demandez discrètement à un proche. Le bon cadeau est souvent un désir qu'elle a exprimé sans y prêter attention.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-homme-qui-a-tout",
+        title: "Quoi offrir à un homme qui a déjà tout : 16 idées futées",
+        metaTitle: "Cadeau homme qui a tout : 16 idées futées | Kado-Box",
+        metaDescription: "Impossible à surprendre ? Nos idées cadeaux pour un homme qui a déjà tout : expérience, gastronomie premium, gadget malin, personnalisé.",
+        intro: "Le casse-tête classique : un homme qui s'achète tout ce qu'il veut, quand il le veut. Pour le surprendre, on abandonne l'objet « utile » au profit du plaisir, de l'expérience et du détail malin. Voici nos meilleures idées pour celui qui « n'a besoin de rien ».",
+        publishedAt: "2026-06-13",
+        readingMinutes: 5,
+        recipientSlug: "homme",
+        sections: [
+            {
+                heading: "L'expérience qui sort du quotidien",
+                paragraphs: [
+                    "Pilotage, dégustation, activité sportive ou sensation forte : un homme qui a tout n'a souvent pas pris le temps de vivre certaines expériences. Offrez-lui le moment plutôt que l'objet, c'est ce dont il se souviendra.",
+                ],
+            },
+            {
+                heading: "La gastronomie d'exception",
+                paragraphs: [
+                    "Café rare, coffret de spécialités fines, accessoire pour le cuisinier amateur : le bon goût se savoure même quand on a déjà tout. C'est le consommable haut de gamme qu'on ne s'offre pas soi-même qui fait mouche.",
+                ],
+            },
+            {
+                heading: "Le gadget malin qu'il n'a pas vu venir",
+                paragraphs: [
+                    "Même un homme suréquipé peut être surpris par un objet astucieux : un accessoire connecté bien pensé, un outil ingénieux pour son hobby, un gadget qui résout un petit tracas du quotidien. La surprise vaut autant que l'objet.",
+                ],
+            },
+            {
+                heading: "Le personnalisé : la carte de l'émotion",
+                paragraphs: [
+                    "Un objet gravé, un cadeau qui rappelle un souvenir partagé, une pièce unique à son image : impossible d'avoir ça en double. Pour un homme qui a tout, c'est souvent le geste le plus touchant et le plus inattendu.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Quelle idée quand il s'achète tout lui-même ?",
+                a: "Visez ce qu'il ne s'offre jamais : une expérience marquante ou un consommable premium (café, gastronomie). Ce sont les cadeaux qui échappent au réflexe « je l'ai déjà » et créent la surprise.",
+            },
+            {
+                q: "Un gadget, n'est-ce pas trop risqué ?",
+                a: "Pas si vous restez dans l'un de ses centres d'intérêt. Un accessoire malin pour une passion qu'il pratique déjà a toutes les chances de plaire — c'est le gadget hors sujet qu'il faut éviter.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-ado-fille-15-ans",
+        title: "Cadeau pour une ado de 15 ans : 18 idées qui plaisent vraiment",
+        metaTitle: "Cadeau ado fille 15 ans : 18 idées sûres | Kado-Box",
+        metaDescription: "Que offrir à une adolescente de 15 ans ? Tech, beauté, déco, accessoires tendance : nos idées cadeaux validées par les ados, par budget.",
+        intro: "Offrir à une ado de 15 ans, c'est marcher sur un fil : ni trop « bébé », ni à côté des tendances du moment. Bonne nouvelle, certaines valeurs sûres font toujours mouche. Voici nos idées pour viser juste, classées par budget et par centre d'intérêt.",
+        publishedAt: "2026-06-14",
+        readingMinutes: 5,
+        recipientSlug: "ado",
+        sections: [
+            {
+                heading: "La tech : valeur sûre absolue",
+                paragraphs: [
+                    "Écouteurs, enceinte bluetooth, accessoires pour smartphone, liseuse pour les lectrices : la tech est presque toujours un succès à cet âge. Visez l'usage qu'elle en aura vraiment plutôt que le modèle le plus cher.",
+                    "Renseignez-vous discrètement sur ce qu'elle possède déjà pour éviter le doublon et rester compatible avec son téléphone.",
+                ],
+            },
+            {
+                heading: "Beauté et soin : la découverte en douceur",
+                paragraphs: [
+                    "À 15 ans, l'univers beauté attire : coffret de soins doux, palette de maquillage festive, kit de cosmétiques pour débuter. Privilégiez des produits adaptés à une peau jeune et des marques qu'elle connaît via ses réseaux.",
+                ],
+            },
+            {
+                heading: "Déco et personnalisation de sa chambre",
+                paragraphs: [
+                    "La chambre, c'est son territoire. Guirlande lumineuse, coussin original, déco murale, objet à personnaliser : tout ce qui rend son espace plus « à elle » a beaucoup de succès à cet âge.",
+                ],
+            },
+            {
+                heading: "Petits budgets et carte cadeau",
+                paragraphs: [
+                    "Un accessoire tendance, un carnet créatif, un livre de sa saga préférée : on trouve de belles idées à moins de 20 €. Et en cas de doute total, la carte cadeau reste une option respectée par les ados — elle choisit, vous ne vous trompez pas.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "La carte cadeau, est-ce un cadeau « paresseux » ?",
+                a: "Pas pour une ado : à cet âge, choisir soi-même fait partie du plaisir. Une carte cadeau accompagnée d'un petit présent symbolique est souvent la combinaison gagnante.",
+            },
+            {
+                q: "Comment connaître ses goûts du moment ?",
+                a: "Les tendances vont vite à 15 ans. Le plus simple : jeter un œil à ce qu'elle suit sur les réseaux, ou demander à un frère, une sœur ou une amie proche pour viser la bonne marque.",
+            },
+        ],
+    },
+    {
+        slug: "cadeau-fiancailles",
+        title: "Cadeau de fiançailles : 16 idées pour féliciter le couple",
+        metaTitle: "Cadeau de fiançailles : 16 idées pour le couple | Kado-Box",
+        metaDescription: "Des fiançailles à célébrer ? Nos idées cadeaux pour le couple : objet déco, expérience à deux, gastronomie, cadeau personnalisé.",
+        intro: "Entre la demande et le mariage, les fiançailles méritent leur propre célébration — et donc leur cadeau. L'idée : féliciter le couple et marquer cette étape, sans empiéter sur la future liste de mariage. Voici nos suggestions pour faire plaisir aux deux.",
+        publishedAt: "2026-06-14",
+        readingMinutes: 5,
+        recipientSlug: "couple",
+        sections: [
+            {
+                heading: "L'expérience à deux : le cadeau qui crée un souvenir",
+                paragraphs: [
+                    "Un dîner, un week-end, une activité à partager : pour des fiancés, le plus beau cadeau est souvent un moment à vivre ensemble. Ça change de l'objet et ça colle parfaitement à l'esprit de cette étape qui célèbre leur couple.",
+                ],
+            },
+            {
+                heading: "Pour leur futur foyer",
+                paragraphs: [
+                    "Bel objet déco, accessoire de cuisine de qualité, machine à café : un cadeau pour leur intérieur accompagne leur projet de vie commune. Attention toutefois à ne pas anticiper la liste de mariage — visez l'objet plaisir plutôt que l'électroménager utilitaire.",
+                ],
+            },
+            {
+                heading: "Le gourmand à partager",
+                paragraphs: [
+                    "Coffret de spécialités fines, sélection de chocolats, panier gourmand à déguster en amoureux : c'est un cadeau consensuel, facile à offrir même quand on connaît mal leurs goûts déco, et qui se savoure à deux.",
+                ],
+            },
+            {
+                heading: "Le personnalisé pour l'émotion",
+                paragraphs: [
+                    "Objet gravé à leurs initiales et à la date des fiançailles, cadre photo, présent unique à leur image : la touche personnalisée transforme un joli cadeau en souvenir qu'ils garderont. Parfait pour des proches qui veulent marquer le coup.",
+                ],
+            },
+        ],
+        faq: [
+            {
+                q: "Faut-il offrir un cadeau pour des fiançailles ?",
+                a: "Ce n'est pas obligatoire, mais c'est un geste apprécié, surtout pour les proches. Un cadeau plus modeste qu'au mariage suffit : l'idée est de féliciter le couple, pas de rivaliser avec la liste de mariage.",
+            },
+            {
+                q: "Quel budget pour un cadeau de fiançailles ?",
+                a: "Comptez généralement 30 à 60 € pour un proche, moins pour une simple connaissance. On garde une marge pour le cadeau de mariage, qui reste le moment fort des célébrations.",
+            },
+        ],
+    },
 ];
 
 export function getGuideBySlug(slug: string): Guide | undefined {
