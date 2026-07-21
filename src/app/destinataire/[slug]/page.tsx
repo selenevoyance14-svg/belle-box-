@@ -1,4 +1,6 @@
 import { getProductsByRecipient, RECIPIENTS, type CatalogProduct } from "@/lib/catalog";
+import { RECIPIENT_EDITORIAL } from "@/lib/editorial";
+import { EditorialIntro, EditorialBody } from "@/app/components/EditorialContent";
 import { Star, ChevronRight, Truck, Sparkles, Menu, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -88,6 +90,7 @@ export default async function RecipientPage({ params }: Props) {
   if (!r) notFound();
   const products = getProductsByRecipient(slug)
     .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0));
+  const editorial = RECIPIENT_EDITORIAL[slug];
 
   return (
     <>
@@ -119,6 +122,8 @@ export default async function RecipientPage({ params }: Props) {
             </div>
           </div>
 
+          {editorial && <EditorialIntro editorial={editorial} />}
+
           {products.length === 0 ? (
             <p style={{ textAlign: "center", padding: "60px 0" }}>
               Aucun produit pour ce destinataire pour l'instant.
@@ -134,6 +139,8 @@ export default async function RecipientPage({ params }: Props) {
               ))}
             </div>
           )}
+
+          {editorial && <EditorialBody editorial={editorial} />}
         </div>
       </section>
 

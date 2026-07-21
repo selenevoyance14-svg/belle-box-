@@ -1,4 +1,6 @@
 import { getProductsByBudget, BUDGETS, OCCASIONS, type CatalogProduct } from "@/lib/catalog";
+import { BUDGET_EDITORIAL } from "@/lib/editorial";
+import { EditorialIntro, EditorialBody } from "@/app/components/EditorialContent";
 import { Star, ChevronRight, Truck, Sparkles, Menu, ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -90,6 +92,7 @@ export default async function BudgetPage({ params }: Props) {
   const products = getProductsByBudget(budget.min, budget.max)
     .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))
     .slice(0, 60);
+  const editorial = BUDGET_EDITORIAL[slug];
 
   return (
     <>
@@ -121,6 +124,8 @@ export default async function BudgetPage({ params }: Props) {
             </div>
           </div>
 
+          {editorial && <EditorialIntro editorial={editorial} />}
+
           {products.length === 0 ? (
             <p style={{ textAlign: "center", padding: "60px 0" }}>
               Aucun produit dans cette fourchette de prix. Revenez bientôt !
@@ -136,6 +141,8 @@ export default async function BudgetPage({ params }: Props) {
               ))}
             </div>
           )}
+
+          {editorial && <EditorialBody editorial={editorial} />}
 
           <div style={{ marginTop: "60px", padding: "32px", background: "var(--muted)", borderRadius: "16px" }}>
             <h2 style={{ marginTop: 0 }}>Autres budgets</h2>

@@ -26,13 +26,21 @@ interface CatalogData {
 
 let cached: CatalogData | null = null;
 
+// Catégories exclues du site : l'alcool désactive la monétisation AdSense.
+// Filtré ici (et non dans le YAML) car le catalogue est régénéré à chaque build.
+const EXCLUDED_CATEGORIES = new Set(["alcool"]);
+
 export function getCatalog(): CatalogProduct[] {
     if (cached) return cached.products;
     try {
         if (!fs.existsSync(CATALOG_FILE)) return [];
         const content = fs.readFileSync(CATALOG_FILE, "utf-8");
         cached = yaml.load(content) as CatalogData;
-        return cached.products || [];
+        const products = (cached.products || []).filter(
+            (p) => !EXCLUDED_CATEGORIES.has(p.category)
+        );
+        cached = { ...cached, products };
+        return products;
     } catch {
         return [];
     }
