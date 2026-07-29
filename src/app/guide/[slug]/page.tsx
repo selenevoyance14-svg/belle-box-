@@ -1,7 +1,7 @@
 import { GUIDES, getGuideBySlug } from "@/lib/guides";
 import { getProductsByOccasion, getProductsByRecipient, OCCASIONS, type CatalogProduct } from "@/lib/catalog";
-import { Star, ChevronRight, Truck, Sparkles, Menu, ArrowLeft, Clock, Calendar } from "lucide-react";
-import Image from "next/image";
+import { ProductCard } from "@/app/components/ProductCard";
+import { ChevronRight, Menu, ArrowLeft, Clock, Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -20,67 +20,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: g.metaDescription,
     alternates: { canonical: `https://kado-box.fr/guide/${slug}` },
   };
-}
-
-function decodeTitle(t: string) {
-  return t.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
-}
-
-function formatPrice(p: number) {
-  return `${p.toFixed(2).replace('.', ',')} €`;
-}
-
-function StarRow({ rating }: { rating: number }) {
-  return (
-    <div style={{ display: "inline-flex", gap: "1px", color: "var(--star)" }}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star key={i} size={13} fill={i < Math.round(rating) ? "currentColor" : "none"} stroke="currentColor" />
-      ))}
-    </div>
-  );
-}
-
-function ProductCard({ product, badge }: { product: CatalogProduct; badge?: string }) {
-  return (
-    <a
-      href={product.affiliate_url}
-      target="_blank"
-      rel="nofollow noopener noreferrer"
-      className="product-card"
-    >
-      {badge && <span className="product-badge"><Sparkles size={11} /> {badge}</span>}
-      <div className="product-image">
-        {product.image && (
-          <Image
-            src={product.image}
-            alt={decodeTitle(product.title)}
-            fill
-            style={{ objectFit: "contain", padding: "14px" }}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        )}
-      </div>
-      <div className="product-body">
-        <h3 className="product-title">{decodeTitle(product.title)}</h3>
-        {product.rating && (
-          <div className="product-rating">
-            <StarRow rating={product.rating} />
-            <span className="rating-num">{product.rating}/5</span>
-            {product.reviews_count && (
-              <span className="muted">· {product.reviews_count.toLocaleString('fr-FR')} avis</span>
-            )}
-          </div>
-        )}
-        <div className="product-price">
-          <span className="price-now">{formatPrice(product.price)}</span>
-        </div>
-        <span className="btn btn-primary btn-sm product-cta">
-          Voir sur Amazon <ChevronRight size={14} />
-        </span>
-        <span className="product-prime"><Truck size={12} /> Livraison Prime</span>
-      </div>
-    </a>
-  );
 }
 
 export default async function GuidePage({ params }: Props) {
@@ -142,13 +81,13 @@ export default async function GuidePage({ params }: Props) {
           {products.length > 0 && (
             <section style={{ marginTop: "48px" }}>
               <h2>Notre sélection de produits Amazon</h2>
-              <p style={{ color: "var(--muted-text)" }}>Triés par avis vérifiés. En cliquant, vous accédez à la fiche produit Amazon.</p>
+              <p style={{ color: "var(--muted-text)" }}>Une sélection resserrée. Le prix et la disponibilité sont à vérifier sur Amazon.</p>
               <div className="product-grid" style={{ marginTop: "24px" }}>
                 {products.map((p, i) => (
                   <ProductCard
                     key={p.asin}
                     product={p}
-                    badge={i === 0 ? "Top vente" : i === 1 ? "Coup de cœur" : undefined}
+                    badge={i === 0 ? "À découvrir" : i === 1 ? "Autre idée" : undefined}
                   />
                 ))}
               </div>

@@ -203,8 +203,8 @@ export const GUIDES: Guide[] = [
         slug: "idees-cadeaux-noel-2026",
         title: "Noël 2026 : 40 idées cadeaux pour toute la famille",
         metaTitle: "Cadeaux Noël 2026 : 40 idées par profil et budget | Kado-Box",
-        metaDescription: "Notre sélection complète de cadeaux de Noël 2026 : par âge, par budget, par passion. Idées testées et livrées avant le 24 décembre.",
-        intro: "Noël 2026, c'est dans quelques semaines et la course aux cadeaux commence. On a réuni 40 idées triées par profil (enfants, ados, adultes, grands-parents) et par budget. Toutes disponibles sur Amazon avec livraison rapide avant les fêtes.",
+        metaDescription: "40 idées cadeaux de Noël 2026 classées par âge, budget et passion, pour préparer sa liste sans se disperser.",
+        intro: "Préparer Noël en avance permet de mieux répartir son budget et d'éviter les achats faits dans l'urgence. Voici 40 idées triées par profil (enfants, ados, adultes, grands-parents) et par budget. Vérifiez le prix, le stock et le délai chez le marchand avant de commander.",
         publishedAt: "2026-05-20",
         readingMinutes: 8,
         occasionSlug: "noel",
@@ -253,7 +253,7 @@ export const GUIDES: Guide[] = [
         faq: [
             {
                 q: "Quand commander pour être livré à temps pour Noël ?",
-                a: "Avec Amazon Prime, vous êtes livré en 24-48 h jusqu'au 22 décembre. Pour les produits non-Prime ou les très grosses commandes, comptez une semaine de marge. Le mieux : finaliser ses achats avant le 18 décembre.",
+                a: "Les délais changent selon le produit et le marchand. Vérifiez la date annoncée au moment de commander et gardez une marge, surtout en décembre.",
             },
             {
                 q: "Comment éviter de se tromper sur un cadeau ?",
@@ -487,7 +487,7 @@ export const GUIDES: Guide[] = [
         slug: "cadeau-grand-pere",
         title: "Cadeau pour grand-père : 20 idées qui touchent vraiment papy",
         metaTitle: "Cadeau grand-père : 20 idées utiles et touchantes | Kado-Box",
-        metaDescription: "Idées cadeaux pour grand-père : gourmandise, confort, passion, souvenirs. 20 idées testées qui font mouche, du petit prix au cadeau d'exception.",
+        metaDescription: "Idées cadeaux pour grand-père : gourmandise, confort, passions et souvenirs, classées du petit prix au cadeau d'exception.",
         intro: "Offrir à son grand-père, c'est souvent se heurter au fameux « j'ai besoin de rien ». Voici 20 idées qui font vraiment plaisir, par budget et par passion, pour gâter papy à coup sûr.",
         publishedAt: "2026-05-20",
         readingMinutes: 6,
@@ -592,7 +592,7 @@ export const GUIDES: Guide[] = [
         slug: "cadeau-ado-garcon",
         title: "Cadeau pour un ado garçon : 20 idées par âge (12-17 ans)",
         metaTitle: "Cadeau ado garçon : 20 idées qui marchent | Kado-Box",
-        metaDescription: "Idées cadeaux pour ado garçon de 12 à 17 ans : gaming, tech, sport, mode urbaine. 20 idées testées triées par âge et budget.",
+        metaDescription: "Idées cadeaux pour ado garçon de 12 à 17 ans : films, séries, gaming, sport et créativité, triées par âge et budget.",
         intro: "Offrir à un ado garçon, c'est souvent miser sur l'évident (gaming + tech) sans tomber dans le générique. Voici 20 idées concrètes par tranche d'âge et par budget pour éviter le « ouais, merci » poli.",
         publishedAt: "2026-05-20",
         readingMinutes: 6,
@@ -608,6 +608,12 @@ export const GUIDES: Guide[] = [
                 heading: "14-16 ans : gaming, écouteurs, accessoires tech",
                 paragraphs: [
                     "Un jeu très attendu, une carte cadeau Steam/PlayStation/Xbox (25-50 €), des écouteurs gaming, une manette ergonomique, un repose-poignet, une enceinte Bluetooth pour sa chambre. La SSD externe ou une carte microSD pour étendre sa Switch peut aussi faire mouche.",
+                ],
+            },
+            {
+                heading: "Pour un ado fan de films et de séries",
+                paragraphs: [
+                    "Partez de son univers préféré plutôt que d'un objet générique : beau livre illustré, LEGO ou jeu lié à la licence, affiche encadrée, sweat officiel ou édition collector d'une saga. Demandez d'abord quelle série ou quel film il suit en ce moment pour éviter une licence qu'il aimait il y a trois ans.",
                 ],
             },
             {

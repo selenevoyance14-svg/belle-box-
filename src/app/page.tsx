@@ -1,97 +1,32 @@
-import { getCatalog, getProductsByOccasion, OCCASIONS, RECIPIENTS, BUDGETS, type CatalogProduct } from "@/lib/catalog";
+import { getCatalog, getProductsByOccasion, isGiftCandidate, OCCASIONS, RECIPIENTS, BUDGETS } from "@/lib/catalog";
 import { GUIDES } from "@/lib/guides";
+import { ProductCard } from "@/app/components/ProductCard";
 import {
-  Star, ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
-  Gift, Heart, Sparkles, Menu, Wallet, BookOpen, Clock
+  ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
+  Gift, Heart, Menu, Wallet, BookOpen, Clock
 } from "lucide-react";
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Kado-Box — Idées cadeaux Amazon par occasion (2026)",
-  description: "Trouvez le cadeau parfait : Fête des mères, Noël, anniversaire, Saint-Valentin… Sélection des meilleurs cadeaux Amazon avec prix et avis vérifiés.",
+  title: "Idées cadeaux utiles et petit budget | Kado-Box",
+  description: "Trouvez une idée cadeau utile pour Noël, un anniversaire ou une attention. Sélections par personne, occasion et budget.",
   alternates: { canonical: "https://kado-box.fr" },
 };
 
-function formatPrice(p: number) {
-  return `${p.toFixed(2).replace('.', ',')} €`;
-}
-
-function decodeTitle(t: string) {
-  return t.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
-}
-
-function StarRow({ rating }: { rating: number }) {
-  return (
-    <div style={{ display: "inline-flex", gap: "1px", color: "var(--star)" }}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star key={i} size={13} fill={i < Math.round(rating) ? "currentColor" : "none"} stroke="currentColor" />
-      ))}
-    </div>
-  );
-}
-
-function ProductCard({ product, badge }: { product: CatalogProduct; badge?: string }) {
-  return (
-    <a
-      href={product.affiliate_url}
-      target="_blank"
-      rel="nofollow noopener noreferrer"
-      className="product-card"
-    >
-      {badge && <span className="product-badge"><Sparkles size={11} /> {badge}</span>}
-      <div className="product-image">
-        {product.image && (
-          <Image
-            src={product.image}
-            alt={decodeTitle(product.title)}
-            fill
-            style={{ objectFit: "contain", padding: "14px" }}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        )}
-      </div>
-      <div className="product-body">
-        <h3 className="product-title">{decodeTitle(product.title)}</h3>
-        {product.rating && (
-          <div className="product-rating">
-            <StarRow rating={product.rating} />
-            <span className="rating-num">{product.rating}/5</span>
-            {product.reviews_count && (
-              <span className="muted">· {product.reviews_count.toLocaleString('fr-FR')} avis</span>
-            )}
-          </div>
-        )}
-        <div className="product-price">
-          <span className="price-now">{formatPrice(product.price)}</span>
-        </div>
-        <span className="btn btn-primary btn-sm product-cta">
-          Voir sur Amazon <ChevronRight size={14} />
-        </span>
-        <span className="product-prime"><Truck size={12} /> Livraison Prime</span>
-      </div>
-    </a>
-  );
-}
-
 export default function Home() {
   const catalog = getCatalog();
-
-  // Coup de cœur mis en avant manuellement (un vrai cadeau, pas un accessoire tech).
-  const FEATURED_SLUG = "lego-10696-classic-la-boite-de-briques-creatives-jouet-et-en-vdp3zu";
-  const featured =
-    catalog.find((p) => p.slug === FEATURED_SLUG) ||
-    [...catalog]
-      .filter(
-        (p) =>
-          (p.rating || 0) >= 4.5 &&
-          (p.reviews_count || 0) >= 200 &&
-          p.category !== "autre" &&
-          p.category !== "tech" &&
-          p.price >= 15 &&
-          p.price <= 150
-      )
-      .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))[0];
+  const curatedCount = catalog.filter(isGiftCandidate).length;
+  const featuredGuideSlugs = [
+    "cadeau-noel-petit-budget",
+    "cadeau-ado-garcon",
+    "cadeau-grand-pere",
+    "cadeau-anniversaire-mariage",
+    "idees-cadeaux-noel-2026",
+    "cadeau-ado-fille",
+  ];
+  const featuredGuides = featuredGuideSlugs
+    .map((slug) => GUIDES.find((guide) => guide.slug === slug))
+    .filter((guide): guide is (typeof GUIDES)[number] => Boolean(guide));
 
   const occasionsBlocks = OCCASIONS.map((occ) => ({
     ...occ,
@@ -128,12 +63,12 @@ export default function Home() {
               Trouvez le cadeau <span className="squiggle">parfait</span>
             </h1>
             <p className="hero-subtitle">
-              Fête des mères, Noël, anniversaire, Saint-Valentin… Notre sélection des meilleurs cadeaux Amazon, avec prix et avis vérifiés.
+              Noël, anniversaire, grands-parents, ados… Des idées utiles classées par personne, occasion et budget.
             </p>
             <ul className="hero-trust-list">
-              <li><Award size={16} /> {catalog.length} idées sélectionnées</li>
-              <li><ThumbsUp size={16} /> Triées par avis vérifiés Amazon</li>
-              <li><Truck size={16} /> Livraison Prime offerte</li>
+              <li><Award size={16} /> {curatedCount} idées retenues</li>
+              <li><ThumbsUp size={16} /> Les produits hors sujet sont écartés</li>
+              <li><Truck size={16} /> Prix et livraison à vérifier chez le marchand</li>
             </ul>
             <div className="hero-cta">
               <a href="#occasions" className="btn btn-primary">
@@ -141,46 +76,21 @@ export default function Home() {
               </a>
             </div>
           </div>
-          {featured && (
-            <div className="hero-visual">
-              <a
-                href={featured.affiliate_url}
-                target="_blank"
-                rel="nofollow noopener noreferrer"
-                className="hero-product-card"
-              >
-                <div className="hero-product-image">
-                  <Image
-                    src={featured.image}
-                    alt={decodeTitle(featured.title)}
-                    fill
-                    style={{ objectFit: "contain", padding: "20px" }}
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority
-                  />
-                </div>
-                <div className="hero-product-body">
-                  <span className="hero-product-tag"><Award size={12} /> Le coup de cœur</span>
-                  <h3>{decodeTitle(featured.title).slice(0, 75)}{decodeTitle(featured.title).length > 75 ? "…" : ""}</h3>
-                  {featured.rating && (
-                    <div className="hero-product-rating">
-                      <StarRow rating={featured.rating} />
-                      <span>{featured.rating}/5</span>
-                      {featured.reviews_count && (
-                        <span className="muted">({featured.reviews_count.toLocaleString('fr-FR')} avis)</span>
-                      )}
-                    </div>
-                  )}
-                  <div className="hero-product-price">
-                    <span className="price-now">{formatPrice(featured.price)}</span>
-                  </div>
-                  <span className="btn btn-primary btn-sm" style={{ width: "100%", justifyContent: "center" }}>
-                    Voir sur Amazon <ChevronRight size={14} />
-                  </span>
-                </div>
-              </a>
+          <div className="hero-visual">
+            <div className="hero-product-card">
+              <div className="hero-product-body" style={{ padding: "32px" }}>
+                <span className="hero-product-tag"><Gift size={12} /> À préparer maintenant</span>
+                <h2 style={{ marginTop: "16px" }}>Noël sans dépasser son budget</h2>
+                <p className="muted">
+                  Commencez par les idées à moins de 20 €, puis choisissez selon
+                  la personne à qui vous souhaitez faire plaisir.
+                </p>
+                <a href="/guide/cadeau-noel-petit-budget" className="btn btn-primary" style={{ justifyContent: "center" }}>
+                  Voir le guide petit budget <ChevronRight size={14} />
+                </a>
+              </div>
             </div>
-          )}
+          </div>
         </div>
       </section>
 
@@ -252,7 +162,7 @@ export default function Home() {
             <p>Des conseils concrets pour bien choisir : par occasion, par âge, par personnalité.</p>
           </div>
           <div className="occasion-grid">
-            {GUIDES.map((g) => (
+            {featuredGuides.map((g) => (
               <a key={g.slug} href={`/guide/${g.slug}`} className="occasion-card">
                 <div>
                   <h3>{g.title}</h3>
@@ -279,8 +189,8 @@ export default function Home() {
           <div className="reassurance-item">
             <Truck size={22} />
             <div>
-              <strong>Livraison rapide</strong>
-              <span>Prime offerte 24h</span>
+              <strong>Disponibilité</strong>
+              <span>À vérifier chez le marchand</span>
             </div>
           </div>
           <div className="reassurance-item">
@@ -293,15 +203,15 @@ export default function Home() {
           <div className="reassurance-item">
             <Award size={22} />
             <div>
-              <strong>Sélection vérifiée</strong>
-              <span>Triée par avis clients</span>
+              <strong>Sélection resserrée</strong>
+              <span>Produits hors sujet écartés</span>
             </div>
           </div>
           <div className="reassurance-item">
             <ThumbsUp size={22} />
             <div>
-              <strong>{catalog.length} idées</strong>
-              <span>Tous prix confondus</span>
+              <strong>{curatedCount} idées</strong>
+              <span>Classées par besoin</span>
             </div>
           </div>
         </div>
@@ -323,7 +233,7 @@ export default function Home() {
                 <ProductCard
                   key={p.asin}
                   product={p}
-                  badge={i === 0 ? "Top vente" : i === 1 ? "Coup de cœur" : undefined}
+                  badge={i === 0 ? "À découvrir" : i === 1 ? "Autre idée" : undefined}
                 />
               ))}
             </div>
@@ -343,7 +253,7 @@ export default function Home() {
               <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white', textDecoration: 'none' }}>
                 Kado<span style={{ color: 'var(--primary-light)' }}>-Box</span>
               </a>
-              <p>Le guide des meilleures idées cadeaux Amazon, mis à jour en continu.</p>
+              <p>Des idées cadeaux utiles, classées par personne, occasion et budget.</p>
             </div>
             <div>
               <h4>Occasions</h4>
