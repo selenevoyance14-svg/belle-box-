@@ -1,8 +1,8 @@
-import { getProductsByOccasion, OCCASIONS, type CatalogProduct } from "@/lib/catalog";
+import { getProductsByOccasion, OCCASIONS } from "@/lib/catalog";
 import { OCCASION_EDITORIAL } from "@/lib/editorial";
 import { EditorialIntro, EditorialBody } from "@/app/components/EditorialContent";
-import { Star, ChevronRight, Truck, Sparkles, Menu, ArrowLeft } from "lucide-react";
-import Image from "next/image";
+import { ProductCard } from "@/app/components/ProductCard";
+import { Menu, ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
@@ -17,71 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const occ = OCCASIONS.find((o) => o.slug === slug);
   if (!occ) return { title: "Occasion introuvable" };
   return {
-    title: `${occ.name} : idées cadeaux Amazon — Kado-Box`,
-    description: `${occ.description}. Notre sélection des meilleurs cadeaux Amazon, prix et avis vérifiés.`,
+    title: `${occ.name} : idées cadeaux par budget — Kado-Box`,
+    description: `${occ.description}. Une sélection resserrée à parcourir selon votre budget.`,
     alternates: { canonical: `https://kado-box.fr/occasion/${slug}` },
   };
-}
-
-function decodeTitle(t: string) {
-  return t.replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, '"');
-}
-
-function formatPrice(p: number) {
-  return `${p.toFixed(2).replace('.', ',')} €`;
-}
-
-function StarRow({ rating }: { rating: number }) {
-  return (
-    <div style={{ display: "inline-flex", gap: "1px", color: "var(--star)" }}>
-      {Array.from({ length: 5 }, (_, i) => (
-        <Star key={i} size={13} fill={i < Math.round(rating) ? "currentColor" : "none"} stroke="currentColor" />
-      ))}
-    </div>
-  );
-}
-
-function ProductCard({ product, badge }: { product: CatalogProduct; badge?: string }) {
-  return (
-    <a
-      href={product.affiliate_url}
-      target="_blank"
-      rel="nofollow noopener noreferrer"
-      className="product-card"
-    >
-      {badge && <span className="product-badge"><Sparkles size={11} /> {badge}</span>}
-      <div className="product-image">
-        {product.image && (
-          <Image
-            src={product.image}
-            alt={decodeTitle(product.title)}
-            fill
-            style={{ objectFit: "contain", padding: "14px" }}
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
-        )}
-      </div>
-      <div className="product-body">
-        <h3 className="product-title">{decodeTitle(product.title)}</h3>
-        {product.rating && (
-          <div className="product-rating">
-            <StarRow rating={product.rating} />
-            <span className="rating-num">{product.rating}/5</span>
-            {product.reviews_count && (
-              <span className="muted">· {product.reviews_count.toLocaleString('fr-FR')} avis</span>
-            )}
-          </div>
-        )}
-        <div className="product-price">
-          <span className="price-now">{formatPrice(product.price)}</span>
-        </div>
-        <span className="btn btn-primary btn-sm product-cta">
-          Voir sur Amazon <ChevronRight size={14} />
-        </span>
-        <span className="product-prime"><Truck size={12} /> Livraison Prime</span>
-      </div>
-    </a>
-  );
 }
 
 export default async function OccasionPage({ params }: Props) {
@@ -134,7 +73,7 @@ export default async function OccasionPage({ params }: Props) {
                 <ProductCard
                   key={p.asin}
                   product={p}
-                  badge={i === 0 ? "Top vente" : i === 1 ? "Coup de cœur" : undefined}
+                  badge={i === 0 ? "À découvrir" : i === 1 ? "Autre idée" : undefined}
                 />
               ))}
             </div>

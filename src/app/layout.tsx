@@ -8,15 +8,14 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://kado-box.fr"),
-  title: "Kado-Box — Idées cadeaux Amazon par occasion (2026)",
+  title: "Kado-Box — Des idées cadeaux utiles pour chaque budget",
   description:
-    "Trouvez le cadeau parfait : Fête des mères, Noël, anniversaire, Saint-Valentin, Pâques. Sélection des meilleurs cadeaux Amazon avec prix et avis vérifiés.",
+    "Des idées cadeaux utiles et abordables pour Noël, un anniversaire ou une attention : sélections par budget et par destinataire.",
   alternates: {
     canonical: "https://kado-box.fr",
   },
   keywords: [
     "idées cadeaux",
-    "cadeau Amazon",
     "fête des mères",
     "fête des pères",
     "cadeau Noël",
@@ -38,8 +37,8 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Kado-Box — Idées cadeaux Amazon",
-    description: "Trouvez le cadeau parfait pour chaque occasion : sélection des meilleurs produits Amazon.",
+    title: "Kado-Box — Des idées cadeaux utiles",
+    description: "Trouvez une idée cadeau adaptée à la personne, à l'occasion et à votre budget.",
     type: "website",
     locale: "fr_FR",
   },

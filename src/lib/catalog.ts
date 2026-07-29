@@ -18,6 +18,91 @@ export interface CatalogProduct {
     affiliate_url: string;
 }
 
+const NON_GIFT_CATEGORIES = new Set(["autre", "alcool"]);
+
+const NON_GIFT_TERMS = [
+    "câble",
+    "cable",
+    "chargeur",
+    "cartouche",
+    "coque pour",
+    "détergent",
+    "detergent",
+    "film de protection",
+    "gants jetables",
+    "huile moteur",
+    "lingettes",
+    "masque ffp",
+    "moustiquaire",
+    "pâte thermique",
+    "pate thermique",
+    "piles bouton",
+    "piles aa",
+    "piles aaa",
+    "protège plaque",
+    "protege plaque",
+    "recharge",
+    "sacs poubelle",
+    "sérum physiologique",
+    "serum physiologique",
+    "tablettes lave",
+    "verre trempé",
+    "verre trempe",
+];
+
+const STRONG_GIFT_TERMS = [
+    "airpods",
+    "anniversaire",
+    "bijou",
+    "bracelet",
+    "cadeau",
+    "casque audio",
+    "coffret",
+    "fisher-price",
+    "jeu de société",
+    "jeu de societe",
+    "kindle",
+    "lego",
+    "montre",
+    "nintendo",
+    "parfum",
+    "peluche",
+    "play-doh",
+];
+
+function normalizedTitle(product: CatalogProduct): string {
+    return product.title
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&")
+        .replace(/&quot;/g, '"')
+        .toLowerCase();
+}
+
+export function isGiftCandidate(product: CatalogProduct): boolean {
+    const title = normalizedTitle(product);
+    if (NON_GIFT_CATEGORIES.has(product.category)) return false;
+    if (NON_GIFT_TERMS.some((term) => title.includes(term))) return false;
+    if ((product.rating ?? 0) < 4.2) return false;
+    if ((product.reviews_count ?? 0) < 20) return false;
+    if (product.price < 5 || product.price > 500) return false;
+    return true;
+}
+
+function giftScore(product: CatalogProduct): number {
+    const title = normalizedTitle(product);
+    const explicitGiftBonus = STRONG_GIFT_TERMS.some((term) => title.includes(term)) ? 40 : 0;
+    const reviewScore = Math.min(25, Math.log10((product.reviews_count ?? 0) + 1) * 6);
+    const ratingScore = Math.max(0, ((product.rating ?? 4) - 4) * 20);
+    return explicitGiftBonus + reviewScore + ratingScore;
+}
+
+function curate(products: CatalogProduct[], limit = 24): CatalogProduct[] {
+    return [...products]
+        .filter(isGiftCandidate)
+        .sort((a, b) => giftScore(b) - giftScore(a))
+        .slice(0, limit);
+}
+
 interface CatalogData {
     generated_at: string;
     count: number;
@@ -47,15 +132,15 @@ export function getCatalog(): CatalogProduct[] {
 }
 
 export function getProductsByOccasion(occasion: string): CatalogProduct[] {
-    return getCatalog().filter((p) => p.occasions?.includes(occasion));
+    return curate(getCatalog().filter((p) => p.occasions?.includes(occasion)));
 }
 
 export function getProductsByRecipient(recipient: string): CatalogProduct[] {
-    return getCatalog().filter((p) => p.recipients?.includes(recipient));
+    return curate(getCatalog().filter((p) => p.recipients?.includes(recipient)));
 }
 
 export function getProductsByCategory(category: string): CatalogProduct[] {
-    return getCatalog().filter((p) => p.category === category);
+    return curate(getCatalog().filter((p) => p.category === category));
 }
 
 export function getProductBySlug(slug: string): CatalogProduct | undefined {
@@ -63,7 +148,7 @@ export function getProductBySlug(slug: string): CatalogProduct | undefined {
 }
 
 export function getProductsByBudget(min: number, max: number): CatalogProduct[] {
-    return getCatalog().filter((p) => p.price >= min && p.price <= max);
+    return curate(getCatalog().filter((p) => p.price >= min && p.price <= max));
 }
 
 export const BUDGETS: Array<{ slug: string; name: string; emoji: string; min: number; max: number; description: string }> = [
@@ -74,13 +159,13 @@ export const BUDGETS: Array<{ slug: string; name: string; emoji: string; min: nu
 ];
 
 export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string }> = [
+    { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël" },
+    { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge" },
+    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'" },
+    { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit" },
     { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman" },
     { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa" },
-    { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël" },
-    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Chocolats et idées gourmandes" },
-    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'" },
-    { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge" },
-    { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit" },
+    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Des attentions pour petits et grands" },
 ];
 
 export const RECIPIENTS: Array<{ slug: string; name: string; emoji: string }> = [
