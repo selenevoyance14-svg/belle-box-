@@ -1,9 +1,10 @@
 import { getCatalog, getProductsByOccasion, isGiftCandidate, OCCASIONS, RECIPIENTS, BUDGETS } from "@/lib/catalog";
 import { GUIDES } from "@/lib/guides";
 import { ProductCard } from "@/app/components/ProductCard";
+import Image from "next/image";
 import {
   ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
-  Gift, Heart, Menu, Wallet, BookOpen, Clock
+  Gift, Heart, Menu, Wallet, BookOpen, Clock, Search
 } from "lucide-react";
 import type { Metadata } from "next";
 
@@ -72,23 +73,25 @@ export default function Home() {
             </ul>
             <div className="hero-cta">
               <a href="#occasions" className="btn btn-primary">
-                Choisir une occasion <ChevronRight size={16} />
+                Trouver une idée <ChevronRight size={16} />
+              </a>
+              <a href="#cadeaux" className="btn btn-secondary">
+                <Search size={16} /> Voir les cadeaux
               </a>
             </div>
           </div>
           <div className="hero-visual">
-            <div className="hero-product-card">
-              <div className="hero-product-body" style={{ padding: "32px" }}>
-                <span className="hero-product-tag"><Gift size={12} /> À préparer maintenant</span>
-                <h2 style={{ marginTop: "16px" }}>Noël sans dépasser son budget</h2>
-                <p className="muted">
-                  Commencez par les idées à moins de 20 €, puis choisissez selon
-                  la personne à qui vous souhaitez faire plaisir.
-                </p>
-                <a href="/guide/cadeau-noel-petit-budget" className="btn btn-primary" style={{ justifyContent: "center" }}>
-                  Voir le guide petit budget <ChevronRight size={14} />
-                </a>
-              </div>
+            <div className="hero-gift-visual">
+              <Image
+                src="/images/kado-hero-gifts.png"
+                alt="Sélection de cadeaux Kado-Box : coffret, fleurs, livre et peluche"
+                fill
+                priority
+                sizes="(max-width: 900px) 100vw, 50vw"
+                className="hero-gift-image"
+              />
+              <span className="hero-float-badge badge-1">🎁 Pour tous les budgets</span>
+              <span className="hero-float-badge badge-2">✨ Des idées qui font plaisir</span>
             </div>
           </div>
         </div>
@@ -184,7 +187,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container">
+      <section className="container" id="cadeaux">
         <div className="reassurance-bar">
           <div className="reassurance-item">
             <Truck size={22} />
