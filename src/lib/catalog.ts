@@ -32,19 +32,29 @@ const NON_GIFT_TERMS = [
     "creme lanoline",
     "cuillère bébé",
     "cuillere bebe",
+    "couches",
+    "couches-culottes",
     "détergent",
     "detergent",
     "film de protection",
+    "fond de teint",
+    "drap housse",
+    "draps housse",
     "gants jetables",
     "huile moteur",
+    "huile parfumée",
+    "huile parfumee",
     "lingettes",
     "masque ffp",
     "moustiquaire",
+    "nappies",
+    "pillow",
     "pâte thermique",
     "pate thermique",
     "piles bouton",
     "piles aa",
     "piles aaa",
+    "pierres et cristaux pour bijoux",
     "protège plaque",
     "protege plaque",
     "recharge",
@@ -53,10 +63,15 @@ const NON_GIFT_TERMS = [
     "sérum physiologique",
     "serum physiologique",
     "tablettes lave",
+    "taie oreiller",
+    "taie d'oreiller",
     "thermomètre",
     "thermometre",
     "verre trempé",
     "verre trempe",
+    "carte micro sd",
+    "carte mémoire",
+    "carte memoire",
 ];
 
 const STRONG_GIFT_TERMS = [
@@ -112,6 +127,51 @@ function curate(products: CatalogProduct[], limit = 24): CatalogProduct[] {
         .slice(0, limit);
 }
 
+const RECIPIENT_CATEGORY_BONUSES: Record<string, Record<string, number>> = {
+    femme: { bijou: 45, parfum: 40, beaute: 34, maquillage: 32, coffret: 28, mode: 22, livre: 16, deco: 12 },
+    homme: { montre: 42, parfum: 36, tech: 30, sport: 28, maroquinerie: 28, coffret: 22, livre: 16, jeu_video: 12 },
+    enfant: { jouet: 45, livre: 30, jeu_video: 24, sport: 20, papeterie: 18 },
+    ado: { jeu_video: 38, tech: 34, mode: 28, beaute: 24, sport: 22, livre: 16 },
+    couple: { coffret: 38, deco: 32, cuisine: 28, jeu_video: 18, livre: 16 },
+    bebe: { bebe: 48, jouet: 38, livre: 28 },
+};
+
+function curateForRecipient(products: CatalogProduct[], recipient: string, limit = 24): CatalogProduct[] {
+    const bonuses = RECIPIENT_CATEGORY_BONUSES[recipient] ?? {};
+    return [...products]
+        .filter(isGiftCandidate)
+        .filter((product) => recipient === "bebe" || product.category !== "bebe")
+        .sort((a, b) =>
+            giftScore(b) + (bonuses[b.category] ?? 0)
+            - giftScore(a) - (bonuses[a.category] ?? 0)
+        )
+        .slice(0, limit);
+}
+
+const OCCASION_CATEGORY_BONUSES: Record<string, Record<string, number>> = {
+    naissance: { bebe: 50, jouet: 36, livre: 25 },
+    "saint-valentin": { bijou: 45, parfum: 40, coffret: 32, beaute: 24, chocolat: 24 },
+    "fete-des-meres": { bijou: 42, parfum: 38, beaute: 34, coffret: 28, livre: 18, deco: 15 },
+    "fete-des-peres": { montre: 42, tech: 34, sport: 28, maroquinerie: 28, coffret: 22, livre: 18 },
+    paques: { chocolat: 45, jouet: 34, livre: 20 },
+};
+
+function curateForOccasion(products: CatalogProduct[], occasion: string, limit = 24): CatalogProduct[] {
+    const bonuses = OCCASION_CATEGORY_BONUSES[occasion] ?? {};
+    const restrictedCategories = occasion === "naissance"
+        ? new Set(["bebe", "jouet", "livre"])
+        : null;
+    return [...products]
+        .filter(isGiftCandidate)
+        .filter((product) => !restrictedCategories || restrictedCategories.has(product.category))
+        .filter((product) => occasion === "naissance" || product.category !== "bebe")
+        .sort((a, b) =>
+            giftScore(b) + (bonuses[b.category] ?? 0)
+            - giftScore(a) - (bonuses[a.category] ?? 0)
+        )
+        .slice(0, limit);
+}
+
 interface CatalogData {
     generated_at: string;
     count: number;
@@ -141,11 +201,17 @@ export function getCatalog(): CatalogProduct[] {
 }
 
 export function getProductsByOccasion(occasion: string): CatalogProduct[] {
-    return curate(getCatalog().filter((p) => p.occasions?.includes(occasion)));
+    return curateForOccasion(
+        getCatalog().filter((p) => p.occasions?.includes(occasion)),
+        occasion,
+    );
 }
 
 export function getProductsByRecipient(recipient: string): CatalogProduct[] {
-    return curate(getCatalog().filter((p) => p.recipients?.includes(recipient)));
+    return curateForRecipient(
+        getCatalog().filter((p) => p.recipients?.includes(recipient)),
+        recipient,
+    );
 }
 
 export function getProductsByCategory(category: string): CatalogProduct[] {
