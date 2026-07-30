@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function PolitiqueConfidentialitePage() {
   return (
     <>
-      <Header activePage="/politique-de-confidentialite" />
+      <Header />
 
       <main className="static-page">
         <div className="container" style={{ maxWidth: "720px" }}>

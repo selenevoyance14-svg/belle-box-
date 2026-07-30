@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AProposPage() {
   return (
     <>
-      <Header activePage="/a-propos" />
+      <Header />
       <main className="static-page">
         <div className="container" style={{ maxWidth: "720px" }}>
           <h1>À propos de Kado-Box</h1>

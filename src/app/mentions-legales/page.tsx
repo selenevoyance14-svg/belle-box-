@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function MentionsLegalesPage() {
   return (
     <>
-      <Header activePage="/mentions-legales" />
+      <Header />
 
       <main className="static-page">
         <div className="container" style={{ maxWidth: "720px" }}>

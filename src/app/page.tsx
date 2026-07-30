@@ -1,303 +1,189 @@
-import { getCatalog, getProductsByOccasion, isGiftCandidate, OCCASIONS, RECIPIENTS, BUDGETS } from "@/lib/catalog";
-import { GUIDES } from "@/lib/guides";
-import { ProductCard } from "@/app/components/ProductCard";
-import Image from "next/image";
-import {
-  ChevronRight, Truck, ShieldCheck, Award, ThumbsUp,
-  Gift, Heart, Menu, Wallet, BookOpen, Clock, Search
-} from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Check, Gift, Heart, Search, Sparkles } from "lucide-react";
+import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
+import { ProductCard } from "@/app/components/ProductCard";
+import { BUDGETS, getCatalog, isGiftCandidate, OCCASIONS, RECIPIENTS } from "@/lib/catalog";
+import { GUIDES } from "@/lib/guides";
 
 export const metadata: Metadata = {
-  title: "Idées cadeaux utiles et petit budget | Kado-Box",
-  description: "Trouvez une idée cadeau utile pour Noël, un anniversaire ou une attention. Sélections par personne, occasion et budget.",
+  title: "Idées cadeaux 2026 par occasion et budget | Kado-Box",
+  description:
+    "Trouvez une idée cadeau vraiment adaptée : sélections Amazon triées par occasion, destinataire et budget, avec conseils pour choisir sans se tromper.",
   alternates: { canonical: "https://kado-box.fr" },
 };
 
+const FEATURED_OCCASIONS = ["naissance", "anniversaire", "noel", "fete-des-meres"];
+const FEATURED_GUIDES = [
+  "cadeau-naissance",
+  "cadeau-ado-fille",
+  "cadeau-grand-mere",
+];
+
 export default function Home() {
-  const catalog = getCatalog();
-  const curatedCount = catalog.filter(isGiftCandidate).length;
-  const featuredGuideSlugs = [
-    "cadeau-noel-petit-budget",
-    "cadeau-ado-garcon",
-    "cadeau-grand-pere",
-    "cadeau-anniversaire-mariage",
-    "idees-cadeaux-noel-2026",
-    "cadeau-ado-fille",
-  ];
-  const featuredGuides = featuredGuideSlugs
+  const gifts = getCatalog().filter(isGiftCandidate);
+  const featuredProducts = [...gifts]
+    .sort((a, b) => (b.reviews_count ?? 0) - (a.reviews_count ?? 0))
+    .slice(0, 4);
+  const guides = FEATURED_GUIDES
     .map((slug) => GUIDES.find((guide) => guide.slug === slug))
     .filter((guide): guide is (typeof GUIDES)[number] => Boolean(guide));
-
-  const occasionsBlocks = OCCASIONS.map((occ) => ({
-    ...occ,
-    products: getProductsByOccasion(occ.slug)
-      .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))
-      .slice(0, 6),
-  })).filter((o) => o.products.length >= 3);
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://kado-box.fr/#website",
+        url: "https://kado-box.fr",
+        name: "Kado-Box",
+        description: "Guide indépendant d’idées cadeaux par occasion, destinataire et budget.",
+        inLanguage: "fr-FR",
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://kado-box.fr/#organization",
+        name: "Kado-Box",
+        url: "https://kado-box.fr",
+        logo: "https://kado-box.fr/kado-logo.png",
+      },
+    ],
+  };
 
   return (
     <>
-      <header className="header">
-        <div className="container">
-          <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Kado<span style={{ color: 'var(--primary)' }}>-Box</span>
-          </a>
-          <nav className="nav">
-            {OCCASIONS.slice(0, 4).map((o) => (
-              <a key={o.slug} href={`/occasion/${o.slug}`}>{o.name}</a>
-            ))}
-          </nav>
-          <button className="mobile-menu-btn" aria-label="Menu">
-            <Menu size={20} />
-          </button>
-        </div>
-      </header>
-
-      <section className="hero">
-        <div className="container">
-          <div className="hero-content">
-            <div className="hero-badge">
-              <Gift size={14} /> Idées cadeaux 2026
+      <Header />
+      <main>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+        <section className="kb-hero">
+          <div className="kb-container kb-hero-grid">
+            <div className="kb-hero-copy">
+              <p className="kb-eyebrow"><Sparkles size={14} /> Le guide cadeau qui va à l’essentiel</p>
+              <h1>Le bon cadeau.<br /><em>Sans chercher des heures.</em></h1>
+              <p className="kb-hero-lead">
+                Dites-nous l’occasion, la personne ou votre budget. Nous gardons
+                uniquement les idées qui ont vraiment du sens à offrir.
+              </p>
+              <div className="kb-hero-actions">
+                <Link href="/occasion/anniversaire" className="kb-button kb-button-primary">
+                  Trouver une idée <ArrowRight size={17} />
+                </Link>
+                <Link href="/budget/moins-de-20-euros" className="kb-button kb-button-secondary">
+                  Cadeaux à moins de 20 €
+                </Link>
+              </div>
+              <div className="kb-hero-trust">
+                <span><Check size={14} /> Sélection resserrée</span>
+                <span><Check size={14} /> Prix visibles</span>
+                <span><Check size={14} /> Guides gratuits</span>
+              </div>
             </div>
-            <h1>
-              Trouvez le cadeau <span className="squiggle">parfait</span>
-            </h1>
-            <p className="hero-subtitle">
-              Noël, anniversaire, grands-parents, ados… Des idées utiles classées par personne, occasion et budget.
-            </p>
-            <ul className="hero-trust-list">
-              <li><Award size={16} /> {curatedCount} idées retenues</li>
-              <li><ThumbsUp size={16} /> Les produits hors sujet sont écartés</li>
-              <li><Truck size={16} /> Prix et livraison à vérifier chez le marchand</li>
-            </ul>
-            <div className="hero-cta">
-              <a href="#occasions" className="btn btn-primary">
-                Trouver une idée <ChevronRight size={16} />
-              </a>
-              <a href="#cadeaux" className="btn btn-secondary">
-                <Search size={16} /> Voir les cadeaux
-              </a>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <div className="hero-gift-visual">
-              <Image
-                src="/images/kado-hero-gifts.png"
-                alt="Sélection de cadeaux Kado-Box : coffret, fleurs, livre et peluche"
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 50vw"
-                className="hero-gift-image"
-              />
-              <span className="hero-float-badge badge-1">🎁 Pour tous les budgets</span>
-              <span className="hero-float-badge badge-2">✨ Des idées qui font plaisir</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" id="occasions">
-        <div className="container">
-          <div className="section-title">
-            <h2>Choisir par occasion</h2>
-            <p>Cliquez sur une occasion pour voir notre sélection complète.</p>
-          </div>
-          <div className="occasion-grid">
-            {OCCASIONS.map((o) => {
-              const count = getProductsByOccasion(o.slug).length;
-              return (
-                <a key={o.slug} href={`/occasion/${o.slug}`} className="occasion-card">
-                  <div className="occasion-emoji">{o.emoji}</div>
-                  <div>
-                    <h3>{o.name}</h3>
-                    <p>{o.description}</p>
-                    <span className="occasion-count">{count} idées</span>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: "var(--muted)" }}>
-        <div className="container">
-          <div className="section-title">
-            <h2><Heart size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Pour qui ?</h2>
-            <p>Sélection ciblée par destinataire.</p>
-          </div>
-          <div className="recipient-grid">
-            {RECIPIENTS.map((r) => (
-              <a key={r.slug} href={`/destinataire/${r.slug}`} className="recipient-card">
-                <span className="recipient-emoji">{r.emoji}</span>
-                <span>{r.name}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <div className="section-title">
-            <h2><Wallet size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Choisir par budget</h2>
-            <p>Du petit prix au cadeau d'exception, trouvez l'idée selon votre enveloppe.</p>
-          </div>
-          <div className="occasion-grid">
-            {BUDGETS.map((b) => (
-              <a key={b.slug} href={`/budget/${b.slug}`} className="occasion-card">
-                <div className="occasion-emoji">{b.emoji}</div>
-                <div>
-                  <h3>{b.name}</h3>
-                  <p>{b.description}</p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section" style={{ background: "var(--muted)" }}>
-        <div className="container">
-          <div className="section-title">
-            <h2><BookOpen size={26} style={{ display: "inline", verticalAlign: "middle" }} /> Nos guides cadeaux</h2>
-            <p>Des conseils concrets pour bien choisir : par occasion, par âge, par personnalité.</p>
-          </div>
-          <div className="occasion-grid">
-            {featuredGuides.map((g) => (
-              <a key={g.slug} href={`/guide/${g.slug}`} className="occasion-card">
-                <div>
-                  <h3>{g.title}</h3>
-                  <p>{g.metaDescription}</p>
-                  <span className="occasion-count">
-                    <Clock size={12} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} />
-                    {g.readingMinutes} min de lecture
-                  </span>
-                </div>
-                <ChevronRight size={20} style={{ alignSelf: "center" }} />
-              </a>
-            ))}
-          </div>
-          <div style={{ textAlign: "center", marginTop: "32px" }}>
-            <a href="/guide" className="btn btn-secondary">
-              Voir tous les guides <ChevronRight size={16} />
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="container" id="cadeaux">
-        <div className="reassurance-bar">
-          <div className="reassurance-item">
-            <Truck size={22} />
-            <div>
-              <strong>Disponibilité</strong>
-              <span>À vérifier chez le marchand</span>
-            </div>
-          </div>
-          <div className="reassurance-item">
-            <ShieldCheck size={22} />
-            <div>
-              <strong>Achat sécurisé</strong>
-              <span>Paiement & retour Amazon</span>
-            </div>
-          </div>
-          <div className="reassurance-item">
-            <Award size={22} />
-            <div>
-              <strong>Sélection resserrée</strong>
-              <span>Produits hors sujet écartés</span>
-            </div>
-          </div>
-          <div className="reassurance-item">
-            <ThumbsUp size={22} />
-            <div>
-              <strong>{curatedCount} idées</strong>
-              <span>Classées par besoin</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {occasionsBlocks.map((block, idx) => (
-        <section
-          key={block.slug}
-          className="section"
-          style={idx % 2 === 0 ? {} : { background: "var(--muted)" }}
-        >
-          <div className="container">
-            <div className="section-title">
-              <h2><span style={{ marginRight: "8px" }}>{block.emoji}</span> {block.name}</h2>
-              <p>{block.description}</p>
-            </div>
-            <div className="product-grid">
-              {block.products.map((p, i) => (
-                <ProductCard
-                  key={p.asin}
-                  product={p}
-                  badge={i === 0 ? "À découvrir" : i === 1 ? "Autre idée" : undefined}
+            <div className="kb-hero-visual">
+              <div className="kb-hero-image">
+                <Image
+                  src="/images/kado-hero-gifts.png"
+                  alt="Une sélection élégante de cadeaux pour toutes les occasions"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 100vw, 48vw"
                 />
-              ))}
-            </div>
-            <div style={{ textAlign: "center", marginTop: "32px" }}>
-              <a href={`/occasion/${block.slug}`} className="btn btn-secondary">
-                Voir tous les cadeaux <ChevronRight size={16} />
-              </a>
+              </div>
+              <div className="kb-hero-note">
+                <Gift size={18} />
+                <span><strong>{gifts.length} idées triées</strong>Pas de catalogue interminable</span>
+              </div>
             </div>
           </div>
         </section>
-      ))}
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'white', textDecoration: 'none' }}>
-                Kado<span style={{ color: 'var(--primary-light)' }}>-Box</span>
-              </a>
-              <p>Des idées cadeaux utiles, classées par personne, occasion et budget.</p>
+        <section className="finder-section">
+          <div className="kb-container">
+            <div className="kb-section-head">
+              <div><p className="kb-eyebrow"><Search size={14} /> Commencer ici</p><h2>Quelle est l’occasion ?</h2></div>
+              <p>Une entrée simple pour arriver directement aux cadeaux les plus pertinents.</p>
             </div>
-            <div>
-              <h4>Occasions</h4>
-              <ul className="footer-links">
-                {OCCASIONS.slice(0, 6).map((o) => (
-                  <li key={o.slug}><a href={`/occasion/${o.slug}`}>{o.name}</a></li>
-                ))}
-              </ul>
+            <div className="occasion-editorial-grid">
+              {OCCASIONS.filter((item) => FEATURED_OCCASIONS.includes(item.slug)).map((item, index) => (
+                <Link key={item.slug} href={`/occasion/${item.slug}`} className="occasion-editorial-card">
+                  <span className="occasion-index">0{index + 1}</span>
+                  <span className="occasion-big-emoji">{item.emoji}</span>
+                  <div><h3>{item.name}</h3><p>{item.description}</p></div>
+                  <ArrowRight size={19} />
+                </Link>
+              ))}
             </div>
-            <div>
-              <h4>Pour qui</h4>
-              <ul className="footer-links">
-                {RECIPIENTS.map((r) => (
-                  <li key={r.slug}><a href={`/destinataire/${r.slug}`}>{r.name}</a></li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h4>Budget</h4>
-              <ul className="footer-links">
-                {BUDGETS.map((b) => (
-                  <li key={b.slug}><a href={`/budget/${b.slug}`}>{b.name}</a></li>
-                ))}
-                <li><a href="/guide">Tous nos guides</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4>Infos</h4>
-              <ul className="footer-links">
-                <li><a href="/a-propos">À propos</a></li>
-                <li><a href="/contact">Contact</a></li>
-                <li><a href="/mentions-legales">Mentions légales</a></li>
-                <li><a href="/politique-de-confidentialite">Confidentialité</a></li>
-              </ul>
+            <div className="occasion-more">
+              {OCCASIONS.filter((item) => !FEATURED_OCCASIONS.includes(item.slug)).map((item) => (
+                <Link key={item.slug} href={`/occasion/${item.slug}`}>{item.emoji} {item.name}</Link>
+              ))}
             </div>
           </div>
-          <div className="footer-bottom">
-            <p>© 2026 Kado-Box. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>
+        </section>
+
+        <section className="recipient-band">
+          <div className="kb-container">
+            <p className="kb-eyebrow kb-eyebrow-light"><Heart size={14} /> Pour qui cherchez-vous ?</p>
+            <div className="recipient-pill-grid">
+              {RECIPIENTS.map((item) => (
+                <Link key={item.slug} href={`/destinataire/${item.slug}`}>
+                  <span>{item.emoji}</span>{item.name}<ArrowRight size={15} />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        <section className="kb-section">
+          <div className="kb-container">
+            <div className="kb-section-head">
+              <div><p className="kb-eyebrow">Valeurs sûres</p><h2>Les cadeaux les plus appréciés</h2></div>
+              <p>Sélection éditoriale issue des produits les mieux notés et les plus commentés.</p>
+            </div>
+            <div className="product-grid kb-product-grid kb-product-grid-four">
+              {featuredProducts.map((product, index) => (
+                <ProductCard key={product.asin} product={product} badge={index === 0 ? "Le plus apprécié" : undefined} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="budget-section">
+          <div className="kb-container">
+            <div className="kb-section-head">
+              <div><p className="kb-eyebrow">Respecter son budget</p><h2>Faire plaisir au bon prix</h2></div>
+            </div>
+            <div className="budget-editorial-grid">
+              {BUDGETS.map((item) => (
+                <Link key={item.slug} href={`/budget/${item.slug}`}>
+                  <span>{item.emoji}</span><h3>{item.name}</h3><p>{item.description}</p><b>Voir les idées →</b>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="guide-showcase">
+          <div className="kb-container guide-showcase-grid">
+            <div>
+              <p className="kb-eyebrow kb-eyebrow-light">Le conseil avant le clic</p>
+              <h2>Offrir juste,<br />ça s’apprend.</h2>
+              <p>Nos guides répondent aux vraies questions : quoi offrir, quel budget prévoir et quelles erreurs éviter.</p>
+              <Link href="/guide" className="kb-button kb-button-light">Tous les guides <ArrowRight size={17} /></Link>
+            </div>
+            <div className="guide-list">
+              {guides.map((guide, index) => (
+                <Link key={guide.slug} href={`/guide/${guide.slug}`}>
+                  <span>0{index + 1}</span>
+                  <div><h3>{guide.title}</h3><p>{guide.readingMinutes} min de lecture</p></div>
+                  <ArrowRight size={18} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <SiteFooter />
     </>
   );
 }

@@ -1,0 +1,25 @@
+# Kado-Box
+
+> Kado-Box est un guide français indépendant d'idées cadeaux. Le site aide à choisir un cadeau selon l'occasion, le destinataire et le budget.
+
+## Pages principales
+
+- [Accueil](https://kado-box.fr/) : point de départ pour chercher une idée cadeau.
+- [Guides cadeaux](https://kado-box.fr/guide) : conseils éditoriaux pour offrir juste.
+- [Cadeaux de naissance](https://kado-box.fr/occasion/naissance) : idées utiles pour bébé et jeunes parents.
+- [Cadeaux d'anniversaire](https://kado-box.fr/occasion/anniversaire) : sélections pour tous les âges.
+- [Cadeaux de Noël](https://kado-box.fr/occasion/noel) : idées classées par profil et budget.
+- [Cadeaux à moins de 20 euros](https://kado-box.fr/budget/moins-de-20-euros) : petites attentions utiles.
+
+## Méthode éditoriale
+
+Les produits sont filtrés selon leur pertinence comme cadeau, leur note, leur nombre d'avis et leur prix. Les pages contiennent des conseils, des réponses rapides et des questions fréquentes. Les prix et disponibilités doivent toujours être vérifiés chez le marchand.
+
+## Affiliation
+
+Kado-Box participe au Programme Partenaires d'Amazon EU. Certains liens sont affiliés : le prix ne change pas pour l'utilisateur et le site peut recevoir une commission.
+
+## Contact
+
+- [À propos](https://kado-box.fr/a-propos)
+- [Contact](https://kado-box.fr/contact)

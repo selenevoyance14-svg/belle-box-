@@ -303,7 +303,7 @@ async function processAsin(asin) {
       image: `/images/amazon/${imgFilename}`,
       affiliate_url: `https://www.amazon.fr/dp/${asin}?tag=${PARTNER_TAG}`,
     };
-  } catch (e) {
+  } catch {
     return null;
   }
 }

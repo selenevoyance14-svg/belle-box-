@@ -41,6 +41,19 @@ export const metadata: Metadata = {
     description: "Trouvez une idée cadeau adaptée à la personne, à l'occasion et à votre budget.",
     type: "website",
     locale: "fr_FR",
+    siteName: "Kado-Box",
+    images: [{ url: "/og-image.webp", width: 1200, height: 630, alt: "Kado-Box, idées cadeaux par occasion et budget" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Kado-Box — Trouver le bon cadeau",
+    description: "Des idées cadeaux triées par occasion, destinataire et budget.",
+    images: ["/og-image.webp"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 

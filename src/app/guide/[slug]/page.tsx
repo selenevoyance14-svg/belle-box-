@@ -1,9 +1,12 @@
 import { GUIDES, getGuideBySlug } from "@/lib/guides";
-import { getProductsByOccasion, getProductsByRecipient, OCCASIONS, type CatalogProduct } from "@/lib/catalog";
+import { getProductsByOccasion, getProductsByRecipient, type CatalogProduct } from "@/lib/catalog";
 import { ProductCard } from "@/app/components/ProductCard";
-import { ChevronRight, Menu, ArrowLeft, Clock, Calendar } from "lucide-react";
+import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
+import { ChevronRight, ArrowLeft, Clock, Calendar } from "lucide-react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 interface Props { params: Promise<{ slug: string }> }
 
@@ -18,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: g.metaTitle,
     description: g.metaDescription,
-    alternates: { canonical: `https://kado-box.fr/guide/${slug}` },
+    alternates: { canonical: `/guide/${slug}` },
   };
 }
 
@@ -41,25 +44,13 @@ export default async function GuidePage({ params }: Props) {
 
   return (
     <>
-      <header className="header">
-        <div className="container">
-          <a href="/" className="logo" style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Kado<span style={{ color: 'var(--primary)' }}>-Box</span>
-          </a>
-          <nav className="nav">
-            {OCCASIONS.slice(0, 4).map((o) => (
-              <a key={o.slug} href={`/occasion/${o.slug}`}>{o.name}</a>
-            ))}
-          </nav>
-          <button className="mobile-menu-btn" aria-label="Menu"><Menu size={20} /></button>
-        </div>
-      </header>
+      <Header />
 
-      <article className="static-page">
-        <div className="container" style={{ maxWidth: "820px" }}>
-          <a href="/guide" className="breadcrumb-back">
+      <article className="static-page kb-guide-article">
+        <div className="kb-container" style={{ maxWidth: "820px" }}>
+          <Link href="/guide" className="breadcrumb-back">
             <ArrowLeft size={14} /> Tous les guides
-          </a>
+          </Link>
 
           <h1 style={{ marginTop: "12px" }}>{guide.title}</h1>
           <div style={{ display: "flex", gap: "16px", color: "var(--muted-text)", fontSize: "0.9rem", marginBottom: "24px" }}>
@@ -82,7 +73,7 @@ export default async function GuidePage({ params }: Props) {
             <section style={{ marginTop: "48px" }}>
               <h2>Notre sélection de produits Amazon</h2>
               <p style={{ color: "var(--muted-text)" }}>Une sélection resserrée. Le prix et la disponibilité sont à vérifier sur Amazon.</p>
-              <div className="product-grid" style={{ marginTop: "24px" }}>
+              <div className="product-grid kb-product-grid" style={{ marginTop: "24px" }}>
                 {products.map((p, i) => (
                   <ProductCard
                     key={p.asin}
@@ -125,13 +116,7 @@ export default async function GuidePage({ params }: Props) {
         </div>
       </article>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-bottom">
-            <p>© 2026 Kado-Box. En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

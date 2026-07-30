@@ -1,7 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import { Heart, Mail, Send } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Contact | Kado",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <Header activePage="/contact" />
+      <Header />
 
       <main className="static-page">
         <div className="container" style={{ maxWidth: "720px" }}>
@@ -96,47 +96,7 @@ export default function ContactPage() {
         </div>
       </main>
 
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-grid">
-            <div className="footer-brand">
-              <div className="logo">
-                <img src="/kado-logo.svg" alt="Kado" className="logo-img" />
-              </div>
-              <p>
-                Unboxing happiness, delivered monthly. Tests honnêtes,
-                comparatifs détaillés et codes promo exclusifs sur les box beauté
-                depuis 2026.
-              </p>
-            </div>
-
-            <div>
-              <h4>Rubriques</h4>
-              <ul className="footer-links">
-                <li><a href="/#box-beaute">Box Beauté</a></li>
-                <li><a href="/#comparatifs">Comparatifs</a></li>
-                <li><a href="/#codes-promo">Codes Promo</a></li>
-                <li><a href="/#articles">Derniers Articles</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4>Infos</h4>
-              <ul className="footer-links">
-                <li><a href="/a-propos">À propos</a></li>
-                <li><a href="/contact">Contact</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "4px" }}>
-              © 2026 Kado — Fait avec <Heart size={14} fill="var(--primary)" color="var(--primary)" /> par Nathalie. Certains liens sont
-              des liens affiliés.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

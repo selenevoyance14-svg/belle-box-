@@ -196,7 +196,7 @@ function processImage(filePath) {
     execFileSync("magick", [pngPath, "-background", "white", "-flatten", "-quality", "82", filePath], { stdio: "ignore" });
     fs.unlinkSync(pngPath);
     return true;
-  } catch (e) {
+  } catch {
     return false;
   }
 }
@@ -302,7 +302,7 @@ async function processAsin(asin, existingSlugs) {
       image: `/images/amazon/${imgFilename}`,
       affiliate_url: `https://www.amazon.fr/dp/${asin}?tag=${PARTNER_TAG}`,
     };
-  } catch (e) {
+  } catch {
     return null;
   }
 }
@@ -337,10 +337,8 @@ async function main() {
 
   // 2. Traiter jusqu'à atteindre TARGET produits non-"autre"
   const added = [];
-  let idx = 0;
   for (const asin of candidates) {
     if (added.length >= TARGET) break;
-    idx++;
     const r = await processAsin(asin, existingSlugs);
     if (r && !r._skip) {
       existingSlugs.add(r.slug);
