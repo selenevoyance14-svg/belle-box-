@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import yaml from "js-yaml";
+export { CATEGORY_LABELS } from "./catalog-labels";
 
 const CATALOG_FILE = path.join(process.cwd(), "data", "amazon-catalog.yaml");
 
@@ -105,6 +106,11 @@ function normalizedTitle(product: CatalogProduct): string {
 
 export function isGiftCandidate(product: CatalogProduct): boolean {
     const title = normalizedTitle(product);
+    const amazonUpdatedAt = product.amazon_updated_at
+        ? new Date(product.amazon_updated_at).getTime()
+        : Number.NaN;
+    if (!Number.isFinite(amazonUpdatedAt)) return false;
+    if (Date.now() - amazonUpdatedAt >= 24 * 60 * 60 * 1000) return false;
     if (NON_GIFT_CATEGORIES.has(product.category)) return false;
     if (NON_GIFT_TERMS.some((term) => title.includes(term))) return false;
     if (product.price < 5 || product.price > 500) return false;
@@ -248,28 +254,3 @@ export const RECIPIENTS: Array<{ slug: string; name: string; emoji: string }> = 
     { slug: "couple", name: "Pour le couple", emoji: "💑" },
     { slug: "bebe", name: "Pour bébé", emoji: "👶" },
 ];
-
-export const CATEGORY_LABELS: Record<string, string> = {
-    parfum: "Parfum",
-    bijou: "Bijou",
-    montre: "Montre",
-    jouet: "Jouet",
-    chocolat: "Chocolat",
-    bougie: "Bougie",
-    coffret: "Coffret",
-    livre: "Livre",
-    tech: "Tech",
-    maquillage: "Maquillage",
-    beaute: "Beauté",
-    the_cafe: "Thé / Café",
-    alcool: "Alcool",
-    deco: "Déco",
-    cuisine: "Cuisine",
-    maroquinerie: "Maroquinerie",
-    mode: "Mode",
-    jeu_video: "Jeu vidéo",
-    sport: "Sport",
-    papeterie: "Papeterie",
-    bebe: "Bébé",
-    autre: "Autre",
-};

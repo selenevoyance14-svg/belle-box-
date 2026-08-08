@@ -1,6 +1,10 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { ChevronRight, Sparkles } from "lucide-react";
-import { CATEGORY_LABELS, type CatalogProduct } from "@/lib/catalog";
+import type { CatalogProduct } from "@/lib/catalog";
+import { CATEGORY_LABELS } from "@/lib/catalog-labels";
 
 function decodeTitle(title: string) {
   return title
@@ -23,11 +27,15 @@ export function ProductCard({
     currency: "EUR",
   }).format(product.price);
   const updatedAt = product.amazon_updated_at ? new Date(product.amazon_updated_at) : null;
-  const priceIsFresh = Boolean(
-    updatedAt &&
-    !Number.isNaN(updatedAt.getTime()) &&
-    Date.now() - updatedAt.getTime() < 24 * 60 * 60 * 1000
-  );
+  const [priceIsFresh, setPriceIsFresh] = useState(false);
+
+  useEffect(() => {
+    setPriceIsFresh(Boolean(
+      updatedAt &&
+      !Number.isNaN(updatedAt.getTime()) &&
+      Date.now() - updatedAt.getTime() < 24 * 60 * 60 * 1000
+    ));
+  }, [product.amazon_updated_at]);
 
   return (
     <a
