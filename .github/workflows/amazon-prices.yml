@@ -1,0 +1,48 @@
+name: Actualiser les prix Amazon
+
+on:
+  schedule:
+    - cron: "43 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kado-box-amazon-prices
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Vérifier les secrets Amazon
+        env:
+          ID: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_ID }}
+          SECRET: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_SECRET }}
+        run: test -n "$ID" && test -n "$SECRET"
+      - name: Actualiser les produits et les prix
+        env:
+          AMAZON_CREATORS_CREDENTIAL_ID: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_ID }}
+          AMAZON_CREATORS_CREDENTIAL_SECRET: ${{ secrets.AMAZON_CREATORS_CREDENTIAL_SECRET }}
+          AMAZON_CREATORS_CREDENTIAL_VERSION: "3.2"
+          AMAZON_PARTNER_TAG: lebrunnathali-21
+          AMAZON_MARKETPLACE: www.amazon.fr
+        run: npm run amazon:update
+      - run: npm run build
+      - name: Publier les données actualisées
+        run: |
+          if git diff --quiet -- data/amazon-catalog.yaml; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/amazon-catalog.yaml
+          git commit -m "Actualise les prix Amazon"
+          git push

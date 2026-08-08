@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ChevronRight, Sparkles, Star } from "lucide-react";
+import { ChevronRight, Sparkles } from "lucide-react";
 import { CATEGORY_LABELS, type CatalogProduct } from "@/lib/catalog";
 
 function decodeTitle(title: string) {
@@ -22,6 +22,12 @@ export function ProductCard({
     style: "currency",
     currency: "EUR",
   }).format(product.price);
+  const updatedAt = product.amazon_updated_at ? new Date(product.amazon_updated_at) : null;
+  const priceIsFresh = Boolean(
+    updatedAt &&
+    !Number.isNaN(updatedAt.getTime()) &&
+    Date.now() - updatedAt.getTime() < 24 * 60 * 60 * 1000
+  );
 
   return (
     <a
@@ -48,24 +54,17 @@ export function ProductCard({
       </div>
       <div className="product-body">
         <h3 className="product-title">{title}</h3>
-        {product.rating && (
-          <div className="product-rating">
-            <Star size={15} fill="currentColor" />
-            <span className="rating-num">{product.rating.toFixed(1)}</span>
-            {product.reviews_count && (
-              <span className="muted">
-                ({product.reviews_count.toLocaleString("fr-FR")} avis)
-              </span>
-            )}
-          </div>
-        )}
         <div className="product-price">
-          <span className="price-now">{formattedPrice}</span>
+          <span className="price-now">{priceIsFresh ? formattedPrice : "Voir le prix sur Amazon"}</span>
         </div>
         <span className="btn btn-primary btn-sm product-cta">
           Voir sur Amazon <ChevronRight size={14} />
         </span>
-        <span className="product-prime">Prix et disponibilité à vérifier</span>
+        <span className="product-prime">
+          {priceIsFresh && updatedAt
+            ? `Prix relevé le ${updatedAt.toLocaleDateString("fr-FR")}. Prix et disponibilité susceptibles de changer.`
+            : "Prix et disponibilité à vérifier sur Amazon"}
+        </span>
       </div>
     </a>
   );

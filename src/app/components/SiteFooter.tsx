@@ -16,8 +16,8 @@ export default function SiteFooter() {
             destinataire et budget.
           </p>
           <small>
-            En tant que Partenaire Amazon, Kado-Box réalise un bénéfice sur les
-            achats remplissant les conditions requises.
+            En tant que Partenaire Amazon, je réalise un bénéfice sur les achats
+            remplissant les conditions requises.
           </small>
         </div>
         <div>
@@ -44,6 +44,7 @@ export default function SiteFooter() {
         <nav>
           <Link href="/a-propos">Notre méthode</Link>
           <Link href="/mentions-legales">Mentions légales</Link>
+          <Link href="/affiliation-amazon">Affiliation Amazon</Link>
           <Link href="/politique-de-confidentialite">Confidentialité</Link>
           <Link href="/contact">Contact</Link>
         </nav>

@@ -12,6 +12,7 @@ export interface CatalogProduct {
     occasions: string[];
     recipients: string[];
     price: number;
+    amazon_updated_at?: string;
     rating?: number;
     reviews_count?: number;
     image: string;
@@ -106,8 +107,6 @@ export function isGiftCandidate(product: CatalogProduct): boolean {
     const title = normalizedTitle(product);
     if (NON_GIFT_CATEGORIES.has(product.category)) return false;
     if (NON_GIFT_TERMS.some((term) => title.includes(term))) return false;
-    if ((product.rating ?? 0) < 4.2) return false;
-    if ((product.reviews_count ?? 0) < 20) return false;
     if (product.price < 5 || product.price > 500) return false;
     return true;
 }
@@ -115,9 +114,7 @@ export function isGiftCandidate(product: CatalogProduct): boolean {
 function giftScore(product: CatalogProduct): number {
     const title = normalizedTitle(product);
     const explicitGiftBonus = STRONG_GIFT_TERMS.some((term) => title.includes(term)) ? 40 : 0;
-    const reviewScore = Math.min(25, Math.log10((product.reviews_count ?? 0) + 1) * 6);
-    const ratingScore = Math.max(0, ((product.rating ?? 4) - 4) * 20);
-    return explicitGiftBonus + reviewScore + ratingScore;
+    return explicitGiftBonus;
 }
 
 function curate(products: CatalogProduct[], limit = 24): CatalogProduct[] {

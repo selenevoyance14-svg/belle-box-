@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync-amazon": "node scripts/build-amazon-catalog.mjs"
+    "sync-amazon": "node scripts/build-amazon-catalog.mjs",
+    "amazon:update": "node scripts/update-amazon-prices.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

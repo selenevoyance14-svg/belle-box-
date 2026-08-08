@@ -22,7 +22,7 @@ export const GUIDES: Guide[] = [
         slug: "idees-cadeaux-fete-des-meres-2026",
         title: "Fête des mères 2026 : 20 idées cadeaux qui font vraiment plaisir",
         metaTitle: "Cadeau fête des mères 2026 : 20 idées originales | Kado-Box",
-        metaDescription: "Notre sélection de cadeaux fête des mères 2026 : du petit prix à l'idée d'exception, des cadeaux testés et notés par les internautes.",
+        metaDescription: "Notre sélection de cadeaux fête des mères 2026 : du petit prix à l'idée d'exception, avec des critères utiles pour choisir.",
         intro: "La fête des mères tombe cette année le dimanche 7 juin 2026. Pas d'idée ? Pas de panique : on a réuni les 20 cadeaux les plus offerts cette saison, classés par budget et par profil de maman. Tous sont disponibles sur Amazon avec livraison rapide.",
         publishedAt: "2026-05-16",
         readingMinutes: 6,
@@ -71,7 +71,7 @@ export const GUIDES: Guide[] = [
             },
             {
                 q: "Quand commander pour être livré à temps ?",
-                a: "Pour la fête des mères 2026 (7 juin), commandez au plus tard le mercredi précédent. Avec Amazon Prime, vous êtes livré en 24-48 h.",
+                a: "Pour la fête des mères 2026 (7 juin), vérifiez directement sur Amazon la date de livraison annoncée pour votre adresse avant de commander.",
             },
             {
                 q: "Quel cadeau pour une maman qui dit \"ne rien vouloir\" ?",
@@ -195,7 +195,7 @@ export const GUIDES: Guide[] = [
             },
             {
                 q: "Cadeau de dernière minute : quoi faire ?",
-                a: "Avec Amazon Prime, vous êtes livré en 24 h sur la majorité des produits. Pour un anniversaire le lendemain, commandez avant 14 h et choisissez la livraison express. Pour le jour J : carte cadeau Amazon ou bon d'achat instantané par email.",
+                a: "Pour un anniversaire proche, vérifiez la date de livraison affichée par Amazon pour votre adresse. Pour le jour J, une carte cadeau numérique peut être une solution immédiate.",
             },
         ],
     },
@@ -425,7 +425,7 @@ export const GUIDES: Guide[] = [
             },
             {
                 q: "Cadeau de dernière minute ?",
-                a: "Avec Amazon Prime, livraison en 24 h sur la majorité des articles. Pour le jour J : carte cadeau Amazon ou Steam par email, livraison instantanée. Ajoutez un mot manuscrit pour personnaliser.",
+                a: "Vérifiez la date de livraison affichée par Amazon pour votre adresse. Pour le jour J, une carte cadeau numérique peut être une solution immédiate ; ajoutez un mot personnel.",
             },
         ],
     },

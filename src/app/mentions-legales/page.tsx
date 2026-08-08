@@ -35,7 +35,7 @@ export default function MentionsLegalesPage() {
           <section className="static-section">
             <h2>Liens affiliés</h2>
             <p>
-              Ce site contient des liens affiliés. En cliquant sur ces liens et en effectuant un achat, nous pouvons percevoir une commission, sans frais supplémentaires pour vous. Cela nous permet de financer le site et de continuer à proposer des comparatifs gratuits.
+              <strong>En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</strong> Les détails sont disponibles sur notre <a href="/affiliation-amazon">page consacrée à l&apos;affiliation Amazon</a>.
             </p>
           </section>
 
