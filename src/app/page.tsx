@@ -138,7 +138,7 @@ export default function Home() {
           <div className="kb-container">
             <div className="kb-section-head">
               <div><p className="kb-eyebrow">Valeurs sûres</p><h2>Les cadeaux les plus appréciés</h2></div>
-              <p>Sélection éditoriale issue des produits les mieux notés et les plus commentés.</p>
+              <p>Sélection éditoriale de cadeaux classés par occasion, destinataire et budget.</p>
             </div>
             <div className="product-grid kb-product-grid kb-product-grid-four">
               {featuredProducts.map((product, index) => (
