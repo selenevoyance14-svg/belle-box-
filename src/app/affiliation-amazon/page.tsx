@@ -4,6 +4,7 @@ import Header from "@/app/components/Header";
 export const metadata: Metadata = {
   title: "Affiliation Amazon | Kado Box",
   description: "Transparence sur les liens affiliés Amazon présents sur Kado Box.",
+  alternates: { canonical: "/affiliation-amazon" },
 };
 
 export default function AffiliationAmazonPage() {

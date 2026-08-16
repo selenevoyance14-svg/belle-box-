@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Header from "@/app/components/Header";
 
 export const metadata: Metadata = {
-  title: "Mentions légales | Kado",
-  description: "Mentions légales du site Kado — informations sur l'éditeur, l'hébergeur et les conditions d'utilisation.",
+  title: "Mentions légales | Kado-Box",
+  description: "Mentions légales de Kado-Box : éditeur, hébergeur, affiliation et responsabilité.",
+  alternates: { canonical: "/mentions-legales" },
 };
 
 export default function MentionsLegalesPage() {
@@ -21,7 +22,7 @@ export default function MentionsLegalesPage() {
               Le site <strong>kado-box.fr</strong> est édité par un particulier dans le cadre d&apos;une activité de blogging et d&apos;affiliation.
             </p>
             <p>
-              Pour nous contacter : <a href="/contact">page de contact</a>.
+              Contact : <a href="mailto:bonsplansmania@gmail.com">bonsplansmania@gmail.com</a>.
             </p>
           </section>
 

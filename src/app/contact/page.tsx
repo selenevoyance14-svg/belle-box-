@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Mail, Send } from "lucide-react";
+import { Mail } from "lucide-react";
 import Header from "@/app/components/Header";
 import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
-  title: "Contact | Kado",
+  title: "Contact | Kado-Box",
   description:
-    "Une question, une suggestion ou une proposition de partenariat ? Contacte l'équipe Kado. On répond à tous les messages.",
+    "Une question, une correction ou une proposition de partenariat ? Contactez l'équipe Kado-Box par email.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -20,78 +21,23 @@ export default function ContactPage() {
 
           <section className="static-section">
             <p>
-              Une question sur une box beauté ? Une suggestion d&apos;article ?
-              Une proposition de partenariat ? N&apos;hésite pas à nous écrire,
-              on répond à tous les messages.
+              Une question sur une sélection, une information à corriger ou une
+              proposition de partenariat ? Écrivez-nous directement. Nous lisons
+              chaque message et répondons généralement sous quelques jours ouvrés.
             </p>
           </section>
 
-          <form className="contact-form" action="#" method="POST">
-            <div className="form-group">
-              <label htmlFor="contact-name">Ton prénom</label>
-              <input
-                type="text"
-                id="contact-name"
-                name="name"
-                placeholder="Marie"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="contact-email">Ton email</label>
-              <input
-                type="email"
-                id="contact-email"
-                name="email"
-                placeholder="marie@exemple.fr"
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="contact-subject">Sujet</label>
-              <select id="contact-subject" name="subject" required>
-                <option value="">Choisis un sujet...</option>
-                <option value="question">Question sur une box</option>
-                <option value="suggestion">Suggestion d&apos;article</option>
-                <option value="partenariat">Partenariat / Presse</option>
-                <option value="bug">Signaler un problème</option>
-                <option value="autre">Autre</option>
-              </select>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="contact-message">Ton message</label>
-              <textarea
-                id="contact-message"
-                name="message"
-                rows={6}
-                placeholder="Écris ton message ici..."
-                required
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="btn btn-primary"
-              style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
-            >
-              <Send size={16} /> Envoyer
-            </button>
-          </form>
-
-          <section className="static-section" style={{ marginTop: "48px" }}>
+          <section className="static-section" style={{ marginTop: "32px" }}>
             <div className="static-icon-header">
               <Mail size={24} />
-              <h2>Autre moyen de contact</h2>
+              <h2>Adresse de contact</h2>
             </div>
             <p>
-              Tu peux aussi nous écrire directement à{" "}
-              <a href="mailto:hello@kado.fr" style={{ color: "var(--primary)", fontWeight: 600 }}>
-                hello@kado.fr
+              <a href="mailto:bonsplansmania@gmail.com" style={{ color: "var(--primary)", fontWeight: 600 }}>
+                bonsplansmania@gmail.com
               </a>
             </p>
+            <p>Précisez l&apos;URL concernée lorsqu&apos;il s&apos;agit d&apos;une correction.</p>
           </section>
         </div>
       </main>

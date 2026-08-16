@@ -106,11 +106,6 @@ function normalizedTitle(product: CatalogProduct): string {
 
 export function isGiftCandidate(product: CatalogProduct): boolean {
     const title = normalizedTitle(product);
-    const amazonUpdatedAt = product.amazon_updated_at
-        ? new Date(product.amazon_updated_at).getTime()
-        : Number.NaN;
-    if (!Number.isFinite(amazonUpdatedAt)) return false;
-    if (Date.now() - amazonUpdatedAt >= 24 * 60 * 60 * 1000) return false;
     if (NON_GIFT_CATEGORIES.has(product.category)) return false;
     if (NON_GIFT_TERMS.some((term) => title.includes(term))) return false;
     if (product.price < 5 || product.price > 500) return false;

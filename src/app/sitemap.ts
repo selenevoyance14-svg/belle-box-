@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/mentions-legales",
     "/politique-de-confidentialite",
+    "/affiliation-amazon",
   ];
 
   return [

@@ -30,11 +30,16 @@ export function ProductCard({
   const [priceIsFresh, setPriceIsFresh] = useState(false);
 
   useEffect(() => {
-    setPriceIsFresh(Boolean(
-      updatedAt &&
-      !Number.isNaN(updatedAt.getTime()) &&
-      Date.now() - updatedAt.getTime() < 24 * 60 * 60 * 1000
-    ));
+    const priceDate = product.amazon_updated_at ? new Date(product.amazon_updated_at) : null;
+    const timer = window.setTimeout(() => {
+      setPriceIsFresh(Boolean(
+        priceDate &&
+        !Number.isNaN(priceDate.getTime()) &&
+        Date.now() - priceDate.getTime() < 24 * 60 * 60 * 1000
+      ));
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [product.amazon_updated_at]);
 
   return (

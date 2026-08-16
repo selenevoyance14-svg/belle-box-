@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { Gift, Heart, Search, ShieldCheck } from "lucide-react";
 import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "À propos de Kado-Box",
   description:
     "Kado-Box aide à trouver une idée cadeau utile selon la personne, l’occasion et le budget.",
+  alternates: { canonical: "/a-propos" },
 };
 
 export default function AProposPage() {
@@ -38,6 +40,12 @@ export default function AProposPage() {
               à offrir. Les accessoires techniques, consommables et produits sans
               rapport clair avec un cadeau sont écartés de nos sélections.
             </p>
+            <p>
+              Chaque guide est rédigé pour répondre à une situation précise. Nous
+              examinons notamment l&apos;usage, le profil du destinataire, le budget,
+              les avis disponibles et les contraintes de livraison. Les contenus
+              sont revus lorsque les offres ou les besoins saisonniers évoluent.
+            </p>
           </section>
 
           <section className="static-section">
@@ -65,6 +73,7 @@ export default function AProposPage() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }
