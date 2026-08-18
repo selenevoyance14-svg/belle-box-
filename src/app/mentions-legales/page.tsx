@@ -19,10 +19,14 @@ export default function MentionsLegalesPage() {
           <section className="static-section">
             <h2>Éditeur du site</h2>
             <p>
-              Le site <strong>kado-box.fr</strong> est édité par un particulier dans le cadre d&apos;une activité de blogging et d&apos;affiliation.
+              Le site <strong>kado-box.fr</strong> est édité par <strong>Nathalie Lebrun</strong>, entrepreneur individuel.
             </p>
             <p>
-              Contact : <a href="mailto:bonsplansmania@gmail.com">bonsplansmania@gmail.com</a>.
+              Adresse : 524 rue de la Tourrache, 83600 Fréjus, France.<br />
+              SIREN : 101 331 585.<br />
+              SIRET : 101 331 585 00014.<br />
+              Contact : <a href="mailto:bonsplansmania@gmail.com">bonsplansmania@gmail.com</a>.<br />
+              Directrice de la publication : Nathalie Lebrun.
             </p>
           </section>
 

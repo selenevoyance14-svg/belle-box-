@@ -17,6 +17,11 @@ export default function PolitiqueConfidentialitePage() {
           <h1>Politique de confidentialité</h1>
 
           <section className="static-section">
+            <h2>Responsable du traitement</h2>
+            <p>Nathalie Lebrun, entrepreneur individuel, 524 rue de la Tourrache, 83600 Fréjus, France — <a href="mailto:bonsplansmania@gmail.com">bonsplansmania@gmail.com</a>.</p>
+          </section>
+
+          <section className="static-section">
             <h2>Données collectées</h2>
             <p>
               Kado-Box ne propose ni compte utilisateur ni inscription. Si vous
