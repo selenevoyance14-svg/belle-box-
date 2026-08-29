@@ -383,13 +383,20 @@ export const OCCASION_EDITORIAL: Record<string, Editorial> = {
 
 export const RECIPIENT_EDITORIAL: Record<string, Editorial> = {
   femme: {
-    intro: "Offrir un cadeau à une femme qu'on aime, ce n'est pas cocher une case sur une liste : c'est montrer qu'on l'a écoutée. Avant de chercher une idée, prenez un instant pour repenser à ses dernières semaines. De quoi a-t-elle parlé avec envie ? Quel objet a-t-elle failli s'offrir avant de reposer ? Quel petit rituel occupe ses soirées ? C'est souvent là que se cache le bon cadeau, bien plus que dans les rayons génériques. L'idée n'est pas de deviner LE présent parfait, mais de viser juste sur ce qui compte pour elle. Un cadeau réussi peut être tout simple : un objet qu'elle utilisera vraiment, une expérience à vivre, ou quelque chose qui la reconnecte à une passion qu'elle néglige faute de temps. Fuyez les clichés du type électroménager ou produits minceur, qui envoient un message maladroit. Méfiez-vous aussi du cadeau trop coûteux offert par obligation : ce n'est pas le prix qui touche, c'est l'attention. Enfin, gardez en tête sa personnalité plutôt que la vôtre : ce qui vous ferait plaisir n'est pas forcément ce qui la fera sourire. Un bon budget de départ tourne autour de 30,00 € à 60,00 €, largement suffisant pour faire mouche quand l'idée est juste.",
+    intro: "Pour trouver une idée cadeau pour une femme, commencez par son âge, ses goûts et votre budget. Une lectrice, une sportive, une passionnée de beauté ou une femme qui préfère les expériences n'attendent pas le même présent. À moins de 20 €, misez sur une attention précise et bien présentée ; entre 20 € et 50 €, un accessoire durable ou un coffret de qualité ; au-delà, une expérience, un bijou ou une pièce qu'elle n'oserait pas s'offrir. Repensez à ses dernières semaines : de quoi a-t-elle parlé avec envie, quel objet utilise-t-elle tous les jours, quelle passion délaisse-t-elle faute de temps ? C'est souvent là que se cache le bon cadeau. Fuyez les clichés comme l'électroménager ou les produits minceur non demandés. Le prix compte moins que la preuve que vous l'avez écoutée.",
     sections: [
       {
-        heading: "Les valeurs sûres",
+        heading: "Idées cadeaux pour femme selon ses goûts",
         paragraphs: [
           "Certaines catégories plaisent presque toujours parce qu'elles se glissent dans le quotidien : un bijou discret et bien choisi, un accessoire de qualité comme un joli sac ou une écharpe en belle matière, un coffret de soins d'une marque qu'elle apprécie déjà. L'astuce, c'est de rester dans ses codes à elle. Si elle porte surtout de l'argenté, évitez l'or ; si elle aime le minimalisme, oubliez les modèles très ornés.",
           "Les expériences fonctionnent aussi remarquablement bien : un atelier de cuisine, une séance dans un spa, un concert de l'artiste qu'elle écoute en boucle. On offre alors un souvenir plutôt qu'un objet, et c'est souvent ce dont on se rappelle le plus longtemps. Comptez entre 40,00 € et 90,00 € pour une expérience à deux, ce qui reste raisonnable pour un moment marquant.",
+        ],
+      },
+      {
+        heading: "Quel cadeau choisir selon votre budget ?",
+        paragraphs: [
+          "À moins de 20 €, choisissez un petit plaisir précis : un livre lié à ses goûts, une bougie de qualité, un joli carnet ou un coffret de thé. Entre 20 € et 50 €, privilégiez un accessoire durable, un soin d'une marque qu'elle utilise déjà ou une création personnalisée sobre.",
+          "Entre 50 € et 100 €, une expérience à deux, un bijou discret ou une belle pièce de maroquinerie marquent davantage. Au-delà de 100 €, vérifiez ses préférences exactes et les conditions de retour : plus le budget monte, plus la justesse doit primer sur l'effet de surprise.",
         ],
       },
       {
@@ -407,6 +414,7 @@ export const RECIPIENT_EDITORIAL: Record<string, Editorial> = {
       },
     ],
     faq: [
+      { q: "Quel cadeau offrir à une femme qui a déjà tout ?", a: "Préférez une expérience, un objet personnalisé lié à un souvenir ou un consommable haut de gamme. Un atelier, un repas partagé ou un album photo évitent d'ajouter un objet inutile et créent un souvenir durable." },
       { q: "Quel budget moyen prévoir pour un cadeau qui fait plaisir ?", a: "Pour un cadeau à la fois soigné et raisonnable, visez entre 30,00 € et 60,00 €. Cette fourchette permet un bel accessoire, un coffret de soins de qualité ou une expérience simple. Au-delà, réservez plutôt les gros budgets aux grandes occasions comme un anniversaire rond ou un événement important." },
       { q: "Une idée de dernière minute qui reste élégante ?", a: "Un coffret de thés ou de soins d'une marque qu'elle aime, accompagné d'une carte manuscrite, se trouve facilement et fait toujours son effet. Une carte cadeau vers une boutique qu'elle fréquente déjà, autour de 40,00 €, est aussi une valeur sûre si vous manquez de temps pour choisir." },
       { q: "Que faire quand on la connaît encore peu ?", a: "Restez sur un cadeau universel et de bon goût plutôt que très personnel : une bougie parfumée de qualité, un joli carnet, un coffret gourmand. Ces options font plaisir sans risquer le faux pas, et laissent transparaître de l'attention même quand on ignore encore ses préférences précises." },

@@ -485,11 +485,11 @@ export const GUIDES: Guide[] = [
     },
     {
         slug: "cadeau-grand-pere",
-        title: "Cadeau pour grand-père : 20 idées qui touchent vraiment papy",
-        metaTitle: "Cadeau grand-père : 20 idées utiles et touchantes | Kado-Box",
-        metaDescription: "Idées cadeaux pour grand-père : gourmandise, confort, passions et souvenirs, classées du petit prix au cadeau d'exception.",
-        intro: "Offrir à son grand-père, c'est souvent se heurter au fameux « j'ai besoin de rien ». Voici 20 idées qui font vraiment plaisir, par budget et par passion, pour gâter papy à coup sûr.",
-        publishedAt: "2026-05-20",
+        title: "Cadeau pour grand-père : 20 idées utiles et touchantes",
+        metaTitle: "Cadeau grand-père : 20 idées utiles et touchantes",
+        metaDescription: "20 idées cadeaux pour un grand-père selon ses passions et votre budget : souvenirs, confort, jardinage, gourmandise et cadeaux utiles.",
+        intro: "Quel cadeau offrir à un grand-père qui dit n'avoir besoin de rien ? Commencez par ce qui rythme ses journées : famille, jardinage, bricolage, lecture, cuisine ou promenade. Voici 20 idées utiles et touchantes classées par profil et par budget, de moins de 20 € au cadeau commun d'exception.",
+        publishedAt: "2026-08-29",
         readingMinutes: 6,
         recipientSlug: "homme",
         sections: [
@@ -590,11 +590,11 @@ export const GUIDES: Guide[] = [
     },
     {
         slug: "cadeau-ado-garcon",
-        title: "Cadeau pour un ado garçon : 20 idées par âge (12-17 ans)",
-        metaTitle: "Cadeau ado garçon : 20 idées qui marchent | Kado-Box",
-        metaDescription: "Idées cadeaux pour ado garçon de 12 à 17 ans : films, séries, gaming, sport et créativité, triées par âge et budget.",
-        intro: "Offrir à un ado garçon, c'est souvent miser sur l'évident (gaming + tech) sans tomber dans le générique. Voici 20 idées concrètes par tranche d'âge et par budget pour éviter le « ouais, merci » poli.",
-        publishedAt: "2026-05-20",
+        title: "Cadeau ado garçon : 20 idées par âge et par budget",
+        metaTitle: "Cadeau ado garçon : 20 idées par âge et budget",
+        metaDescription: "20 idées cadeaux pour un ado garçon de 12 à 17 ans : gaming, tech, sport et manga, avec des choix pour chaque âge et chaque budget.",
+        intro: "Trouver un cadeau pour un ado garçon devient plus simple en partant de son âge, de sa plateforme de jeu, de son sport ou de ses séries préférées. Voici 20 idées pour les 12-17 ans, du petit cadeau à moins de 20 € au cadeau marquant, sans choisir un gadget qui finira au tiroir.",
+        publishedAt: "2026-08-29",
         readingMinutes: 6,
         recipientSlug: "ado",
         sections: [
@@ -1018,10 +1018,10 @@ export const GUIDES: Guide[] = [
     {
         slug: "cadeau-noel-petit-budget",
         title: "Cadeaux de Noël à petit budget : 25 idées à moins de 20 €",
-        metaTitle: "Cadeau de Noël petit budget : 25 idées à -20 € | Kado-Box",
-        metaDescription: "Idées cadeaux de Noël à moins de 20 € : pour la famille, les collègues, les amis. 25 idées qui ne sentent pas le cadeau cheap.",
-        intro: "Noël avec un petit budget, c'est tout à fait possible sans tomber dans le cadeau qui sent l'économie forcée. Voici 25 idées à moins de 20 € qui font vraiment plaisir, par destinataire et par type.",
-        publishedAt: "2026-05-20",
+        metaTitle: "Cadeau Noël petit budget : 25 idées à moins de 20 €",
+        metaDescription: "25 idées cadeaux de Noël à moins de 20 € pour la famille, les amis et les collègues : cadeaux utiles, gourmands et bien présentés.",
+        intro: "Un cadeau de Noël à petit budget peut faire vraiment plaisir s'il correspond à la personne. Voici 25 idées à moins de 20 € classées pour les femmes, les hommes, les ados, les enfants et les collègues, avec des conseils pour éviter l'effet cadeau choisi à la dernière minute.",
+        publishedAt: "2026-08-29",
         readingMinutes: 6,
         occasionSlug: "noel",
         sections: [
@@ -1174,11 +1174,11 @@ export const GUIDES: Guide[] = [
     },
     {
         slug: "cadeau-tech-utile",
-        title: "Cadeaux tech utiles : 20 idées qui ne finissent pas au tiroir",
-        metaTitle: "Cadeau tech utile : 20 idées qui servent vraiment | Kado-Box",
-        metaDescription: "Idées cadeaux tech utiles : casque audio, montre connectée, station de charge, accessoires bureau. 20 idées qui servent au quotidien, par budget.",
-        intro: "La tech-cadeau, c'est l'éternel risque du gadget qui finit oublié dans un tiroir. Voici 20 idées d'objets tech qui servent vraiment au quotidien, par budget et par profil utilisateur.",
-        publishedAt: "2026-05-20",
+        title: "Cadeau tech utile : 20 idées qui servent vraiment",
+        metaTitle: "Cadeau tech utile : 20 idées qui servent vraiment",
+        metaDescription: "20 idées cadeaux tech utiles par budget : audio, charge, télétravail et maison connectée, avec les compatibilités à vérifier avant d'acheter.",
+        intro: "Un cadeau tech utile doit résoudre un besoin quotidien et fonctionner avec les appareils que la personne possède déjà. Voici 20 idées classées par usage et par budget : audio, recharge, télétravail, sport et maison connectée, avec les vérifications à faire avant d'acheter.",
+        publishedAt: "2026-08-29",
         readingMinutes: 6,
         sections: [
             {

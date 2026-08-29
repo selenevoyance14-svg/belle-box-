@@ -14,9 +14,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const recipient = RECIPIENTS.find((item) => item.slug === slug);
   if (!recipient) return { title: "Destinataire introuvable" };
+  const metadataBySlug: Record<string, { title: string; description: string }> = {
+    femme: {
+      title: "Idée cadeau femme : 40 cadeaux originaux en 2026",
+      description: "Trouvez une idée cadeau pour une femme selon son âge, ses goûts et votre budget : cadeaux originaux, utiles et personnalisés dès 10 €.",
+    },
+  };
+  const customMetadata = metadataBySlug[slug];
   return {
-    title: `Idée cadeau ${recipient.name.toLowerCase()} en 2026 | Kado-Box`,
-    description: `Trouvez un cadeau ${recipient.name.toLowerCase()} vraiment adapté : idées Amazon sélectionnées selon les envies, l’occasion et votre budget.`,
+    title: customMetadata?.title ?? `Idée cadeau ${recipient.name.toLowerCase()} en 2026 | Kado-Box`,
+    description: customMetadata?.description ?? `Trouvez un cadeau ${recipient.name.toLowerCase()} vraiment adapté : idées Amazon sélectionnées selon les envies, l’occasion et votre budget.`,
     alternates: { canonical: `/destinataire/${slug}` },
   };
 }
@@ -28,12 +35,19 @@ export default async function RecipientPage({ params }: Props) {
   return (
     <CollectionPage
       eyebrow="Choisir par destinataire"
-      title={`Idées cadeau ${recipient.name.toLowerCase()}`}
-      description="Des idées ciblées pour faire plaisir sans tomber dans le cadeau générique, du petit prix au cadeau qui marque."
+      title={slug === "femme" ? "40 idées cadeaux pour une femme en 2026" : `Idées cadeau ${recipient.name.toLowerCase()}`}
+      description={slug === "femme"
+        ? "Des cadeaux pour une femme classés par goûts, occasion et budget, de moins de 20 € au cadeau d’exception."
+        : "Des idées ciblées pour faire plaisir sans tomber dans le cadeau générique, du petit prix au cadeau qui marque."}
       emoji={recipient.emoji}
       products={getProductsByRecipient(slug)}
       editorial={RECIPIENT_EDITORIAL[slug]}
-      related={RECIPIENTS.filter((item) => item.slug !== slug).slice(0, 4).map((item) => ({
+      related={slug === "femme" ? [
+        { href: "/guide/idees-cadeaux-anniversaire-femme", label: "Cadeau d’anniversaire pour une femme" },
+        { href: "/guide/cadeau-noel-petit-budget", label: "Cadeaux de Noël à moins de 20 €" },
+        { href: "/budget/moins-de-20-euros", label: "Cadeaux pour femme à petit prix" },
+        { href: "/occasion/noel", label: "Idées cadeaux de Noël" },
+      ] : RECIPIENTS.filter((item) => item.slug !== slug).slice(0, 4).map((item) => ({
         href: `/destinataire/${item.slug}`,
         label: item.name,
       }))}

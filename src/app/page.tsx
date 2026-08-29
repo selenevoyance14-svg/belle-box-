@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 
 const FEATURED_OCCASIONS = ["naissance", "anniversaire", "noel", "fete-des-meres"];
 const FEATURED_GUIDES = [
-  "cadeau-naissance",
-  "cadeau-ado-fille",
-  "cadeau-grand-mere",
+  "cadeau-ado-garcon",
+  "cadeau-grand-pere",
+  "cadeau-noel-petit-budget",
 ];
 
 export default function Home() {

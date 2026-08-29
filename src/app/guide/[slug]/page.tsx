@@ -40,7 +40,17 @@ export default async function GuidePage({ params }: Props) {
     .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))
     .slice(0, 6);
 
-  const otherGuides = GUIDES.filter((g) => g.slug !== slug).slice(0, 3);
+  const otherGuides = GUIDES
+    .filter((candidate) => candidate.slug !== slug)
+    .map((candidate) => ({
+      guide: candidate,
+      relevance:
+        (guide.recipientSlug && candidate.recipientSlug === guide.recipientSlug ? 2 : 0) +
+        (guide.occasionSlug && candidate.occasionSlug === guide.occasionSlug ? 2 : 0),
+    }))
+    .sort((a, b) => b.relevance - a.relevance)
+    .slice(0, 3)
+    .map(({ guide: candidate }) => candidate);
 
   return (
     <>
@@ -102,13 +112,13 @@ export default async function GuidePage({ params }: Props) {
               <h2 style={{ marginTop: 0 }}>À lire aussi</h2>
               <div className="occasion-grid" style={{ marginTop: "20px" }}>
                 {otherGuides.map((g) => (
-                  <a key={g.slug} href={`/guide/${g.slug}`} className="occasion-card">
+                  <Link key={g.slug} href={`/guide/${g.slug}`} className="occasion-card">
                     <div>
                       <h3>{g.title}</h3>
                       <p>{g.metaDescription}</p>
                     </div>
                     <ChevronRight size={20} style={{ alignSelf: "center" }} />
-                  </a>
+                  </Link>
                 ))}
               </div>
             </section>
