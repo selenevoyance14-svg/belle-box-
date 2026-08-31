@@ -502,7 +502,7 @@ export const GUIDES: Guide[] = [
             {
                 heading: "Gourmandise : vin, alcool d'exception, café",
                 paragraphs: [
-                    "Une bonne bouteille de son vin préféré, un coffret de dégustation whisky/cognac/armagnac, un café de spécialité. Le cadeau qui marque : une bouteille millésimée sur son année de naissance ou celle d'un événement marquant (mariage, naissance d'un enfant).",
+                    "Une bonne bouteille de son vin préféré, un coffret de dégustation de whisky, de cognac ou d'armagnac, ou encore un café de spécialité. Le cadeau qui marque : une bouteille millésimée de son année de naissance ou de celle d'un événement important (mariage, naissance d'un enfant).",
                 ],
             },
             {
@@ -520,14 +520,14 @@ export const GUIDES: Guide[] = [
             {
                 heading: "Tech simple : tablette adaptée, montre connectée senior",
                 paragraphs: [
-                    "Une tablette avec interface simplifiée (idéale pour les appels vidéo en famille), une montre connectée senior avec alerte chute. À configurer entièrement avant de l'offrir, c'est crucial.",
+                    "Une tablette avec une interface simplifiée (idéale pour les appels vidéo en famille) ou une montre connectée pour senior avec détection des chutes. Configurez-la entièrement avant de l'offrir : c'est essentiel.",
                 ],
             },
         ],
         faq: [
             {
-                q: "Que offrir à un grand-père de plus de 80 ans ?",
-                a: "Confort + souvenirs : plaid doux, album photo, bon livre grands caractères, coffret gourmand qu'il appréciera vraiment. Évitez les objets compliqués à utiliser.",
+                q: "Qu'offrir à un grand-père de plus de 80 ans ?",
+                a: "Misez sur le confort et les souvenirs : plaid doux, album photo, bon livre en grands caractères ou coffret gourmand qu'il appréciera vraiment. Évitez les objets compliqués à utiliser.",
             },
             {
                 q: "Cadeau commun avec ses frères/sœurs : quel budget ?",
@@ -607,7 +607,7 @@ export const GUIDES: Guide[] = [
             {
                 heading: "14-16 ans : gaming, écouteurs, accessoires tech",
                 paragraphs: [
-                    "Un jeu très attendu, une carte cadeau Steam/PlayStation/Xbox (25-50 €), des écouteurs gaming, une manette ergonomique, un repose-poignet, une enceinte Bluetooth pour sa chambre. La SSD externe ou une carte microSD pour étendre sa Switch peut aussi faire mouche.",
+                    "Un jeu très attendu, une carte cadeau Steam, PlayStation ou Xbox (25 à 50 €), un casque gaming, une manette ergonomique, un repose-poignet ou une enceinte Bluetooth pour sa chambre. Un SSD externe ou une carte microSD pour augmenter la capacité de sa Switch peut aussi faire mouche.",
                 ],
             },
             {
@@ -638,7 +638,7 @@ export const GUIDES: Guide[] = [
         faq: [
             {
                 q: "Quel jeu vidéo offrir si on ne s'y connaît pas ?",
-                a: "Demandez-lui directement quel jeu il attend (les ados ont presque toujours un Steam ou PlayStation wishlist). À défaut, une carte cadeau de la console qu'il utilise est la solution la plus sûre.",
+                a: "Demandez-lui directement quel jeu il attend : les ados ont presque toujours une liste de souhaits sur Steam ou PlayStation. À défaut, une carte cadeau compatible avec sa console est la solution la plus sûre.",
             },
             {
                 q: "Cadeau pour un ado qu'on ne voit pas souvent ?",
@@ -1028,13 +1028,13 @@ export const GUIDES: Guide[] = [
             {
                 heading: "Pour les femmes : moins de 20 €",
                 paragraphs: [
-                    "Une bougie de qualité moyenne mais joliment présentée, un coffret de thé Damman ou Kusmi, un bijou minimaliste en argent plaqué, un livre de poche d'une autrice qu'elle aime, un mug + sachet de chocolat chaud premium.",
+                    "Une bougie joliment présentée, un coffret de thé Dammann ou Kusmi, un bijou minimaliste en métal argenté, un livre de poche d'une autrice qu'elle aime ou un mug accompagné d'un sachet de chocolat chaud de qualité.",
                 ],
             },
             {
                 heading: "Pour les hommes : moins de 20 €",
                 paragraphs: [
-                    "Un coffret de bières artisanales, un porte-clés en cuir véritable, une paire de chaussettes de marque, un livre BD/manga d'une série qu'il suit, un mug isotherme.",
+                    "Un coffret de bières artisanales, un porte-clés en cuir véritable, une paire de chaussettes de marque, une BD ou un manga d'une série qu'il suit, ou encore un mug isotherme.",
                 ],
             },
             {
@@ -1046,13 +1046,13 @@ export const GUIDES: Guide[] = [
             {
                 heading: "Pour les ados : moins de 20 €",
                 paragraphs: [
-                    "Une carte cadeau Steam/PlayStation/Spotify (10-15 €), des chouchous + accessoires cheveux pour fille, des chaussettes à motifs marrants pour garçon, un livre populaire (TikTok, manga), une coque de téléphone design.",
+                    "Une carte cadeau Steam, PlayStation ou Spotify (10 à 15 €), des chouchous et accessoires pour cheveux, des chaussettes à motifs amusants, un livre popularisé sur TikTok, un manga ou une coque de téléphone originale.",
                 ],
             },
             {
                 heading: "L'astuce qui change tout : l'emballage",
                 paragraphs: [
-                    "À ce budget, c'est l'emballage qui sépare le cadeau « cheap » du cadeau « pensé ». Papier kraft + ficelle + une branche de sapin ou un bâton de cannelle : effet maximal, coût minimal. Plus la carte manuscrite, et le cadeau passe à un autre niveau.",
+                    "À ce budget, c'est l'emballage qui distingue le cadeau impersonnel du cadeau attentionné. Papier kraft, ficelle, branche de sapin ou bâton de cannelle : effet maximal, coût minimal. Ajoutez une carte manuscrite et le cadeau prendra une tout autre dimension.",
                 ],
             },
         ],
@@ -1063,7 +1063,7 @@ export const GUIDES: Guide[] = [
             },
             {
                 q: "Faut-il mettre plusieurs petits cadeaux ou un seul ?",
-                a: "Plusieurs petits (chocolats + livre de poche + bougie par exemple) donnent un effet « il y a beaucoup à déballer » qui dépasse souvent un seul cadeau à 25 €. À tester en cadeau Noël familial.",
+                a: "Plusieurs petits cadeaux (des chocolats, un livre de poche et une bougie, par exemple) donnent davantage à déballer et font souvent plus d'effet qu'un seul cadeau à 25 €. C'est une bonne formule pour un Noël en famille.",
             },
         ],
     },
