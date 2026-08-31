@@ -79,6 +79,7 @@ const BLACKLIST = [
   "tapis de souris", "coque pour", "coque magnétique", "coque iphone", "coque samsung",
   "cordon de coque", "cave à vin", "cave a vin", "housse de rangement",
   "extension cheveux", "extension a clip", "extension à clip", "cheveux humains", "extension de cheveux",
+  "gants jetables", "ruban led", "bande led",
   "rideau occultant", "moustiquaire", "carte sd", "carte micro sd", "carte microsd",
   "carte sdxc", "carte microsdxc", "disque dur", "clé usb", "clef usb",
 ];
@@ -89,7 +90,7 @@ function categorize(title) {
   if (/\b(parfum|eau de toilette|eau de parfum|cologne|lancôme|chanel|dior|guerlain|hugo boss|paco rabanne|yves saint laurent)\b/.test(t)) return "parfum";
   if (/\b(bijou|bijoux|collier|bracelet|bague|pandora|swarovski|argent 925|or 18k)\b/.test(t) || /boucles? d'oreille/.test(t)) return "bijou";
   if (/\b(montre|festina|casio|garmin|fossil|seiko|smartwatch|apple watch)\b/.test(t)) return "montre";
-  if (/\b(lego|playmobil|barbie|poupée|peluche|funko|nerf|puzzle|play-doh|pâte à modeler|magnet|magneti)\b/.test(t) || /jeu (de société|éducatif|enfant|pour enfant|de mime)/.test(t)) return "jouet";
+  if (/\b(lego|playmobil|barbie|poupée|peluche|funko|nerf|puzzle|play-doh|pâte à modeler|magnet|magneti|star wars|hot wheels|fisher-price|vtech|ravensburger|hasbro|mattel|schleich|sylvanian families|pat patrouille|pokemon|pokémon)\b/.test(t) || /jeu (de société|éducatif|enfant|pour enfant|de mime)/.test(t)) return "jouet";
   if (/\b(chocolat|lindt|ferrero|kinder|milka|bonbon|confiserie|praliné|truffe|nutella)\b/.test(t)) return "chocolat";
   if (/\b(bougie|yankee|diptyque|durance|rituals)\b/.test(t)) return "bougie";
   if (/\b(coffret cadeau|kit cadeau|set cadeau|panier garni|box cadeau)\b/.test(t)) return "coffret";
@@ -277,7 +278,8 @@ async function processAsin(asin, existingSlugs) {
     const title = parseTitle(html);
     const image = parseImage(html);
     const price = parsePrice(html);
-    if (!title || !image || !price) return null;
+    if (!title || !image || !price) return { _skip: "missing-data" };
+    if (price < 5 || price > 500) return { _skip: "price-range" };
     if (!isCadeau(title)) return { _skip: "blacklist" };
     const cat = categorize(title);
     if (cat === "autre") return { _skip: "autre" };
@@ -288,6 +290,7 @@ async function processAsin(asin, existingSlugs) {
     const reviews = parseReviews(html);
     const imgFilename = `${slug}.jpg`;
     const imgPath = path.join(IMG_DIR, imgFilename);
+    if (fs.existsSync(imgPath)) return { _skip: "image-exists" };
     await downloadImage(image, imgPath);
     processImage(imgPath);
 
@@ -302,8 +305,8 @@ async function processAsin(asin, existingSlugs) {
       image: `/images/amazon/${imgFilename}`,
       affiliate_url: `https://www.amazon.fr/dp/${asin}?tag=${PARTNER_TAG}`,
     };
-  } catch {
-    return null;
+  } catch (error) {
+    return { _skip: `error:${error.message}` };
   }
 }
 
@@ -337,13 +340,32 @@ async function main() {
 
   // 2. Traiter jusqu'à atteindre TARGET produits non-"autre"
   const added = [];
+  const skipped = {};
+  const addedByCategory = {};
+  const addedByBrand = {};
+  const maxPerCategory = 4;
+  const maxPerBrand = 2;
   for (const asin of candidates) {
     if (added.length >= TARGET) break;
     const r = await processAsin(asin, existingSlugs);
     if (r && !r._skip) {
+      const brand = r.title.toLowerCase().replace(/[^a-zà-ÿ0-9]+/g, " ").trim().split(" ")[0];
+      if ((addedByCategory[r.category] || 0) >= maxPerCategory || (addedByBrand[brand] || 0) >= maxPerBrand) {
+        const localImage = path.join(ROOT, "public", r.image.replace(/^\//, ""));
+        if (fs.existsSync(localImage)) fs.unlinkSync(localImage);
+        const quota = (addedByCategory[r.category] || 0) >= maxPerCategory ? "category-quota" : "brand-quota";
+        skipped[quota] = (skipped[quota] || 0) + 1;
+        await new Promise((res) => setTimeout(res, 650));
+        continue;
+      }
       existingSlugs.add(r.slug);
       added.push(r);
+      addedByCategory[r.category] = (addedByCategory[r.category] || 0) + 1;
+      addedByBrand[brand] = (addedByBrand[brand] || 0) + 1;
       console.log(`  ✓ [${added.length}/${TARGET}] ${r.category.padEnd(11)} ${r.price.toFixed(2).padStart(6)}€  ${r.title.slice(0, 50)}`);
+    } else {
+      const reason = r?._skip || "unknown";
+      skipped[reason] = (skipped[reason] || 0) + 1;
     }
     await new Promise((res) => setTimeout(res, 650));
   }
@@ -366,6 +388,7 @@ async function main() {
   const byCat = {};
   for (const p of added) byCat[p.category] = (byCat[p.category] || 0) + 1;
   console.log(`Nouveaux par catégorie :`, byCat);
+  if (added.length < TARGET) console.log(`Rejets :`, skipped);
   console.log(`→ ${CATALOG}\n`);
 }
 
