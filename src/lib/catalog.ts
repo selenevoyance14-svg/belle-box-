@@ -233,21 +233,21 @@ export const BUDGETS: Array<{ slug: string; name: string; emoji: string; min: nu
     { slug: "plus-de-100-euros", name: "Plus de 100 €", emoji: "💎", min: 100.01, max: 99999, description: "Les cadeaux d'exception, pour les grandes occasions." },
 ];
 
-export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string }> = [
-    { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël" },
-    { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge" },
+export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string; image?: string }> = [
+    { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël", image: "/images/categories/noel.webp" },
+    { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge", image: "/images/categories/anniversaire.webp" },
     { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'" },
-    { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit" },
-    { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman" },
+    { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit", image: "/images/categories/naissance.webp" },
+    { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman", image: "/images/categories/fete-des-meres.webp" },
     { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa" },
     { slug: "paques", name: "Pâques", emoji: "🐰", description: "Des attentions pour petits et grands" },
 ];
 
-export const RECIPIENTS: Array<{ slug: string; name: string; emoji: string }> = [
-    { slug: "femme", name: "Pour elle", emoji: "👩" },
-    { slug: "homme", name: "Pour lui", emoji: "👨" },
-    { slug: "enfant", name: "Pour les enfants", emoji: "🧒" },
-    { slug: "ado", name: "Pour les ados", emoji: "🎮" },
-    { slug: "couple", name: "Pour le couple", emoji: "💑" },
-    { slug: "bebe", name: "Pour bébé", emoji: "👶" },
+export const RECIPIENTS: Array<{ slug: string; name: string; emoji: string; image: string }> = [
+    { slug: "femme", name: "Pour elle", emoji: "👩", image: "/images/categories/femme.webp" },
+    { slug: "homme", name: "Pour lui", emoji: "👨", image: "/images/categories/homme.webp" },
+    { slug: "enfant", name: "Pour les enfants", emoji: "🧒", image: "/images/categories/enfant.webp" },
+    { slug: "ado", name: "Pour les ados", emoji: "🎮", image: "/images/categories/ado.webp" },
+    { slug: "couple", name: "Pour le couple", emoji: "💑", image: "/images/categories/couple.webp" },
+    { slug: "bebe", name: "Pour bébé", emoji: "👶", image: "/images/categories/bebe.webp" },
 ];

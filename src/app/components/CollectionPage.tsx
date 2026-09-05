@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Check, Sparkles } from "lucide-react";
 import Header from "@/app/components/Header";
 import SiteFooter from "@/app/components/SiteFooter";
@@ -14,6 +15,7 @@ export default function CollectionPage({
   title,
   description,
   emoji,
+  image,
   products,
   editorial,
   related,
@@ -22,6 +24,7 @@ export default function CollectionPage({
   title: string;
   description: string;
   emoji: string;
+  image?: string;
   products: CatalogProduct[];
   editorial?: Editorial;
   related: RelatedLink[];
@@ -79,7 +82,11 @@ export default function CollectionPage({
                   <span><Check size={14} /> Achat sur Amazon</span>
                 </div>
               </div>
-              <div className="collection-symbol" aria-hidden>{emoji}</div>
+              {image ? (
+                <div className="collection-visual">
+                  <Image src={image} alt="" fill priority sizes="190px" />
+                </div>
+              ) : <div className="collection-symbol" aria-hidden>{emoji}</div>}
             </div>
           </div>
         </section>

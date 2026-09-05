@@ -40,6 +40,7 @@ export default async function RecipientPage({ params }: Props) {
         ? "Des cadeaux pour une femme classés par goûts, occasion et budget, de moins de 20 € au cadeau d’exception."
         : "Des idées ciblées pour faire plaisir sans tomber dans le cadeau générique, du petit prix au cadeau qui marque."}
       emoji={recipient.emoji}
+      image={recipient.image}
       products={getProductsByRecipient(slug)}
       editorial={RECIPIENT_EDITORIAL[slug]}
       related={slug === "femme" ? [

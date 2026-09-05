@@ -38,6 +38,7 @@ export default async function OccasionPage({ params }: Props) {
       title={`Idées cadeau ${occasion.name.toLowerCase()}`}
       description={`${occasion.description}. Une sélection claire, avec plusieurs budgets et des conseils pour éviter le cadeau choisi par défaut.`}
       emoji={occasion.emoji}
+      image={occasion.image}
       products={products}
       editorial={OCCASION_EDITORIAL[slug]}
       related={OCCASIONS.filter((item) => item.slug !== slug).slice(0, 4).map((item) => ({

@@ -106,10 +106,11 @@ export default function Home() {
             <div className="occasion-editorial-grid">
               {OCCASIONS.filter((item) => FEATURED_OCCASIONS.includes(item.slug)).map((item, index) => (
                 <Link key={item.slug} href={`/occasion/${item.slug}`} className="occasion-editorial-card">
+                  {item.image ? <Image src={item.image} alt={`Idées cadeaux ${item.name}`} fill sizes="(max-width: 760px) 100vw, 50vw" /> : null}
+                  <span className="occasion-card-shade" />
                   <span className="occasion-index">0{index + 1}</span>
-                  <span className="occasion-big-emoji">{item.emoji}</span>
-                  <div><h3>{item.name}</h3><p>{item.description}</p></div>
-                  <ArrowRight size={19} />
+                  <div className="occasion-card-copy"><h3>{item.name}</h3><p>{item.description}</p></div>
+                  <ArrowRight className="occasion-card-arrow" size={21} />
                 </Link>
               ))}
             </div>
@@ -127,7 +128,9 @@ export default function Home() {
             <div className="recipient-pill-grid">
               {RECIPIENTS.map((item) => (
                 <Link key={item.slug} href={`/destinataire/${item.slug}`}>
-                  <span>{item.emoji}</span>{item.name}<ArrowRight size={15} />
+                  <Image src={item.image} alt={`Sélection de cadeaux ${item.name.toLowerCase()}`} fill sizes="(max-width: 640px) 50vw, 33vw" />
+                  <span className="recipient-card-shade" />
+                  <strong>{item.name}</strong><ArrowRight size={17} />
                 </Link>
               ))}
             </div>
