@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "sync-amazon": "node scripts/build-amazon-catalog.mjs",
-    "amazon:update": "node scripts/update-amazon-prices.mjs"
+    "amazon:update": "node scripts/update-amazon-prices.mjs",
+    "catalog:promote-gifts": "node scripts/promote-gift-products.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

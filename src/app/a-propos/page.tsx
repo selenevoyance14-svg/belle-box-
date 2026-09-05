@@ -31,6 +31,15 @@ export default function AProposPage() {
           </section>
 
           <section className="static-section">
+            <h2>Qui édite Kado-Box ?</h2>
+            <p>
+              Kado-Box est édité par Nathalie Lebrun, entrepreneure indépendante basée à
+              Fréjus. Chaque guide est relu avant publication et signé afin que vous sachiez
+              qui est responsable des conseils proposés.
+            </p>
+          </section>
+
+          <section className="static-section">
             <div className="static-icon-header">
               <Search size={24} />
               <h2>Comment les idées sont choisies</h2>
@@ -39,6 +48,12 @@ export default function AProposPage() {
               Nous privilégions les cadeaux compréhensibles, utiles ou plaisants
               à offrir. Les accessoires techniques, consommables et produits sans
               rapport clair avec un cadeau sont écartés de nos sélections.
+            </p>
+            <p>
+              Nous ne testons pas nécessairement chaque produit. Notre sélection repose sur
+              la pertinence comme cadeau, les caractéristiques annoncées par le fabricant,
+              le niveau et le volume d’avis disponibles, ainsi que le rapport entre l’usage
+              attendu et le prix. Une commission potentielle ne décide jamais du classement.
             </p>
             <p>
               Chaque guide est rédigé pour répondre à une situation précise. Nous

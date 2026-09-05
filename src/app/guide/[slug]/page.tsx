@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: g.metaTitle,
     description: g.metaDescription,
     alternates: { canonical: `/guide/${slug}` },
+    authors: [{ name: "Nathalie Lebrun", url: "/a-propos" }],
   };
 }
 
@@ -51,12 +52,25 @@ export default async function GuidePage({ params }: Props) {
     .sort((a, b) => b.relevance - a.relevance)
     .slice(0, 3)
     .map(({ guide: candidate }) => candidate);
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: guide.title,
+    description: guide.metaDescription,
+    datePublished: guide.publishedAt,
+    dateModified: guide.publishedAt,
+    inLanguage: "fr-FR",
+    author: { "@type": "Person", name: "Nathalie Lebrun", url: "https://kado-box.fr/a-propos" },
+    publisher: { "@type": "Organization", name: "Kado-Box", url: "https://kado-box.fr" },
+    mainEntityOfPage: `https://kado-box.fr/guide/${guide.slug}`,
+  };
 
   return (
     <>
       <Header />
 
       <article className="static-page kb-guide-article">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
         <div className="kb-container" style={{ maxWidth: "820px" }}>
           <Link href="/guide" className="breadcrumb-back">
             <ArrowLeft size={14} /> Tous les guides
@@ -66,6 +80,7 @@ export default async function GuidePage({ params }: Props) {
           <div style={{ display: "flex", gap: "16px", color: "var(--muted-text)", fontSize: "0.9rem", marginBottom: "24px" }}>
             <span><Calendar size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Mis à jour le {new Date(guide.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span><Clock size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> {guide.readingMinutes} min de lecture</span>
+            <span>Par <Link href="/a-propos">Nathalie Lebrun</Link></span>
           </div>
 
           <p style={{ fontSize: "1.1rem", lineHeight: "1.7", marginBottom: "32px" }}>{guide.intro}</p>

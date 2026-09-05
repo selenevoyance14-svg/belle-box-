@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Mentions légales | Kado-Box",
@@ -59,6 +60,7 @@ export default function MentionsLegalesPage() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

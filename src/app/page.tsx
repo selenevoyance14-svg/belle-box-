@@ -75,7 +75,7 @@ export default function Home() {
               </div>
               <div className="kb-hero-trust">
                 <span><Check size={14} /> Sélection resserrée</span>
-                <span><Check size={14} /> Prix visibles</span>
+                <span><Check size={14} /> Liens directs vers Amazon</span>
                 <span><Check size={14} /> Guides gratuits</span>
               </div>
             </div>

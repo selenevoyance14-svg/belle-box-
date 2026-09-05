@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Politique de confidentialité | Kado-Box",
@@ -38,8 +39,9 @@ export default function PolitiqueConfidentialitePage() {
               votre choix de consentement, Google et ses partenaires peuvent
               utiliser des cookies ou des identifiants afin de diffuser, mesurer
               et limiter la répétition des annonces. Vous pouvez refuser les
-              finalités non essentielles dans le message de consentement affiché
-              lors de votre première visite.
+              finalités non essentielles dans le message de consentement fourni par
+              une plateforme de gestion du consentement certifiée par Google, lorsqu’il
+              est activé pour votre zone géographique.
             </p>
             <p>
               Pour en savoir plus ou contrôler la personnalisation des annonces,
@@ -84,6 +86,7 @@ export default function PolitiqueConfidentialitePage() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

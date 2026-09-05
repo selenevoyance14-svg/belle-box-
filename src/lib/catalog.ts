@@ -115,7 +115,9 @@ export function isGiftCandidate(product: CatalogProduct): boolean {
 function giftScore(product: CatalogProduct): number {
     const title = normalizedTitle(product);
     const explicitGiftBonus = STRONG_GIFT_TERMS.some((term) => title.includes(term)) ? 40 : 0;
-    return explicitGiftBonus;
+    const ratingScore = Math.max(0, (product.rating ?? 0) - 3.5) * 12;
+    const reviewScore = Math.min(24, Math.log10((product.reviews_count ?? 0) + 1) * 6);
+    return explicitGiftBonus + ratingScore + reviewScore;
 }
 
 function curate(products: CatalogProduct[], limit = 24): CatalogProduct[] {

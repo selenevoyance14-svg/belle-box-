@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/Header";
+import SiteFooter from "@/app/components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "Affiliation Amazon | Kado Box",
@@ -28,6 +29,7 @@ export default function AffiliationAmazonPage() {
           </section>
         </div>
       </main>
+      <SiteFooter />
     </>
   );
 }

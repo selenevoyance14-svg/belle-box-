@@ -44,6 +44,17 @@ export default function CollectionPage({
           acceptedAnswer: { "@type": "Answer", text: item.a },
         })),
       }] : []),
+      {
+        "@type": "ItemList",
+        name: `Sélection ${title}`,
+        numberOfItems: products.length,
+        itemListElement: products.map((product, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: product.title,
+          url: product.affiliate_url,
+        })),
+      },
     ],
   };
 
@@ -89,8 +100,13 @@ export default function CollectionPage({
                 <p className="kb-eyebrow"><Sparkles size={14} /> Notre sélection</p>
                 <h2>{products.length} idées qui méritent d’être offertes</h2>
               </div>
-              <p>Prix et disponibilité vérifiés directement chez Amazon au moment de votre visite.</p>
+              <p>Prix et disponibilité à vérifier directement chez Amazon avant l’achat.</p>
             </div>
+            <p className="collection-disclosure">
+              Sélection indépendante mise à jour régulièrement. Certains liens sont affiliés :
+              Kado-Box peut recevoir une commission, sans surcoût pour vous. Nous privilégions
+              l’utilité, la qualité perçue, les avis disponibles et la cohérence avec l’occasion.
+            </p>
             <div className="product-grid kb-product-grid">
               {products.map((product, index) => (
                 <ProductCard
