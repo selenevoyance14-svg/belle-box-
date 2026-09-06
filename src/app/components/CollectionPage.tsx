@@ -6,6 +6,7 @@ import SiteFooter from "@/app/components/SiteFooter";
 import { EditorialBody } from "@/app/components/EditorialContent";
 import { ProductCard } from "@/app/components/ProductCard";
 import type { CatalogProduct } from "@/lib/catalog";
+import { CATEGORY_LABELS } from "@/lib/catalog-labels";
 import type { Editorial } from "@/lib/editorial";
 
 type RelatedLink = { href: string; label: string };
@@ -30,6 +31,7 @@ export default function CollectionPage({
   related: RelatedLink[];
 }) {
   const faq = editorial?.faq ?? [];
+  const absoluteUrl = (value: string) => value.startsWith("http") ? value : `https://kado-box.fr${value}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -37,7 +39,15 @@ export default function CollectionPage({
         "@type": "CollectionPage",
         name: title,
         description,
+        inLanguage: "fr-FR",
         isPartOf: { "@type": "WebSite", name: "Kado-Box", url: "https://kado-box.fr" },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Accueil", item: "https://kado-box.fr" },
+          { "@type": "ListItem", position: 2, name: title },
+        ],
       },
       ...(faq.length ? [{
         "@type": "FAQPage",
@@ -54,8 +64,27 @@ export default function CollectionPage({
         itemListElement: products.map((product, index) => ({
           "@type": "ListItem",
           position: index + 1,
-          name: product.title,
-          url: product.affiliate_url,
+          item: {
+            "@type": "Product",
+            name: product.title,
+            image: absoluteUrl(product.image),
+            category: CATEGORY_LABELS[product.category] ?? "Idée cadeau",
+            url: product.affiliate_url,
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "EUR",
+              price: product.price.toFixed(2),
+              url: product.affiliate_url,
+            },
+            ...(product.rating && product.reviews_count ? {
+              aggregateRating: {
+                "@type": "AggregateRating",
+                ratingValue: product.rating,
+                reviewCount: product.reviews_count,
+                bestRating: 5,
+              },
+            } : {}),
+          },
         })),
       },
     ],

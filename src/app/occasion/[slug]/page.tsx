@@ -23,7 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: occasion.description,
       url: `/occasion/${slug}`,
       type: "website",
+      images: occasion.image ? [{ url: occasion.image, width: 1200, height: 900, alt: `Idées cadeaux ${occasion.name}` }] : undefined,
     },
+    twitter: occasion.image ? { card: "summary_large_image", images: [occasion.image] } : undefined,
   };
 }
 

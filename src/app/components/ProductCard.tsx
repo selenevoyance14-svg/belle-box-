@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight, Sparkles, Star } from "lucide-react";
 import type { CatalogProduct } from "@/lib/catalog";
 import { CATEGORY_LABELS } from "@/lib/catalog-labels";
 
@@ -12,6 +12,26 @@ function decodeTitle(title: string) {
     .replace(/&amp;/g, "&")
     .replace(/&quot;/g, '"');
 }
+
+const GIFT_REASONS: Record<string, string> = {
+  bebe: "Une attention utile pour accompagner les premiers mois.",
+  beaute: "Un rituel plaisir facile à intégrer au quotidien.",
+  bijou: "Une attention personnelle qui se porte et se garde.",
+  chocolat: "Un plaisir gourmand à partager ou à savourer.",
+  coffret: "Une présentation soignée, prête à offrir.",
+  cuisine: "Une idée utile pour les amateurs de bons moments à table.",
+  deco: "Une touche chaleureuse qui trouve facilement sa place.",
+  jeu_video: "Une valeur sûre pour prolonger le plaisir après l’ouverture.",
+  jouet: "Un cadeau ludique pensé pour éveiller la curiosité.",
+  livre: "Une parenthèse choisie à offrir selon ses goûts.",
+  maroquinerie: "Un accessoire pratique avec une vraie présence cadeau.",
+  mode: "Une pièce plaisir à choisir selon son style.",
+  montre: "Un cadeau utile et marquant pour le quotidien.",
+  parfum: "Une attention raffinée, idéale si vous connaissez ses goûts.",
+  papeterie: "Une idée créative et utile qui accompagne le quotidien.",
+  sport: "Un coup de pouce motivant pour sa pratique préférée.",
+  tech: "Un objet pratique pour simplifier ou enrichir le quotidien.",
+};
 
 export function ProductCard({
   product,
@@ -67,6 +87,14 @@ export function ProductCard({
       </div>
       <div className="product-body">
         <h3 className="product-title">{title}</h3>
+        {product.rating && product.reviews_count ? (
+          <div className="product-rating" aria-label={`${product.rating} sur 5, ${product.reviews_count} avis`}>
+            <Star size={14} fill="currentColor" />
+            <span className="rating-num">{product.rating.toLocaleString("fr-FR")}/5</span>
+            <span className="muted">({product.reviews_count.toLocaleString("fr-FR")} avis)</span>
+          </div>
+        ) : null}
+        <p className="product-desc">{GIFT_REASONS[product.category] ?? "Une idée sélectionnée pour son utilité et sa qualité perçue."}</p>
         <div className="product-price">
           <span className="price-now">{priceIsFresh ? formattedPrice : "Voir le prix sur Amazon"}</span>
         </div>

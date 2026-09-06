@@ -236,11 +236,11 @@ export const BUDGETS: Array<{ slug: string; name: string; emoji: string; min: nu
 export const OCCASIONS: Array<{ slug: string; name: string; emoji: string; description: string; image?: string }> = [
     { slug: "noel", name: "Noël", emoji: "🎄", description: "Des idées pour faire des heureux à Noël", image: "/images/categories/noel.webp" },
     { slug: "anniversaire", name: "Anniversaire", emoji: "🎂", description: "Le cadeau qui marque, peu importe l'âge", image: "/images/categories/anniversaire.webp" },
-    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'" },
+    { slug: "saint-valentin", name: "Saint-Valentin", emoji: "💝", description: "Pour lui dire 'je t'aime'", image: "/images/categories/saint-valentin.webp" },
     { slug: "naissance", name: "Naissance", emoji: "🍼", description: "Pour accueillir le tout-petit", image: "/images/categories/naissance.webp" },
     { slug: "fete-des-meres", name: "Fête des mères", emoji: "💐", description: "Pour faire plaisir à maman", image: "/images/categories/fete-des-meres.webp" },
-    { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa" },
-    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Des attentions pour petits et grands" },
+    { slug: "fete-des-peres", name: "Fête des pères", emoji: "👔", description: "Pour gâter papa", image: "/images/categories/fete-des-peres.webp" },
+    { slug: "paques", name: "Pâques", emoji: "🐰", description: "Des attentions pour petits et grands", image: "/images/categories/paques.webp" },
 ];
 
 export const RECIPIENTS: Array<{ slug: string; name: string; emoji: string; image: string }> = [

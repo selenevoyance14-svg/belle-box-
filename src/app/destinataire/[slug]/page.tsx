@@ -25,6 +25,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: customMetadata?.title ?? `Idée cadeau ${recipient.name.toLowerCase()} en 2026 | Kado-Box`,
     description: customMetadata?.description ?? `Trouvez un cadeau ${recipient.name.toLowerCase()} vraiment adapté : idées Amazon sélectionnées selon les envies, l’occasion et votre budget.`,
     alternates: { canonical: `/destinataire/${slug}` },
+    openGraph: {
+      title: customMetadata?.title ?? `Idées cadeau ${recipient.name.toLowerCase()} en 2026`,
+      description: customMetadata?.description ?? `Une sélection de cadeaux ${recipient.name.toLowerCase()} pour tous les budgets.`,
+      url: `/destinataire/${slug}`,
+      images: [{ url: recipient.image, width: 1200, height: 900, alt: `Sélection de cadeaux ${recipient.name.toLowerCase()}` }],
+    },
+    twitter: { card: "summary_large_image", images: [recipient.image] },
   };
 }
 
