@@ -120,7 +120,7 @@ function giftScore(product: CatalogProduct): number {
     return explicitGiftBonus + ratingScore + reviewScore;
 }
 
-function curate(products: CatalogProduct[], limit = 24): CatalogProduct[] {
+function curate(products: CatalogProduct[], limit = 60): CatalogProduct[] {
     return [...products]
         .filter(isGiftCandidate)
         .sort((a, b) => giftScore(b) - giftScore(a))
@@ -136,7 +136,7 @@ const RECIPIENT_CATEGORY_BONUSES: Record<string, Record<string, number>> = {
     bebe: { bebe: 48, jouet: 38, livre: 28 },
 };
 
-function curateForRecipient(products: CatalogProduct[], recipient: string, limit = 24): CatalogProduct[] {
+function curateForRecipient(products: CatalogProduct[], recipient: string, limit = 60): CatalogProduct[] {
     const bonuses = RECIPIENT_CATEGORY_BONUSES[recipient] ?? {};
     return [...products]
         .filter(isGiftCandidate)
@@ -156,7 +156,7 @@ const OCCASION_CATEGORY_BONUSES: Record<string, Record<string, number>> = {
     paques: { chocolat: 45, jouet: 34, livre: 20 },
 };
 
-function curateForOccasion(products: CatalogProduct[], occasion: string, limit = 24): CatalogProduct[] {
+function curateForOccasion(products: CatalogProduct[], occasion: string, limit = 60): CatalogProduct[] {
     const bonuses = OCCASION_CATEGORY_BONUSES[occasion] ?? {};
     const restrictedCategories = occasion === "naissance"
         ? new Set(["bebe", "jouet", "livre"])

@@ -4,7 +4,7 @@ import { ArrowRight, Check, Sparkles } from "lucide-react";
 import Header from "@/app/components/Header";
 import SiteFooter from "@/app/components/SiteFooter";
 import { EditorialBody } from "@/app/components/EditorialContent";
-import { ProductCard } from "@/app/components/ProductCard";
+import FilterableProductGrid from "@/app/components/FilterableProductGrid";
 import type { CatalogProduct } from "@/lib/catalog";
 import { CATEGORY_LABELS } from "@/lib/catalog-labels";
 import type { Editorial } from "@/lib/editorial";
@@ -143,15 +143,7 @@ export default function CollectionPage({
               Kado-Box peut recevoir une commission, sans surcoût pour vous. Nous privilégions
               l’utilité, la qualité perçue, les avis disponibles et la cohérence avec l’occasion.
             </p>
-            <div className="product-grid kb-product-grid">
-              {products.map((product, index) => (
-                <ProductCard
-                  key={product.asin}
-                  product={product}
-                  badge={index === 0 ? "Notre choix" : index === 1 ? "Très apprécié" : undefined}
-                />
-              ))}
-            </div>
+            <FilterableProductGrid products={products} />
           </div>
         </section>
 

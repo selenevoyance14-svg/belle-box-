@@ -3007,3 +3007,98 @@ body { color: var(--kb-ink); background: var(--kb-paper); }
   font-size: 0.9rem;
   line-height: 1.6;
 }
+
+.catalog-filters {
+  margin: 0 0 2rem;
+  padding: 1.25rem;
+  border: 1px solid var(--kb-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 35px rgba(55, 38, 30, 0.06);
+}
+
+.catalog-filters-title {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+  color: var(--kb-ink);
+  font-weight: 700;
+}
+
+.catalog-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.catalog-filter-grid label {
+  display: grid;
+  gap: 0.4rem;
+  color: #6f625c;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.catalog-filter-grid select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 2.35rem 0 0.85rem;
+  border: 1px solid var(--kb-line);
+  border-radius: 8px;
+  color: var(--kb-ink);
+  background: #fbf9f7;
+  font: 600 0.9rem/1.2 "Inter", sans-serif;
+  text-transform: none;
+  cursor: pointer;
+}
+
+.catalog-filter-grid select:focus-visible {
+  outline: 3px solid rgba(234, 100, 75, 0.22);
+  border-color: var(--kb-coral);
+}
+
+.catalog-filter-status {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 30px;
+  margin-top: 0.8rem;
+  color: #746861;
+  font-size: 0.85rem;
+}
+
+.catalog-filter-status button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: auto;
+  padding: 0.35rem 0;
+  border: 0;
+  color: var(--kb-coral);
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.catalog-empty {
+  padding: 4rem 1rem;
+  border: 1px dashed var(--kb-line);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.catalog-empty p { margin: 0 0 1rem; color: #746861; }
+
+@media (max-width: 900px) {
+  .catalog-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .catalog-filters { padding: 1rem; }
+  .catalog-filter-grid { grid-template-columns: 1fr; }
+  .catalog-filter-status { align-items: flex-start; flex-wrap: wrap; }
+}
