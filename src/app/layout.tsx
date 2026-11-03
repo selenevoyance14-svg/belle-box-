@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { FavoritesProvider } from "./components/FavoritesProvider";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -72,7 +73,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body>{children}</body>
+      <body><FavoritesProvider>{children}</FavoritesProvider></body>
     </html>
   );
 }

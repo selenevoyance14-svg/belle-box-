@@ -1,176 +1,40 @@
 import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
-import Header from "@/app/components/Header";
-import SiteFooter from "@/app/components/SiteFooter";
-import { EditorialBody } from "@/app/components/EditorialContent";
-import FilterableProductGrid from "@/app/components/FilterableProductGrid";
+import { ArrowRight } from "lucide-react";
+import Header from "./Header";
+import SiteFooter from "./SiteFooter";
+import { EditorialBody } from "./EditorialContent";
+import FilterableProductGrid from "./FilterableProductGrid";
 import type { CatalogProduct } from "@/lib/catalog";
-import { CATEGORY_LABELS } from "@/lib/catalog-labels";
 import type { Editorial } from "@/lib/editorial";
 
 type RelatedLink = { href: string; label: string };
-
-export default function CollectionPage({
-  eyebrow,
-  title,
-  description,
-  emoji,
-  image,
-  products,
-  editorial,
-  related,
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-  emoji: string;
-  image?: string;
-  products: CatalogProduct[];
-  editorial?: Editorial;
-  related: RelatedLink[];
+export default function CollectionPage({ title, description, products, editorial, related, recipient, occasion }: {
+  eyebrow: string; title: string; description: string; emoji: string; image?: string;
+  products: CatalogProduct[]; editorial?: Editorial; related: RelatedLink[];
+  recipient?: string; occasion?: string;
 }) {
-  const faq = editorial?.faq ?? [];
-  const absoluteUrl = (value: string) => value.startsWith("http") ? value : `https://kado-box.fr${value}`;
   const jsonLd = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "CollectionPage",
-        name: title,
-        description,
-        inLanguage: "fr-FR",
-        isPartOf: { "@type": "WebSite", name: "Kado-Box", url: "https://kado-box.fr" },
-      },
-      {
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Accueil", item: "https://kado-box.fr" },
-          { "@type": "ListItem", position: 2, name: title },
-        ],
-      },
-      ...(faq.length ? [{
-        "@type": "FAQPage",
-        mainEntity: faq.map((item) => ({
-          "@type": "Question",
-          name: item.q,
-          acceptedAnswer: { "@type": "Answer", text: item.a },
-        })),
-      }] : []),
-      {
-        "@type": "ItemList",
-        name: `Sélection ${title}`,
-        numberOfItems: products.length,
-        itemListElement: products.map((product, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          item: {
-            "@type": "Product",
-            name: product.title,
-            image: absoluteUrl(product.image),
-            category: CATEGORY_LABELS[product.category] ?? "Idée cadeau",
-            url: product.affiliate_url,
-            offers: {
-              "@type": "Offer",
-              priceCurrency: "EUR",
-              price: product.price.toFixed(2),
-              url: product.affiliate_url,
-            },
-            ...(product.rating && product.reviews_count ? {
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: product.rating,
-                reviewCount: product.reviews_count,
-                bestRating: 5,
-              },
-            } : {}),
-          },
-        })),
-      },
+    "@context": "https://schema.org", "@graph": [
+      { "@type": "CollectionPage", name: title, description, inLanguage: "fr-FR" },
+      { "@type": "ItemList", name: title, numberOfItems: products.length,
+        itemListElement: products.map((p, index) => ({ "@type": "ListItem", position: index + 1, name: p.title, url: p.affiliate_url })) },
     ],
   };
-
-  return (
-    <>
-      <Header />
-      <main>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-        <section className="collection-hero">
-          <div className="kb-container">
-            <nav className="kb-breadcrumb" aria-label="Fil d’Ariane">
-              <Link href="/">Accueil</Link><span>/</span><span>{title}</span>
-            </nav>
-            <div className="collection-hero-grid">
-              <div>
-                <p className="kb-eyebrow">{eyebrow}</p>
-                <h1>{title}</h1>
-                <p className="collection-lead">{description}</p>
-                <div className="collection-trust">
-                  <span><Check size={14} /> Produits triés</span>
-                  <span><Check size={14} /> Plusieurs budgets</span>
-                  <span><Check size={14} /> Achat sur Amazon</span>
-                </div>
-              </div>
-              {image ? (
-                <div className="collection-visual">
-                  <Image src={image} alt="" fill priority sizes="190px" />
-                </div>
-              ) : <div className="collection-symbol" aria-hidden>{emoji}</div>}
-            </div>
-          </div>
-        </section>
-
-        {editorial ? (
-          <section className="collection-answer">
-            <div className="kb-container collection-answer-grid">
-              <p className="kb-eyebrow">La réponse rapide</p>
-              <p>{editorial.intro}</p>
-            </div>
-          </section>
-        ) : null}
-
-        <section className="kb-section">
-          <div className="kb-container">
-            <div className="kb-section-head">
-              <div>
-                <p className="kb-eyebrow"><Sparkles size={14} /> Notre sélection</p>
-                <h2>{products.length} idées qui méritent d’être offertes</h2>
-              </div>
-              <p>Prix et disponibilité à vérifier directement chez Amazon avant l’achat.</p>
-            </div>
-            <p className="collection-disclosure">
-              Sélection indépendante mise à jour régulièrement. Certains liens sont affiliés :
-              Kado-Box peut recevoir une commission, sans surcoût pour vous. Nous privilégions
-              l’utilité, la qualité perçue, les avis disponibles et la cohérence avec l’occasion.
-            </p>
-            <FilterableProductGrid products={products} />
-          </div>
-        </section>
-
-        {editorial ? (
-          <section className="kb-editorial-section">
-            <div className="kb-container kb-editorial-wrap">
-              <p className="kb-eyebrow">Bien choisir</p>
-              <EditorialBody editorial={editorial} />
-            </div>
-          </section>
-        ) : null}
-
-        <section className="related-links">
-          <div className="kb-container">
-            <p className="kb-eyebrow">Poursuivre la recherche</p>
-            <h2>D’autres pistes pour trouver juste</h2>
-            <div className="related-link-grid">
-              {related.map((item) => (
-                <Link key={item.href} href={item.href}>
-                  {item.label}<ArrowRight size={18} />
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
-      <SiteFooter />
-    </>
-  );
+  return <>
+    <Header />
+    <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
+      <section className="collection-hero collection-hero-compact"><div className="kb-container">
+        <nav className="kb-breadcrumb" aria-label="Fil d’Ariane"><Link href="/">Accueil</Link><span>/</span><span>{title}</span></nav>
+        <h1>{title}</h1>
+      </div></section>
+      <section className="kb-section collection-products"><div className="kb-container">
+        <FilterableProductGrid products={products} fixedRecipient={recipient} fixedOccasion={occasion} />
+      </div></section>
+      {editorial ? <section className="kb-editorial-section"><div className="kb-container kb-editorial-wrap"><details className="gift-advice"><summary>Nos conseils pour bien choisir</summary><EditorialBody editorial={editorial} /></details></div></section> : null}
+      <section className="related-links"><div className="kb-container"><h2>D’autres idées à explorer</h2><div className="related-link-grid">
+        {related.map((item) => <Link key={item.href} href={item.href}>{item.label}<ArrowRight size={18} /></Link>)}
+      </div></div></section>
+    </main><SiteFooter />
+  </>;
 }

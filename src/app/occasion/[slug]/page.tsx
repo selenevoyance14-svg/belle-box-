@@ -36,8 +36,9 @@ export default async function OccasionPage({ params }: Props) {
   const products = getProductsByOccasion(slug);
   return (
     <CollectionPage
+      occasion={slug}
       eyebrow="Choisir par occasion"
-      title={`Idées cadeau ${occasion.name.toLowerCase()}`}
+      title={`Cadeaux ${occasion.name}`}
       description={`${occasion.description}. Une sélection claire, avec plusieurs budgets et des conseils pour éviter le cadeau choisi par défaut.`}
       emoji={occasion.emoji}
       image={occasion.image}

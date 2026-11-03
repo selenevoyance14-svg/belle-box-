@@ -37,6 +37,7 @@ jobs:
           AMAZON_PARTNER_TAG: lebrunnathali-21
           AMAZON_MARKETPLACE: www.amazon.fr
         run: npm run amazon:update
+      - run: npm test
       - run: npm run build
       - name: Publier les données actualisées
         run: |

@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!recipient) return { title: "Destinataire introuvable" };
   const metadataBySlug: Record<string, { title: string; description: string }> = {
     femme: {
-      title: "Idée cadeau femme : 40 cadeaux originaux en 2026",
-      description: "Trouvez une idée cadeau pour une femme selon son âge, ses goûts et votre budget : cadeaux originaux, utiles et personnalisés dès 10 €.",
+      title: "Idée cadeau femme : idées selon ses envies en 2026",
+      description: "Trouvez une idée cadeau pour une femme selon son âge, ses goûts et votre budget : cadeaux originaux, utiles à choisir selon ses envies.",
     },
   };
   const customMetadata = metadataBySlug[slug];
@@ -41,8 +41,9 @@ export default async function RecipientPage({ params }: Props) {
   if (!recipient) notFound();
   return (
     <CollectionPage
+      recipient={slug}
       eyebrow="Choisir par destinataire"
-      title={slug === "femme" ? "40 idées cadeaux pour une femme en 2026" : `Idées cadeau ${recipient.name.toLowerCase()}`}
+      title={slug === "femme" ? "Idées cadeaux pour une femme" : `Idées cadeau ${recipient.name.toLowerCase()}`}
       description={slug === "femme"
         ? "Des cadeaux pour une femme classés par goûts, occasion et budget, de moins de 20 € au cadeau d’exception."
         : "Des idées ciblées pour faire plaisir sans tomber dans le cadeau générique, du petit prix au cadeau qui marque."}
@@ -53,7 +54,7 @@ export default async function RecipientPage({ params }: Props) {
       related={slug === "femme" ? [
         { href: "/guide/idees-cadeaux-anniversaire-femme", label: "Cadeau d’anniversaire pour une femme" },
         { href: "/guide/cadeau-noel-petit-budget", label: "Cadeaux de Noël à moins de 20 €" },
-        { href: "/budget/moins-de-20-euros", label: "Cadeaux pour femme à petit prix" },
+        { href: "/trouver-cadeau?recipient=femme&budget=under-20", label: "Cadeaux pour femme à petit prix" },
         { href: "/occasion/noel", label: "Idées cadeaux de Noël" },
       ] : RECIPIENTS.filter((item) => item.slug !== slug).slice(0, 4).map((item) => ({
         href: `/destinataire/${item.slug}`,

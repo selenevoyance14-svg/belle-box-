@@ -22,13 +22,13 @@ export default function SiteFooter() {
         </div>
         <div>
           <h2>Occasions</h2>
-          <ul>{OCCASIONS.slice(0, 5).map((item) => (
+          <ul>{OCCASIONS.map((item) => (
             <li key={item.slug}><Link href={`/occasion/${item.slug}`}>{item.name}</Link></li>
           ))}</ul>
         </div>
         <div>
           <h2>Pour qui</h2>
-          <ul>{RECIPIENTS.slice(0, 5).map((item) => (
+          <ul>{RECIPIENTS.map((item) => (
             <li key={item.slug}><Link href={`/destinataire/${item.slug}`}>{item.name}</Link></li>
           ))}</ul>
         </div>
@@ -42,6 +42,8 @@ export default function SiteFooter() {
       <div className="kb-container kb-footer-bottom">
         <span>© 2026 Kado-Box</span>
         <nav>
+          <Link href="/trouver-cadeau">Trouver un cadeau</Link>
+          <Link href="/favoris">Mes idées</Link>
           <Link href="/a-propos">Notre méthode</Link>
           <Link href="/mentions-legales">Mentions légales</Link>
           <Link href="/affiliation-amazon">Affiliation Amazon</Link>

@@ -34,8 +34,7 @@ export default function AProposPage() {
             <h2>Qui édite Kado-Box ?</h2>
             <p>
               Kado-Box est édité par Nathalie Lebrun, entrepreneure indépendante basée à
-              Fréjus. Chaque guide est relu avant publication et signé afin que vous sachiez
-              qui est responsable des conseils proposés.
+              Fréjus. Le site propose des pistes pour choisir un cadeau selon les goûts de la personne.
             </p>
           </section>
 
@@ -52,14 +51,12 @@ export default function AProposPage() {
             <p>
               Nous ne testons pas nécessairement chaque produit. Notre sélection repose sur
               la pertinence comme cadeau, les caractéristiques annoncées par le fabricant,
-              le niveau et le volume d’avis disponibles, ainsi que le rapport entre l’usage
-              attendu et le prix. Une commission potentielle ne décide jamais du classement.
+              les contraintes d’usage et la cohérence avec le destinataire. Une commission potentielle ne décide jamais du classement.
             </p>
             <p>
               Chaque guide est rédigé pour répondre à une situation précise. Nous
               examinons notamment l&apos;usage, le profil du destinataire, le budget,
-              les avis disponibles et les contraintes de livraison. Les contenus
-              sont revus lorsque les offres ou les besoins saisonniers évoluent.
+              les contraintes de compatibilité et les éventuels doublons. Les délais de livraison sont à vérifier directement chez le marchand.
             </p>
           </section>
 
@@ -69,7 +66,7 @@ export default function AProposPage() {
               <h2>Prix et disponibilité</h2>
             </div>
             <p>
-              Les offres peuvent évoluer. Le prix, le délai de livraison et la
+              Les budgets et les tris utilisent le dernier prix enregistré, qui peut être ancien. Un prix exact n’est affiché sur une fiche que si son relevé date de moins de 24 heures. Les offres peuvent évoluer. Le prix, le délai de livraison et la
               disponibilité affichés par le marchand au moment de la commande
               sont toujours ceux qui font foi.
             </p>

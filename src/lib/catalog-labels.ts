@@ -1,4 +1,8 @@
 export const CATEGORY_LABELS: Record<string, string> = {
+  jeu_societe: "Jeux de société",
+  construction: "Construction",
+  creatif: "Loisirs créatifs",
+  puzzle: "Puzzles",
   parfum: "Parfum",
   bijou: "Bijou",
   montre: "Montre",

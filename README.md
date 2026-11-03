@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kado-Box
 
-## Getting Started
+Guide de cadeaux en français : Next.js 16 / React 19 / export statique.
 
-First, run the development server:
+## Développer et vérifier
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- `npm run dev -- --webpack` : aperçu local.
+- `npm test` : cohérence du catalogue et des recommandations.
+- `npx tsc --noEmit` : vérification TypeScript.
+- `npx next build --webpack` : export de production dans `out/` (Webpack évite la restriction de ports de Turbopack dans l’environnement local).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Sélection des cadeaux
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`data/amazon-catalog.yaml` contient les données marchandes. Seuls les ASIN explicitement retenus dans `src/lib/gift-selection.ts` sont affichés au public. Pour ajouter une idée :
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Vérifier la correspondance du produit, de sa variante, de l’image et du lien affilié dans le catalogue source.
+2. Ajouter un titre court, un conseil propre au produit, une précaution et ses destinataires, envies et occasions dans la sélection.
+3. Lancer les tests et le build. Les tests détectent les ASIN absents, les doublons et la perte du tag affilié.
 
-## Learn More
+Les importations et mises à jour de prix ne doivent pas ajouter automatiquement de nouveaux produits à la sélection. Un prix exact apparaît uniquement si le relevé Amazon date de moins de 24 heures ; les filtres de budget utilisent le dernier prix enregistré, avec une mention explicite qu’il peut avoir changé. Aucune disponibilité ni date de livraison n’est promise.
 
-To learn more about Next.js, take a look at the following resources:
+## Parcours
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/trouver-cadeau` : filtres combinés (destinataire, budget, envie, occasion et recherche), tri, pagination et URL partageable.
+- `/favoris` : liste enregistrée dans le navigateur sous `kado-box-favorites-v1`, sans compte ni serveur. Le stockage bloqué conserve les favoris pour la session.
+- Les pages occasion, destinataire et budget utilisent le même moteur et affichent les produits avant les conseils.
+- Les guides combinent leurs contraintes et évitent les produits sans rapport avec le sujet.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Vérification visuelle avant publication
 
-## Deploy on Vercel
+Accueil sur ordinateur et téléphone ; recherche « ado + 20 € maximum + jeux » ; recherche sans résultat puis remise à zéro ; ajout/retrait d’un favori, navigation et rechargement ; vérification des images, des liens Amazon et du tag `lebrunnathali-21`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+L’export local et un commit Git ne constituent pas une confirmation de déploiement public.

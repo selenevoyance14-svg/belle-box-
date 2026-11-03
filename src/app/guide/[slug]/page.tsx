@@ -1,5 +1,5 @@
 import { GUIDES, getGuideBySlug } from "@/lib/guides";
-import { getProductsByOccasion, getProductsByRecipient, type CatalogProduct } from "@/lib/catalog";
+import { getProductsForGuide } from "@/lib/guide-products";
 import { ProductCard } from "@/app/components/ProductCard";
 import Header from "@/app/components/Header";
 import SiteFooter from "@/app/components/SiteFooter";
@@ -31,15 +31,7 @@ export default async function GuidePage({ params }: Props) {
   const guide = getGuideBySlug(slug);
   if (!guide) notFound();
 
-  let products: CatalogProduct[] = [];
-  if (guide.occasionSlug) {
-    products = getProductsByOccasion(guide.occasionSlug);
-  } else if (guide.recipientSlug) {
-    products = getProductsByRecipient(guide.recipientSlug);
-  }
-  products = products
-    .sort((a, b) => (b.reviews_count || 0) - (a.reviews_count || 0))
-    .slice(0, 6);
+  const products = getProductsForGuide(guide);
 
   const otherGuides = GUIDES
     .filter((candidate) => candidate.slug !== slug)
@@ -78,13 +70,29 @@ export default async function GuidePage({ params }: Props) {
 
           <h1 style={{ marginTop: "12px" }}>{guide.title}</h1>
           <div style={{ display: "flex", gap: "16px", color: "var(--muted-text)", fontSize: "0.9rem", marginBottom: "24px" }}>
-            <span><Calendar size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Mis à jour le {new Date(guide.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
+            <span><Calendar size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> Publié le {new Date(guide.publishedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
             <span><Clock size={13} style={{ display: "inline", verticalAlign: "middle", marginRight: "4px" }} /> {guide.readingMinutes} min de lecture</span>
             <span>Par <Link href="/a-propos">Nathalie Lebrun</Link></span>
           </div>
 
           <p style={{ fontSize: "1.1rem", lineHeight: "1.7", marginBottom: "32px" }}>{guide.intro}</p>
 
+          {products.length > 0 && (
+            <section style={{ marginTop: "48px" }}>
+              <h2>Notre sélection de produits Amazon</h2>
+              <p style={{ color: "var(--muted-text)" }}>Liens affiliés : une commission peut nous être versée, sans surcoût. Vérifiez le prix et la disponibilité sur Amazon.</p>
+              <div className="product-grid kb-product-grid" style={{ marginTop: "24px" }}>
+                {products.map((p) => (
+                  <ProductCard
+                    key={p.asin}
+                    product={p}
+                  />
+                ))}
+              </div>
+            </section>
+          )}
+
+          <p><Link href="/trouver-cadeau" className="gift-text-link">Affiner ma recherche par envie et budget →</Link></p>
           {guide.sections.map((s, i) => (
             <section key={i} style={{ marginBottom: "32px" }}>
               <h2 style={{ marginTop: "32px" }}>{s.heading}</h2>
@@ -93,22 +101,6 @@ export default async function GuidePage({ params }: Props) {
               ))}
             </section>
           ))}
-
-          {products.length > 0 && (
-            <section style={{ marginTop: "48px" }}>
-              <h2>Notre sélection de produits Amazon</h2>
-              <p style={{ color: "var(--muted-text)" }}>Une sélection resserrée. Le prix et la disponibilité sont à vérifier sur Amazon.</p>
-              <div className="product-grid kb-product-grid" style={{ marginTop: "24px" }}>
-                {products.map((p, i) => (
-                  <ProductCard
-                    key={p.asin}
-                    product={p}
-                    badge={i === 0 ? "À découvrir" : i === 1 ? "Autre idée" : undefined}
-                  />
-                ))}
-              </div>
-            </section>
-          )}
 
           {guide.faq && guide.faq.length > 0 && (
             <section style={{ marginTop: "48px" }}>

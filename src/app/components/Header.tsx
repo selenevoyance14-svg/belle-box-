@@ -1,9 +1,10 @@
 import Link from "next/link";
+import FavoritesLink from "./FavoritesLink";
 import { Gift, Search } from "lucide-react";
 
 const NAVIGATION = [
   { href: "/occasion/anniversaire", label: "Anniversaire" },
-  { href: "/occasion/naissance", label: "Naissance" },
+  { href: "/destinataire/homme", label: "Pour lui" },
   { href: "/occasion/noel", label: "Noël" },
   { href: "/destinataire/femme", label: "Pour elle" },
   { href: "/guide", label: "Guides" },
@@ -22,13 +23,14 @@ export default function Header() {
             <Link key={item.href} href={item.href}>{item.label}</Link>
           ))}
         </nav>
-        <Link href="/budget/moins-de-20-euros" className="kb-header-action">
+        <FavoritesLink />
+        <Link href="/trouver-cadeau" className="kb-header-action">
           <Search size={16} />
-          Petit budget
+          Trouver un cadeau
         </Link>
       </div>
       <nav className="kb-mobile-nav" aria-label="Navigation mobile">
-        {NAVIGATION.slice(0, 4).map((item) => (
+        {NAVIGATION.map((item) => (
           <Link key={item.href} href={item.href}>{item.label}</Link>
         ))}
       </nav>
