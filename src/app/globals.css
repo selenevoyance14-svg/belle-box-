@@ -2939,7 +2939,9 @@ body { color: var(--kb-ink); background: var(--kb-paper); }
 .kb-footer-bottom nav { display: flex; flex-wrap: wrap; gap: 18px; }
 .kb-footer-bottom a { color: rgba(255,255,255,.5); }
 .guide-index-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid var(--kb-line); border-left: 1px solid var(--kb-line); }
-.guide-index-card { min-height: 225px; display: grid; grid-template-columns: 38px 1fr 22px; gap: 18px; padding: 28px; border-right: 1px solid var(--kb-line); border-bottom: 1px solid var(--kb-line); color: var(--kb-ink); }
+.guide-index-card { min-height: 225px; display: grid; grid-template-columns: 38px minmax(0,1fr) 22px; gap: 18px; padding: 28px; border-right: 1px solid var(--kb-line); border-bottom: 1px solid var(--kb-line); color: var(--kb-ink); }
+.guide-index-card .occasion-index { position: static; align-self: start; justify-self: start; }
+.guide-index-card > div { min-width: 0; overflow-wrap: anywhere; }
 .guide-index-card:hover { background: var(--kb-coral); color: white; }
 .guide-index-card h2 { margin: 0 0 10px; font-size: 25px; }
 .guide-index-card p { margin: 0; color: #776a64; font-size: 13px; line-height: 1.6; }
@@ -2989,6 +2991,9 @@ body { color: var(--kb-ink); background: var(--kb-paper); }
   .collection-symbol,.collection-visual { display: none; }
   .collection-hero h1 { font-size: 46px; }
   .collection-lead { font-size: 16px; }
+  .guide-index-card { grid-template-columns: minmax(0,1fr) 22px; gap: 16px; padding: 22px; }
+  .guide-index-card > div { grid-column: 1; grid-row: 2; }
+  .guide-index-card > svg { grid-column: 2; grid-row: 1; }
   .collection-answer-grid { grid-template-columns: 1fr; gap: 10px; }
   .collection-answer-grid > p:last-child { font-size: 17px; }
   .kb-editorial-section { padding: 70px 0; }
@@ -3229,4 +3234,19 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .gift-filters .catalog-filter-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px 10px; }
   .gift-filters .catalog-filter-grid label { font-size: 10px; }
   .gift-filters .catalog-filter-grid select { font-size: 13px; padding-left: 8px; padding-right: 12px; }
+}
+
+/* Repères de lecture et sélections liées aux guides. */
+.guide-toc, .guide-collections { margin: 28px 0; padding: 24px; border: 1px solid var(--kb-line); background: var(--kb-cream, #faf7f0); }
+.guide-toc h2, .guide-collections h2 { margin: 0 0 14px; font-size: 23px; }
+.guide-toc ol { margin: 0; padding-left: 22px; }
+.guide-toc li + li { margin-top: 9px; }
+.guide-toc a { text-decoration: underline; text-underline-offset: 3px; }
+.guide-collections > div { display: flex; flex-wrap: wrap; gap: 10px; }
+.guide-collections a { padding: 9px 12px; border: 1px solid var(--kb-line); border-radius: 4px; font-size: 14px; background: white; }
+.guide-content-section { scroll-margin-top: 130px; }
+.kb-guide-article .kb-breadcrumb { flex-wrap: wrap; line-height: 1.6; }
+@media (max-width: 640px) {
+  .guide-toc, .guide-collections { padding: 18px; }
+  .kb-guide-article h1 { overflow-wrap: anywhere; }
 }

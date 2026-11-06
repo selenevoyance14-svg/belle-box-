@@ -5,6 +5,7 @@ Guide de cadeaux en français : Next.js 16 / React 19 / export statique.
 ## Développer et vérifier
 
 - `npm run dev -- --webpack` : aperçu local.
+- `npm run check:seo` : après le build, contrôle les pages exportées, les liens internes et les ancres, les titres, canoniques, données structurées et URLs du sitemap.
 - `npm test` : cohérence du catalogue et des recommandations.
 - `npx tsc --noEmit` : vérification TypeScript.
 - `npx next build --webpack` : export de production dans `out/` (Webpack évite la restriction de ports de Turbopack dans l’environnement local).

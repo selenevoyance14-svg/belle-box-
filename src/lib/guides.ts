@@ -10,6 +10,7 @@ export interface Guide {
     metaDescription: string;
     intro: string;
     publishedAt: string;
+    updatedAt?: string;
     readingMinutes: number;
     occasionSlug?: string;
     recipientSlug?: string;
@@ -323,7 +324,7 @@ export const GUIDES: Guide[] = [
     },
     {
         slug: "cadeau-saint-valentin-homme",
-        title: "Saint-Valentin : des idées cadeaux pour lui (qui ne servent vraiment)",
+        title: "Saint-Valentin : des idées cadeaux pour lui (qui servent vraiment)",
         metaTitle: "Cadeau Saint-Valentin homme : des idées utiles | Kado-Box",
         metaDescription: "Cadeaux Saint-Valentin pour lui : tech, gourmand, expérience, accessoires. des idées concrètes qui sortent du parfum et de la cravate.",
         intro: "Offrir à un homme pour la Saint-Valentin reste un casse-tête : on veut éviter le cliché du parfum-cravate-bouteille sans tomber dans le cadeau « gadget vite oublié ». Voici des idées qui marquent vraiment, par profil et budget.",
@@ -474,7 +475,7 @@ export const GUIDES: Guide[] = [
         ],
         faq: [
             {
-                q: "Que offrir à une grand-mère qui dit avoir tout ?",
+                q: "Qu’offrir à une grand-mère qui dit avoir tout ?",
                 a: "Misez sur l'émotion plutôt que l'objet : album photo personnalisé, cadre connecté, expérience partagée (un après-midi pâtisserie ensemble, une sortie). C'est presque toujours mieux qu'un nouvel objet.",
             },
             {
@@ -1284,7 +1285,7 @@ export const GUIDES: Guide[] = [
         slug: "cadeau-noel-femme",
         title: "Cadeau de Noël pour une femme : des idées qui font mouche",
         metaTitle: "Cadeau de Noël femme : des idées qui plaisent | Kado-Box",
-        metaDescription: "Que offrir à une femme à Noël ? Notre sélection d'idées cadeaux par budget et par personnalité, du petit prix au cadeau d'exception.",
+        metaDescription: "Qu’offrir à une femme à Noël ? Notre sélection d'idées cadeaux par budget et par personnalité, du petit prix au cadeau d'exception.",
         intro: "Trouver le cadeau de Noël parfait pour une femme — sa compagne, sa mère, sa sœur, une amie — peut vite tourner au casse-tête. Pour vous épargner les heures de recherche, on a réuni les idées qui plaisent vraiment, classées par budget et par profil. Vérifiez le prix, la disponibilité et la livraison pour votre adresse chez le marchand.",
         publishedAt: "2026-06-10",
         readingMinutes: 6,
@@ -1338,60 +1339,85 @@ export const GUIDES: Guide[] = [
         ],
     },
     {
-        slug: "cadeau-noel-homme",
-        title: "Cadeau de Noël pour un homme : des idées sans cliché",
-        metaTitle: "Cadeau de Noël homme : des idées qui plaisent | Kado-Box",
-        metaDescription: "Idées cadeaux de Noël pour un homme : tech, montre, gastronomie, loisirs. Notre sélection par budget pour ne plus offrir la énième paire de chaussettes.",
-        intro: "Chaussettes, cravate, eau de toilette achetée en panique le 24 décembre… On peut faire beaucoup mieux pour le Noël des hommes de votre vie. Voici nos idées à explorer et classées par budget, pour offrir un cadeau qui sera vraiment utilisé.",
-        publishedAt: "2026-06-10",
-        readingMinutes: 6,
-        occasionSlug: "noel",
-        recipientSlug: "homme",
-        sections: [
+        "slug": "cadeau-noel-homme",
+        "title": "Cadeau de Noël homme 2026 : idées par budget",
+        "metaTitle": "Cadeau Noël homme 2026 : idées par budget | Kado-Box",
+        "metaDescription": "Quel cadeau offrir à un homme à Noël 2026 ? Idées à moins de 25 €, de 25 à 50 €, de 50 à 100 € et au-delà, avec les vérifications avant achat.",
+        "intro": "Pour choisir un cadeau de Noël, partez d’une habitude précise : lire dans le train, cuisiner le week-end, jouer entre amis ou bricoler. Ce guide propose des pistes par budget et par envie, avec les points à vérifier avant de commander. Les budgets sont des enveloppes de recherche, pas des prix garantis.",
+        "publishedAt": "2026-06-10",
+        "updatedAt": "2026-11-06",
+        "readingMinutes": 7,
+        "occasionSlug": "noel",
+        "recipientSlug": "homme",
+        "sections": [
             {
-                heading: "La tech utile : le cadeau qui ne déçoit jamais",
-                paragraphs: [
-                    "Casque audio, enceinte connectée, traceur d'objets, liseuse : la tech reste une valeur sûre pour un homme à Noël, à condition de viser l'usage réel plutôt que le gadget. Un objet qu'il utilisera tous les jours bat toujours le dernier accessoire à la mode.",
-                    "Repérez ce qu'il possède déjà pour rester dans son écosystème (Apple, Amazon, Android) et éviter le doublon ou l'incompatibilité.",
-                ],
+                "heading": "Commencer par trois indices avant de choisir",
+                "paragraphs": [
+                    "Notez ce qu’il utilise déjà, ce dont il se plaint et ce qu’il aimerait essayer. Une batterie qui se vide en déplacement peut orienter vers un accessoire de charge ; un livre toujours dans son sac vers une idée de lecture. Vérifiez discrètement qu’il ne possède pas déjà l’objet.",
+                    "Demandez-vous ensuite s’il préfère une surprise, un modèle précis ou un moment ensemble. Pour une passion technique, une référence demandée ou un achat choisi à deux évite d’offrir un accessoire inutilisable."
+                ]
             },
             {
-                heading: "Pour l'élégant : montre ou maroquinerie",
-                paragraphs: [
-                    "Une montre sobre transforme une tenue et accompagne un homme des années durant. Pas besoin du modèle de luxe : une montre au design soigné, dans un budget raisonnable, fait largement l'affaire.",
-                    "Côté maroquinerie, un portefeuille en cuir, une ceinture ou une trousse de voyage sont des cadeaux qui durent et qui se remarquent.",
-                ],
+                "heading": "Moins de 25 € : une petite attention bien ciblée",
+                "paragraphs": [
+                    "Pour un lecteur, cherchez un poche d’un auteur qu’il aime en vérifiant les titres déjà lus. Pour un amateur de café, choisissez une petite sélection adaptée à sa cafetière : grains s’il a un moulin, mouture adaptée sinon. Pour quelqu’un qui écrit, un carnet dans un format qu’il emportera est plus utile qu’un bel objet trop encombrant.",
+                    "Un jeu de cartes peut aussi convenir aux soirées entre amis. Avant d’acheter, contrôlez la langue, le nombre de joueurs, l’âge conseillé et la durée d’une partie. Ce budget demande de comparer les références ; il ne garantit pas le prix d’un produit de notre sélection."
+                ]
             },
             {
-                heading: "Pour le gourmand : coffret gastronomie",
-                paragraphs: [
-                    "Coffret de chocolats fins, sélection de cafés d'exception, panier d'épicerie fine : la gourmandise est une valeur sûre à Noël. C'est un cadeau qui se partage et se savoure, idéal quand on connaît mal les goûts de la personne.",
-                    "Pour les amateurs de café, une cafetière à piston ou un moulin manuel transforme le rituel du matin en petit plaisir.",
-                ],
+                "heading": "De 25 à 50 € : privilégier un loisir qu’il pratique déjà",
+                "paragraphs": [
+                    "Explorez un puzzle avec un thème qu’il aime, une cafetière à piston s’il apprécie cette préparation, une trousse de toilette pour ses déplacements ou un accessoire de cuisine qu’il a repéré. Pour un puzzle, pensez à la place disponible pour laisser la construction en cours.",
+                    "Un petit set de construction peut plaire à un adulte qui aime assembler et exposer ses créations. Le thème compte davantage que le genre du destinataire : botanique, architecture ou véhicule, choisissez selon ses goûts. Vérifiez dimensions, référence exacte et prix actuel avant de retenir une boîte."
+                ]
             },
             {
-                heading: "Petits budgets (moins de 25 €)",
-                paragraphs: [
-                    "Un beau carnet en cuir, un jeu de société pour les soirées, un livre choisi selon ses passions ou un accessoire pour son hobby (cuisine, jardin, musique, sport) : on peut faire un cadeau qui a du sens sans se ruiner.",
-                ],
+                "heading": "De 50 à 100 € : vérifier le modèle avant de monter en gamme",
+                "paragraphs": [
+                    "Pour un amateur de musique, comparez les casques ou enceintes selon son usage : transport, bureau ou pièce à vivre. Confort, encombrement et connexions comptent autant que la fiche technique. Vérifiez les appareils auxquels il veut les relier et ce qui est fourni dans la boîte.",
+                    "Pour un cuisinier, un moulin manuel ou un ustensile durable peut être pertinent s’il en a exprimé l’envie. Pour une montre ou un portefeuille, observez plutôt son style actuel, le format et les dimensions ; ne choisissez pas uniquement sur une photo promotionnelle."
+                ]
             },
             {
-                heading: "Pour le passionné : jouez la carte de son hobby",
-                paragraphs: [
-                    "Le meilleur cadeau pour un homme, c'est souvent celui qui parle directement de ce qu'il aime : matériel pour le bricoleur, accessoire de cuisine pour le cuisinier du dimanche, équipement pour le sportif. Vous montrez ainsi que vous l'avez vraiment écouté.",
-                ],
+                "heading": "Plus de 100 € : un achat à valider avec lui",
+                "paragraphs": [
+                    "Une liseuse, un casque plus élaboré ou une expérience à deux mérite souvent de demander une préférence avant de commander. Une liseuse convient surtout à quelqu’un qui veut lire sur écran : vérifiez sa bibliothèque numérique, les formats pris en charge, le modèle exact et les options de la version vendue.",
+                    "Pour un atelier ou une sortie, assurez-vous qu’il peut se déplacer et réserver aux dates proposées. Vérifiez ce qui est inclus, la validité et les conditions de modification. Offrir ensemble peut financer un choix précis sans multiplier les objets."
+                ]
             },
+            {
+                "heading": "Adapter le cadeau à votre relation",
+                "paragraphs": [
+                    "Pour un conjoint, partez d’une envie évoquée dans l’année et ajoutez un mot personnel. Pour un père ou un frère, une activité partagée peut compléter un petit objet lié à ses habitudes. Pour un collègue, gardez une attention simple, compatible avec le budget convenu et sans message trop personnel.",
+                    "L’âge seul ne permet pas de bien choisir. Un joueur de 60 ans et un lecteur de 25 ans n’attendent pas les mêmes cadeaux : les loisirs, l’espace disponible et les habitudes sont de meilleurs repères."
+                ]
+            },
+            {
+                "heading": "Avant Noël : livraison, retours et coûts à anticiper",
+                "paragraphs": [
+                    "Avant de payer, relisez la date de livraison pour votre adresse, le vendeur réel, les frais de port et les conditions de retour. Les délais et les politiques peuvent varier selon l’offre ; ne supposez pas qu’une livraison avant Noël ou une période de retour prolongée est automatique.",
+                    "Pour un cadeau personnalisé, vérifiez l’orthographe et le délai de fabrication avant validation. Pour un appareil, pensez aux accessoires nécessaires et aux éventuels abonnements. Si le colis risque d’arriver trop tard, une invitation écrite à une sortie ou un cadeau choisi en magasin peut éviter une commande précipitée."
+                ]
+            }
         ],
-        faq: [
+        "faq": [
             {
-                q: "Que offrir à un homme « qui a déjà tout » ?",
-                a: "Misez sur le consommable haut de gamme (café, chocolat, épicerie fine) ou sur une expérience plutôt qu'un objet. Ce sont des cadeaux qui ne créent pas de doublon.",
+                "q": "Quel cadeau de Noël choisir pour un homme dont on connaît mal les goûts ?",
+                "a": "Choisissez une attention facile à utiliser : un assortiment gourmand après vérification de ses préférences alimentaires, un jeu pour un groupe qu’il fréquente ou un bon dans une boutique qu’il apprécie. Évitez parfum, vêtements ajustés et matériel technique sans indice précis."
             },
             {
-                q: "La tech, n'est-ce pas un cadeau impersonnel ?",
-                a: "Pas si vous choisissez en fonction de son usage réel. Une liseuse pour un grand lecteur ou un casque pour un mélomane est tout sauf impersonnel : c'est la preuve que vous connaissez ses habitudes.",
+                "q": "Que peut-on offrir à un homme avec moins de 25 € ?",
+                "a": "Un livre de poche lié à sa passion, du café dans la bonne mouture, un petit jeu ou un carnet sont des pistes à comparer dans cette enveloppe. Ajoutez un mot qui explique votre choix et comptez les frais de livraison dans le budget."
             },
-        ],
+            {
+                "q": "Qu’offrir à un homme qui a déjà tout ?",
+                "a": "Un consommable qu’il aime ou un moment partagé limite les doublons : café, chocolat, atelier, sortie ou repas préparé ensemble. Pour une expérience, vérifiez le lieu, les dates, la durée de validité et les éventuels suppléments."
+            },
+            {
+                "q": "Faut-il attendre une promotion pour acheter le cadeau ?",
+                "a": "Fixez votre plafond avant de comparer et regardez le coût total livré. Une remise ne rend pas utile un produit mal choisi. Vérifiez aussi la date de livraison annoncée pour votre adresse et la période de retour applicable au vendeur."
+            }
+        ]
     },
     {
         slug: "cadeau-meilleure-amie",
@@ -1677,7 +1703,7 @@ export const GUIDES: Guide[] = [
         slug: "cadeau-ado-fille-15-ans",
         title: "Cadeau pour une ado de 15 ans : des idées qui plaisent vraiment",
         metaTitle: "Cadeau ado fille 15 ans : des idées sûres | Kado-Box",
-        metaDescription: "Que offrir à une adolescente de 15 ans ? Tech, beauté, déco, accessoires tendance : des pistes à choisir avec elle selon ses envies et votre budget.",
+        metaDescription: "Qu’offrir à une adolescente de 15 ans ? Tech, beauté, déco, accessoires tendance : des pistes à choisir avec elle selon ses envies et votre budget.",
         intro: "Offrir à une ado de 15 ans, c'est marcher sur un fil : ni trop « bébé », ni à côté des tendances du moment. Bonne nouvelle, certaines valeurs sûres font toujours mouche. Voici nos idées pour viser juste, classées par budget et par centre d'intérêt.",
         publishedAt: "2026-06-14",
         readingMinutes: 5,

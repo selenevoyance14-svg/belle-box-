@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CollectionPage from "@/app/components/CollectionPage";
@@ -14,19 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const occasion = OCCASIONS.find((item) => item.slug === slug);
   if (!occasion) return { title: "Occasion introuvable" };
-  return {
-    title: `Cadeau ${occasion.name.toLowerCase()} : idées utiles 2026 | Kado-Box`,
-    description: `${occasion.description}. Découvrez des idées cadeau ${occasion.name.toLowerCase()} triées par popularité et budget, avec nos conseils pour bien choisir.`,
-    alternates: { canonical: `/occasion/${slug}` },
-    openGraph: {
-      title: `Idées cadeau ${occasion.name.toLowerCase()} 2026`,
-      description: occasion.description,
-      url: `/occasion/${slug}`,
-      type: "website",
-      images: occasion.image ? [{ url: occasion.image, width: 1200, height: 900, alt: `Idées cadeaux ${occasion.name}` }] : undefined,
-    },
-    twitter: occasion.image ? { card: "summary_large_image", images: [occasion.image] } : undefined,
-  };
+  return pageMetadata(
+    `Cadeaux ${occasion.name} 2026 : idées et conseils | Kado-Box`,
+    `${occasion.description}. Explorez nos sélections par envie et budget, et nos guides pour choisir une attention adaptée.`,
+    `/occasion/${slug}`,
+  );
 }
 
 export default async function OccasionPage({ params }: Props) {
@@ -36,6 +29,7 @@ export default async function OccasionPage({ params }: Props) {
   const products = getProductsByOccasion(slug);
   return (
     <CollectionPage
+      path={`/occasion/${slug}`}
       occasion={slug}
       eyebrow="Choisir par occasion"
       title={`Cadeaux ${occasion.name}`}

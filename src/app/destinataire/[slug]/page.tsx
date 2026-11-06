@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CollectionPage from "@/app/components/CollectionPage";
@@ -14,25 +15,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const recipient = RECIPIENTS.find((item) => item.slug === slug);
   if (!recipient) return { title: "Destinataire introuvable" };
-  const metadataBySlug: Record<string, { title: string; description: string }> = {
-    femme: {
-      title: "Idée cadeau femme : idées selon ses envies en 2026",
-      description: "Trouvez une idée cadeau pour une femme selon son âge, ses goûts et votre budget : cadeaux originaux, utiles à choisir selon ses envies.",
-    },
+  const labels: Record<string, string> = {
+    femme: "pour une femme", homme: "pour un homme", enfant: "pour un enfant",
+    ado: "pour un ado", couple: "pour un couple", bebe: "pour bébé",
   };
-  const customMetadata = metadataBySlug[slug];
-  return {
-    title: customMetadata?.title ?? `Idée cadeau ${recipient.name.toLowerCase()} en 2026 | Kado-Box`,
-    description: customMetadata?.description ?? `Trouvez un cadeau ${recipient.name.toLowerCase()} vraiment adapté : idées Amazon sélectionnées selon les envies, l’occasion et votre budget.`,
-    alternates: { canonical: `/destinataire/${slug}` },
-    openGraph: {
-      title: customMetadata?.title ?? `Idées cadeau ${recipient.name.toLowerCase()} en 2026`,
-      description: customMetadata?.description ?? `Une sélection de cadeaux ${recipient.name.toLowerCase()} pour tous les budgets.`,
-      url: `/destinataire/${slug}`,
-      images: [{ url: recipient.image, width: 1200, height: 900, alt: `Sélection de cadeaux ${recipient.name.toLowerCase()}` }],
-    },
-    twitter: { card: "summary_large_image", images: [recipient.image] },
-  };
+  return pageMetadata(
+    `Idées cadeaux ${labels[slug]} en 2026 | Kado-Box`,
+    `Trouvez un cadeau ${labels[slug]} selon ses envies, l’occasion et votre budget. Des pistes concrètes et les points à vérifier avant d’offrir.`,
+    `/destinataire/${slug}`,
+  );
 }
 
 export default async function RecipientPage({ params }: Props) {
@@ -41,9 +32,10 @@ export default async function RecipientPage({ params }: Props) {
   if (!recipient) notFound();
   return (
     <CollectionPage
+      path={`/destinataire/${slug}`}
       recipient={slug}
       eyebrow="Choisir par destinataire"
-      title={slug === "femme" ? "Idées cadeaux pour une femme" : `Idées cadeau ${recipient.name.toLowerCase()}`}
+      title={slug === "femme" ? "Idées cadeaux pour une femme" : `Idées cadeaux ${recipient.name.toLowerCase()}`}
       description={slug === "femme"
         ? "Des cadeaux pour une femme classés par goûts, occasion et budget, de moins de 20 € au cadeau d’exception."
         : "Des idées ciblées pour faire plaisir sans tomber dans le cadeau générique, du petit prix au cadeau qui marque."}

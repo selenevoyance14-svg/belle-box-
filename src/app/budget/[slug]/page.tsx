@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CollectionPage from "@/app/components/CollectionPage";
@@ -14,11 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const budget = BUDGETS.find((item) => item.slug === slug);
   if (!budget) return { title: "Budget introuvable" };
-  return {
-    title: `Idée cadeau ${budget.name.toLowerCase()} en 2026 | Kado-Box`,
-    description: `${budget.description} Notre sélection Amazon triée et nos conseils pour offrir juste sans dépasser votre enveloppe.`,
-    alternates: { canonical: `/budget/${slug}` },
-  };
+  return pageMetadata(
+    `Idées cadeaux ${budget.name.toLowerCase()} | Kado-Box`,
+    `${budget.description} Explorez les idées retenues et nos conseils. Les budgets reposent sur le dernier prix enregistré, à vérifier chez le marchand.`,
+    `/budget/${slug}`,
+  );
 }
 
 export default async function BudgetPage({ params }: Props) {
@@ -27,6 +28,8 @@ export default async function BudgetPage({ params }: Props) {
   if (!budget) notFound();
   return (
     <CollectionPage
+      path={`/budget/${slug}`}
+      budget={slug}
       eyebrow="Choisir selon son budget"
       title={`Idées cadeau ${budget.name.toLowerCase()}`}
       description={budget.description}

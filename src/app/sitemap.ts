@@ -39,9 +39,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: slug === "moins-de-20-euros" ? 0.9 : 0.7,
     })),
-    ...GUIDES.map(({ slug, publishedAt }) => ({
+    ...GUIDES.map(({ slug, publishedAt, updatedAt }) => ({
       url: `${BASE_URL}/guide/${slug}`,
-      lastModified: new Date(publishedAt),
+      lastModified: new Date(updatedAt ?? publishedAt),
       changeFrequency: "monthly" as const,
       priority: [
         "cadeau-noel-petit-budget",

@@ -10,7 +10,8 @@
     "sync-amazon": "node scripts/build-amazon-catalog.mjs",
     "amazon:update": "node scripts/update-amazon-prices.mjs",
     "catalog:promote-gifts": "node scripts/promote-gift-products.mjs",
-    "test": "node --import tsx --test tests/*.test.ts"
+    "test": "node --import tsx --test tests/*.test.ts",
+    "check:seo": "node scripts/check-static-seo.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",

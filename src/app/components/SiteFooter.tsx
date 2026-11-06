@@ -44,6 +44,7 @@ export default function SiteFooter() {
         <nav>
           <Link href="/trouver-cadeau">Trouver un cadeau</Link>
           <Link href="/favoris">Mes idées</Link>
+          <Link href="/guide">Guides cadeaux</Link>
           <Link href="/a-propos">Notre méthode</Link>
           <Link href="/mentions-legales">Mentions légales</Link>
           <Link href="/affiliation-amazon">Affiliation Amazon</Link>
