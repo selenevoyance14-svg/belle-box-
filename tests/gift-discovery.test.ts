@@ -37,7 +37,12 @@ test("les sélections naissance et adultes ne mélangent pas leurs destinataires
 });
 test("les guides respectent simultanément leur sujet, leur destinataire et leur budget", () => {
   for (const guide of GUIDES) {
-    for (const p of getProductsForGuide(guide)) {
+    const products = getProductsForGuide(guide);
+    if (guide.productAsins) {
+      assert.deepEqual(products.map((p) => p.asin), guide.productAsins, guide.slug);
+      assert.equal(new Set(guide.productAsins).size, guide.productAsins.length, guide.slug);
+    }
+    for (const p of products) {
       if (guide.recipientSlug) assert.ok(p.recipients.includes(guide.recipientSlug), guide.slug);
       if (guide.occasionSlug) assert.ok(p.occasions.includes(guide.occasionSlug), guide.slug);
       if (/petit-budget|secret-santa/.test(guide.slug)) assert.ok(p.price <= 20, guide.slug);

@@ -7,6 +7,10 @@ export function getProductsForGuide(guide: Guide): CatalogProduct[] {
     (!guide.recipientSlug || p.recipients.includes(guide.recipientSlug)) &&
     (!guide.occasionSlug || p.occasions.includes(guide.occasionSlug))
   );
+  if (guide.productAsins) {
+    const productsByAsin = new Map(products.map((product) => [product.asin, product]));
+    return guide.productAsins.flatMap((asin) => productsByAsin.get(asin) ?? []);
+  }
   if (/beaute|gourmand/.test(guide.slug)) return [];
   if (/petit-budget|secret-santa/.test(guide.slug)) products = products.filter((p) => p.price <= 20 && p.category !== "bebe");
   if (guide.slug === "cadeau-tech-utile") products = products.filter((p) => ["tech", "montre", "jeu_video"].includes(p.category));

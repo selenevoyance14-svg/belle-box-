@@ -1,3 +1,5 @@
+import { NEW_GUIDES } from "./new-guides";
+
 export interface GuideSection {
     heading: string;
     paragraphs: string[];
@@ -14,11 +16,13 @@ export interface Guide {
     readingMinutes: number;
     occasionSlug?: string;
     recipientSlug?: string;
+    productAsins?: string[];
     sections: GuideSection[];
     faq?: Array<{ q: string; a: string }>;
 }
 
 export const GUIDES: Guide[] = [
+    ...NEW_GUIDES,
     {
         slug: "idees-cadeaux-fete-des-meres-2026",
         title: "Fête des mères 2026 : des idées cadeaux qui font vraiment plaisir",
