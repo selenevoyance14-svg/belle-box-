@@ -3250,3 +3250,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
   .guide-toc, .guide-collections { padding: 18px; }
   .kb-guide-article h1 { overflow-wrap: anywhere; }
 }
+
+/* Budget de Noël : une saisie lisible sur mobile comme sur ordinateur. */
+.gift-budget-calculator { background: var(--muted); }
+.gift-budget-fields { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
+.gift-budget-fields label { display: grid; gap: .6rem; font-weight: 600; font-size: 1rem; }
+.gift-budget-fields input { width: 100%; min-width: 0; padding: .85rem 1rem; background: white; color: #182b25; border: 1px solid #81938b; border-radius: .6rem; font: inherit; }
+.gift-budget-fields input:focus-visible { outline: 3px solid #25634d; outline-offset: 3px; }
+.gift-budget-result { margin: 1rem 0; }
+.gift-budget-result strong { font-size: 1.7rem; }
+@media (max-width: 640px) { .gift-budget-fields { grid-template-columns: 1fr; } }

@@ -1,3 +1,4 @@
+import { CHRISTMAS_GUIDES } from "./christmas-guides";
 import { NEW_GUIDES } from "./new-guides";
 
 export interface GuideSection {
@@ -22,6 +23,7 @@ export interface Guide {
 }
 
 export const GUIDES: Guide[] = [
+    ...CHRISTMAS_GUIDES,
     ...NEW_GUIDES,
     {
         slug: "idees-cadeaux-fete-des-meres-2026",
